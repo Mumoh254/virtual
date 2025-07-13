@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtuquest | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Bootstrap CSS - Added for consistent grid/utility classes -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            /* New Color Palette: Modern Dark & Gradient (from main index.html) */
+            --background: #0A0D14; /* Very dark blue-black */
+            --header-bg: rgba(10, 13, 20, 0.98); /* Almost opaque header */
+            --container-bg: rgba(25, 30, 40, 0.6); /* Slightly lighter, transparent dark blue-gray for cards/containers */
+            --text-main: #E0E6F0; /* Soft white for body text */
+            --text-heading: #F8FAFC; /* Pure white for main headings */
+            --white: #FFFFFF;
+
+            /* Accent Colors - Sleeker, sophisticated */
+            --primary-accent: #6C5CE7; /* Deep, rich violet */
+            --secondary-accent: #00BCD4; /* Vibrant, modern cyan */
+            --cta-gradient-start: #FF6B6B; /* Soft red for CTA */
+            --cta-gradient-end: #FF9A8B; /* Lighter red for CTA */
+
+            /* Shadows & Glows - Subtler, more elegant */
+            --shadow-light: rgba(0, 0, 0, 0.2);
+            --shadow-medium: rgba(0, 0, 0, 0.4);
+            --shadow-strong: rgba(0, 0, 0, 0.6);
+            --accent-glow-light: rgba(108, 92, 231, 0.3); /* Violet glow */
+            --accent-glow-medium: rgba(108, 92, 231, 0.5);
+            --accent-glow-strong: rgba(108, 92, 231, 0.7);
+            --border-gradient: linear-gradient(90deg, transparent, var(--primary-accent) 20%, var(--secondary-accent) 80%, transparent);
+            --cta-shadow-color: rgba(255, 107, 107, 0.5);
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--text-main);
+            line-height: 1.8;
+            overflow-x: hidden;
+            padding-top: 80px; /* Space for fixed header */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(var(--primary-accent),0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(var(--primary-accent),0.02) 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 3px var(--accent-glow-light); /* Softer glow */
+        }
+
+        h1 {
+            font-size: 3.8rem; /* Larger, more impactful title */
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 25px var(--accent-glow-medium), 0 0 50px var(--accent-glow-strong);
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 3.2rem; /* Consistent with main page section titles */
+            margin-bottom: 4rem; /* Consistent spacing */
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px var(--accent-glow-medium), 0 0 40px var(--accent-glow-strong);
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px; /* Adjusted position */
+            left: 0;
+            width: 100%;
+            height: 3px; /* Thicker underline */
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            box-shadow: 0 0 10px var(--primary-accent);
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            font-weight: 300;
+            color: var(--text-main);
+        }
+
+        a {
+            color: var(--secondary-accent);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-accent);
+            text-shadow: 0 0 10px var(--secondary-accent);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem; /* Consistent padding with main page */
+            position: relative;
+            z-index: 1;
+            background: var(--container-bg);
+            border: 1px solid rgba(var(--primary-accent), 0.2);
+            border-radius: 16px;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 8px 25px var(--shadow-medium);
+        }
+
+        .container:hover {
+            transform: translateY(-8px) scale(1.005);
+            box-shadow: 0 15px 40px var(--shadow-strong), 0 0 30px var(--accent-glow-medium);
+            border-color: var(--primary-accent);
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            background-color: var(--header-bg);
+            border-bottom: 1px solid rgba(var(--primary-accent), 0.1);
+            box-shadow: 0 5px 20px var(--shadow-medium);
+            padding: 1rem 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2.5rem; /* Consistent padding with main page */
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem; /* Consistent with main page */
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary-accent) 0%, var(--secondary-accent) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px var(--accent-glow-medium);
+            letter-spacing: 1.5px;
+            position: relative;
+        }
+
+        .logo::before { /* Underline effect for logo */
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            box-shadow: 0 0 10px var(--primary-accent);
+            transform-origin: left;
+            transform: scaleX(0);
+            transition: transform 0.4s ease-out;
+        }
+
+        .logo:hover::before {
+            transform: scaleX(1);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 3rem; /* Consistent gap */
+        }
+
+        nav ul li a {
+            font-family: 'Inter', sans-serif; /* Changed to Inter for nav links */
+            font-weight: 600;
+            font-size: 1rem;
+            position: relative;
+            padding: 0.8rem 0; /* Consistent padding */
+            color: var(--text-main); /* Consistent color */
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px; /* Consistent position */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px; /* Consistent thickness */
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        nav ul li a.active {
+            color: var(--primary-accent);
+            text-shadow: 0 0 8px var(--primary-accent);
+        }
+        nav ul li a.active::after {
+            width: 100%;
+            background: var(--primary-accent);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-accent); /* Consistent color */
+            font-size: 2.5rem; /* Consistent size */
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .mobile-menu-btn:hover {
+            color: var(--secondary-accent);
+        }
+
+        @media (max-width: 992px) {
+            nav ul {
+                position: fixed;
+                top: 80px; /* Adjust for header height */
+                right: -100%;
+                width: 280px; /* Slightly wider mobile menu */
+                height: calc(100vh - 80px);
+                background-color: var(--header-bg); /* Use header background */
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 30px;
+                transition: right 0.3s ease;
+                z-index: 1000;
+                border-left: 1px solid rgba(var(--primary-accent), 0.1);
+                box-shadow: -5px 0 20px var(--shadow-medium);
+            }
+
+            nav ul.active {
+                right: 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                z-index: 1001;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+            .header-container {
+                padding: 0 1.5rem;
+            }
+            .logo {
+                font-size: 1.8rem;
+            }
+            nav ul {
+                top: 70px; /* Adjust for smaller header height */
+                height: calc(100vh - 70px);
+            }
+        }
+        @media (max-width: 480px) {
+            body {
+                padding-top: 60px;
+            }
+            .header-container {
+                padding: 0 1rem;
+            }
+            .logo {
+                font-size: 1.5rem;
+            }
+            nav ul {
+                top: 60px; /* Adjust for smaller header height */
+                width: 100%; /* Full width mobile menu */
+                height: calc(100vh - 60px);
+            }
+        }
+
+        /* Main Content Wrapper */
+        .main-content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem; /* Consistent padding */
+        }
+
+        /* Portfolio Hero Section */
+        .portfolio-hero {
+            min-height: 70vh; /* Shorter hero for internal pages */
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            background: var(--background);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .portfolio-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(108, 92, 231, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(0, 188, 212, 0.08) 0%, transparent 50%);
+            z-index: 0;
+            mix-blend-mode: screen;
+        }
+
+        .portfolio-hero .container {
+            background: var(--container-bg);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px var(--shadow-medium), 0 0 40px var(--accent-glow-light);
+            border: 1px solid rgba(var(--primary-accent), 0.4);
+            padding: 4rem; /* Adjusted padding */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 50vh; /* Ensure container has height */
+        }
+
+        .portfolio-hero h1 {
+            font-size: 4.2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 
+                0 0 15px var(--accent-glow-medium),
+                0 0 25px var(--accent-glow-strong);
+        }
+
+        .portfolio-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin-bottom: 0;
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            font-size: 3.2rem;
+            margin-bottom: 4rem;
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px var(--accent-glow-medium), 0 0 40px var(--accent-glow-strong);
+            width: 100%; /* Ensure it takes full width for centering */
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%; /* Center the underline */
+            transform: translateX(-50%);
+            width: 80%; /* Shorter underline */
+            max-width: 400px; /* Max width for underline */
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            box-shadow: 0 0 10px var(--primary-accent);
+        }
+
+        .category-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem; /* Larger category title */
+            color: var(--primary-accent);
+            margin: 3rem 0 1.5rem 0; /* More spacing */
+            letter-spacing: 1px;
+            text-shadow: 0 0 12px var(--accent-glow-light);
+            text-align: left; /* Align category titles to left */
+        }
+
+        /* Content Layout */
+        .content-container {
+            display: flex;
+            gap: 3rem; /* Consistent gap */
+            margin-bottom: 4rem; /* More spacing */
+            flex-wrap: wrap;
+        }
+        .main-portfolio-content { /* Renamed from main-content to avoid conflict */
+            flex: 2 1 600px; /* Adjusted flex basis for better distribution */
+            min-width: 300px;
+        }
+        .description-container {
+            flex: 1 1 400px; /* Adjusted flex basis */
+            min-width: 280px;
+            background: var(--container-bg);
+            border-radius: 16px; /* Consistent border radius */
+            box-shadow: 0 0 25px var(--shadow-light);
+            padding: 2.5rem; /* More padding */
+            margin-top: 0; /* Remove margin-top as it's part of flex gap now */
+            align-self: flex-start;
+            border: 1px solid rgba(var(--primary-accent), 0.2);
+            transition: all 0.4s ease;
+        }
+        .description-container:hover {
+            transform: translateY(-8px) scale(1.005);
+            box-shadow: 0 15px 40px var(--shadow-medium), 0 0 30px var(--accent-glow-medium);
+            border-color: var(--primary-accent);
+        }
+        .description-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem; /* Larger title */
+            color: var(--primary-accent);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px var(--accent-glow-light);
+        }
+        .description-text {
+            font-size: 1.05rem; /* Slightly larger text */
+            color: var(--text-main);
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjusted minmax for better card sizing */
+            gap: 2.5rem; /* Increased gap */
+            margin-bottom: 3rem; /* More spacing */
+        }
+        .project-card {
+            background: var(--container-bg);
+            border-radius: 16px; /* Consistent border radius */
+            box-shadow: 0 0 20px var(--shadow-light);
+            padding: 2rem; /* More padding */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(var(--primary-accent), 0.15);
+        }
+        .project-card:hover {
+            transform: translateY(-8px); /* More pronounced lift */
+            box-shadow: 0 15px 40px var(--shadow-medium), 0 0 30px var(--accent-glow-light);
+            border-color: var(--primary-accent);
+        }
+        .project-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.6rem; /* Larger heading */
+            color: var(--text-heading);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 8px var(--accent-glow-light);
+        }
+        .project-image {
+            width: 100%;
+            height: 180px; /* Taller image area */
+            border-radius: 12px; /* Slightly rounded corners for image */
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            position: relative;
+            background: var(--background); /* Dark background for placeholder */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(var(--secondary-accent), 0.2);
+        }
+        .project-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 12px;
+            transition: filter 0.4s ease;
+            filter: brightness(0.7); /* Darken image */
+        }
+        .project-card:hover .project-img {
+            filter: brightness(1); /* Full brightness on hover */
+        }
+        .image-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, transparent 100%); /* Darker overlay */
+            pointer-events: none;
+        }
+        .project-description {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+        .project-tools {
+            margin-bottom: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem; /* Space between tags */
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(var(--primary-accent), 0.15);
+            color: var(--primary-accent);
+            border-radius: 8px; /* Slightly less rounded */
+            padding: 0.4rem 0.8rem; /* More padding */
+            font-size: 0.85rem;
+            font-family: 'Inter', sans-serif;
+            border: 1px solid rgba(var(--primary-accent), 0.5);
+            font-weight: 600;
+        }
+        .project-outcome {
+            font-size: 0.95rem;
+            color: var(--secondary-accent); /* Use secondary accent for outcome */
+            font-weight: 600;
+            margin-top: auto; /* Push outcome to bottom */
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjusted minmax */
+            gap: 2.5rem; /* Consistent gap */
+            margin-top: 3rem; /* Consistent margin */
+        }
+        .testimonial-card {
+            background: var(--container-bg);
+            border-radius: 16px;
+            box-shadow: 0 0 20px var(--shadow-light);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(var(--primary-accent), 0.15);
+            transition: all 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px var(--shadow-medium), 0 0 30px var(--accent-glow-light);
+            border-color: var(--primary-accent);
+        }
+        .testimonial-quote {
+            font-style: italic;
+            color: var(--text-main);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+        .client-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: auto; /* Push client info to bottom */
+        }
+        .client-avatar {
+            width: 50px; /* Larger avatar */
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-accent);
+            color: var(--white);
+            font-weight: bold;
+            font-size: 1.5rem; /* Larger font */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 10px var(--accent-glow-light);
+            border: 2px solid var(--secondary-accent); /* Accent border */
+        }
+        .client-details {
+            display: flex;
+            flex-direction: column;
+        }
+        .client-name {
+            font-weight: 600;
+            color: var(--text-heading);
+            font-size: 1.1rem;
+        }
+        .client-role {
+            font-size: 0.95rem;
+            color: var(--secondary-accent); /* Accent color for role */
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--header-bg); /* Consistent with header */
+            padding: 5rem 0 3rem; /* Consistent padding */
+            position: relative;
+            border-top: 3px solid;
+            border-image: var(--border-gradient) 1; /* Gradient border */
+            box-shadow: 0 0 25px var(--shadow-medium); /* Consistent shadow */
+            color: var(--text-main);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax */
+            gap: 3.5rem; /* Increased gap */
+            margin-bottom: 3rem; /* Consistent margin */
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 2.5rem;
+        }
+
+        .footer-column {
+            text-align: left; /* Default to left align */
+        }
+
+        .footer-column h3 {
+            font-size: 1.8rem; /* Consistent with main page footer */
+            margin-bottom: 1.8rem; /* Consistent margin */
+            color: var(--primary-accent);
+            position: relative;
+            text-shadow: 0 0 12px var(--accent-glow-light);
+        }
+        .footer-column h3::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-accent);
+            box-shadow: 0 0 8px var(--primary-accent);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem; /* Consistent margin */
+        }
+
+        .footer-links li a {
+            font-size: 1rem; /* Slightly larger */
+            color: var(--text-main);
+            transition: all 0.3s ease;
+            display: flex; /* For icon alignment */
+            align-items: center;
+        }
+
+        .footer-links li a .fas {
+            margin-right: 0.75rem; /* Space for icon */
+            color: var(--secondary-accent);
+        }
+
+        .footer-links li a:hover {
+            color: var(--secondary-accent);
+            padding-left: 8px; /* Slightly more prominent hover effect */
+            text-shadow: 0 0 8px var(--secondary-accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.8rem; /* Consistent gap */
+            margin-top: 2rem; /* Consistent margin */
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px; /* Larger icons */
+            height: 48px;
+            border-radius: 50%;
+            background-color: rgba(var(--primary-accent), 0.1); /* Subtle background */
+            color: var(--secondary-accent); /* Accent color for icons */
+            transition: all 0.3s ease;
+            font-size: 1.8rem; /* Larger icon size */
+            box-shadow: 0 0 10px var(--accent-glow-light);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-accent);
+            color: var(--background); /* Dark text on accent hover */
+            transform: translateY(-5px) scale(1.1); /* More pronounced hover */
+            box-shadow: 0 0 20px var(--primary-accent);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2.5rem; /* Consistent padding */
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: var(--text-main);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .portfolio-hero h1 {
+                font-size: 3.2rem;
+            }
+            .portfolio-hero p {
+                font-size: 1.1rem;
+            }
+            .section-title {
+                font-size: 2.8rem;
+            }
+            .category-title {
+                font-size: 1.8rem;
+            }
+            .content-container {
+                flex-direction: column;
+                gap: 2.5rem;
+            }
+            .main-portfolio-content, .description-container {
+                min-width: 0;
+                width: 100%;
+            }
+            .projects-grid, .testimonials-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 2rem;
+            }
+            .project-card, .testimonial-card {
+                padding: 1.5rem;
+            }
+            .project-title {
+                font-size: 1.4rem;
+            }
+            .project-image {
+                height: 160px;
+            }
+            .project-description {
+                font-size: 0.95rem;
+            }
+            .tool-tag {
+                font-size: 0.8rem;
+                padding: 0.3rem 0.6rem;
+            }
+            .testimonial-quote {
+                font-size: 1rem;
+            }
+            .client-avatar {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+            .client-name {
+                font-size: 1rem;
+            }
+            .client-role {
+                font-size: 0.9rem;
+            }
+            .footer-column {
+                text-align: center; /* Center align footer columns on smaller screens */
+            }
+            .footer-column h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .social-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-hero h1 {
+                font-size: 2.5rem;
+            }
+            .portfolio-hero p {
+                font-size: 1rem;
+            }
+            .section-title {
+                font-size: 2.2rem;
+            }
+            .category-title {
+                font-size: 1.6rem;
+            }
+            .projects-grid, .testimonials-grid {
+                grid-template-columns: 1fr; /* Single column on very small screens */
+                gap: 1.5rem;
+            }
+            .project-card, .testimonial-card {
+                max-width: 450px; /* Constrain width for single column */
+                margin: 0 auto; /* Center single column cards */
+            }
+            .description-container {
+                padding: 2rem;
+            }
+            .description-title {
+                font-size: 1.5rem;
+            }
+            .description-text {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .main-content-wrapper {
+                padding: 1rem;
+            }
+            .portfolio-hero .container {
+                padding: 2rem 1rem;
+            }
+            .portfolio-hero h1 {
+                font-size: 2rem;
+            }
+            .portfolio-hero p {
+                font-size: 0.9rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .category-title {
+                font-size: 1.4rem;
+            }
+            .project-card, .testimonial-card {
+                padding: 1.2rem;
+            }
+            .project-title {
+                font-size: 1.2rem;
+            }
+            .project-image {
+                height: 140px;
+            }
+            .project-description {
+                font-size: 0.85rem;
+            }
+            .tool-tag {
+                font-size: 0.75rem;
+                padding: 0.25rem 0.5rem;
+            }
+            .project-outcome {
+                font-size: 0.85rem;
+            }
+            .testimonial-quote {
+                font-size: 0.9rem;
+            }
+            .client-avatar {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+            .client-name {
+                font-size: 0.9rem;
+            }
+            .client-role {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-container container">
+            <a href="index.html" class="logo">Virtuquest</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about-us.html" class="nav-link">About Us</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="portfolio.html" class="nav-link active">Portfolio</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="portfolio-hero">
+            <div class="container">
+                <h1>Our Portfolio</h1>
+                <p>Discover our groundbreaking projects in Virtual Reality, Artificial Intelligence, Event Organization, and Community Impact.</p>
+            </div>
+        </section>
+
+        <div class="main-content-wrapper">
+            <h2 class="section-title">Featured Projects</h2>
+
+            <div class="content-container">
+                <!-- Main content on the left -->
+                <div class="main-portfolio-content">
+                    <!-- VR Projects -->
+                    <h3 class="category-title">Virtual Reality</h3>
+                    <div class="projects-grid vr-projects">
+                        <div class="project-card">
+                            <h4 class="project-title">VR Medical Training (Kenya)</h4>
+                            <div class="project-image">
+                                <img src="https://placehold.co/600x400/6C5CE7/FFFFFF?text=VR+Medical+Training" 
+                                     alt="VR Medical Training" 
+                                     class="project-img">
+                                <div class="image-overlay"></div>
+                            </div>
+                            <p class="project-description">Immersive training for medical professionals in rural Kenya using VR simulations of common procedures.</p>
+                            <div class="project-tools">
+                                <span class="tool-tag">Unity</span>
+                                <span class="tool-tag">Oculus SDK</span>
+                                <span class="tool-tag">3D Modeling</span>
+                            </div>
+                            <p class="project-outcome">Trained 200+ healthcare workers</p>
+                        </div>
+                        
+                        <div class="project-card">
+                            <h4 class="project-title">Real Estate VR Tour for SmartVille</h4>
+                            <div class="project-image">
+                                <img src="https://placehold.co/600x400/00BCD4/FFFFFF?text=Real+Estate+VR+Tour" 
+                                     alt="Real Estate VR Tour" 
+                                     class="project-img">
+                                <div class="image-overlay"></div>
+                            </div>
+                            <p class="project-description">Virtual property tours enabling remote buyers to explore homes in immersive 3D environments.</p>
+                            <div class="project-tools">
+                                <span class="tool-tag">Unreal Engine</span>
+                                <span class="tool-tag">Matterport</span>
+                                <span class="tool-tag">WebVR</span>
+                            </div>
+                            <p class="project-outcome">Increased engagement by 300%</p>
+                        </div>
+                    </div>
+
+                    <!-- AI Projects -->
+                    <h3 class="category-title">Artificial Intelligence</h3>
+                    <div class="projects-grid ai-projects">
+                        <div class="project-card">
+                            <h4 class="project-title">Smart Attendee Matcher</h4>
+                            <div class="project-image">
+                                <img src="https://placehold.co/600x400/6C5CE7/FFFFFF?text=AI+Network" 
+                                     alt="AI Network Visualization" 
+                                     class="project-img">
+                                <div class="image-overlay"></div>
+                            </div>
+                            <p class="project-description">AI-powered networking tool that connects conference attendees based on interests and goals.</p>
+                            <div class="project-tools">
+                                <span class="tool-tag">Python</span>
+                                <span class="tool-tag">TensorFlow</span>
+                                <span class="tool-tag">NLP</span>
+                            </div>
+                            <p class="project-outcome">Used at 5 major conferences</p>
+                        </div>
+                        
+                        <div class="project-card">
+                            <h4 class="project-title">AI Tutor for Client</h4>
+                            <div class="project-image">
+                                <img src="https://placehold.co/600x400/00BCD4/FFFFFF?text=AI+Tutor" 
+                                     alt="AI Tutor Interface" 
+                                     class="project-img">
+                                <div class="image-overlay"></div>
+                            </div>
+                            <p class="project-description">Personalized learning assistant that adapts to student performance and learning style.</p>
+                            <div class="project-tools">
+                                <span class="tool-tag">PyTorch</span>
+                                <span class="tool-tag">React</span>
+                                <span class="tool-tag">Adaptive Learning</span>
+                            </div>
+                            <p class="project-outcome">Improved test scores</p>
+                        </div>
+                    </div>
+
+                    <!-- Events -->
+                    <h3 class="category-title">Event Organization</h3>
+                    <div class="projects-grid events">
+                        <div class="project-card">
+                            <h4 class="project-title">VirtuFest 2024</h4>
+                            <div class="project-image">
+                                <img src="https://placehold.co/600x400/6C5CE7/FFFFFF?text=VirtuFest+2024" 
+                                     alt="VirtuFest 2024" 
+                                     class="project-img">
+                                <div class="image-overlay"></div>
+                            </div>
+                            <p class="project-description">Our annual immersive tech festival showcasing the latest in VR, AR, and AI innovations with interactive exhibits.</p>
+                            <div class="project-tools">
+                                <span class="tool-tag">Event Management</span>
+                                <span class="tool-tag">Live Streaming</span>
+                                <span class="tool-tag">VR Demos</span>
+                            </div>
+                            <p class="project-outcome">5000+ attendees</p>
+                        </div>
+                        
+                        <div class="project-card">
+                            <h4 class="project-title">Tech Summit X</h4>
+                            <div class="project-image">
+                                <img src="https://placehold.co/600x400/00BCD4/FFFFFF?text=Tech+Summit+X" 
+                                     alt="Tech Summit X" 
+                                     class="project-img">
+                                <div class="image-overlay"></div>
+                            </div>
+                            <p class="project-description">Premier technology conference featuring keynote speakers and cutting-edge workshops on immersive technologies.</p>
+                            <div class="project-tools">
+                                <span class="tool-tag">Stage Design</span>
+                                <span class="tool-tag">AR Integration</span>
+                                <span class="tool-tag">Networking</span>
+                            </div>
+                            <p class="project-outcome">2500+ participants</p>
+                        </div>
+                        
+                        <div class="project-card">
+                            <h4 class="project-title">XR Developer Day</h4>
+                            <div class="project-image">
+                                <img src="https://placehold.co/600x400/6C5CE7/FFFFFF?text=XR+Developer+Day" 
+                                     alt="XR Developer Day" 
+                                     class="project-img">
+                                <div class="image-overlay"></div>
+                            </div>
+                            <p class="project-description">Hands-on workshop day for developers to explore mixed reality tools and collaborative XR experiences.</p>
+                            <div class="project-tools">
+                                <span class="tool-tag">Workshops</span>
+                                <span class="tool-tag">Unity Training</span>
+                                <span class="tool-tag">Device Testing</span>
+                            </div>
+                            <p class="project-outcome">150+ developers trained</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Charity -->
+                    <h3 class="category-title">Charity & Community Work</h3>
+                    <div class="projects-grid charity-projects">
+                        <div class="project-card">
+                            <h4 class="project-title">Tech4Teens Bootcamp</h4>
+                            <div class="project-image">
+                                <img src="https://placehold.co/600x400/00BCD4/FFFFFF?text=Tech4Teens" 
+                                     alt="Tech4Teens Bootcamp" 
+                                     class="project-img">
+                                <div class="image-overlay"></div>
+                            </div>
+                            <p class="project-description">Free technology bootcamp introducing underprivileged teens to coding, VR development, and digital creativity.</p>
+                            <div class="project-tools">
+                                <span class="tool-tag">Education</span>
+                                <span class="tool-tag">Community Outreach</span>
+                                <span class="tool-tag">Mentorship</span>
+                            </div>
+                            <p class="project-outcome">Reached 1000+ learners across 12 communities</p>
+                        </div>
+                        
+                        <div class="project-card">
+                            <h4 class="project-title">VR Learning Hubs Initiative</h4>
+                            <div class="project-image">
+                                <img src="https://placehold.co/600x400/6C5CE7/FFFFFF?text=VR+Learning+Hub" 
+                                     alt="VR Learning Hub" 
+                                     class="project-img">
+                                <div class="image-overlay"></div>
+                            </div>
+                            <p class="project-description">Establishing VR learning centers in underserved communities across Africa with cutting-edge immersive technology.</p>
+                            <div class="project-tools">
+                                <span class="tool-tag">Non-profit</span>
+                                <span class="tool-tag">Education</span>
+                                <span class="tool-tag">VR Hardware</span>
+                            </div>
+                            <p class="project-outcome">5 hubs established, serving 1,200+ students</p>
+                        </div>
+                        
+                        <div class="project-card">
+                            <h4 class="project-title">Digital Inclusion Program</h4>
+                            <div class="project-image">
+                                <img src="https://placehold.co/600x400/00BCD4/FFFFFF?text=Digital+Inclusion" 
+                                     alt="Digital Inclusion Program" 
+                                     class="project-img">
+                                <div class="image-overlay"></div>
+                            </div>
+                            <p class="project-description">Providing technology access and training to refugee communities through mobile VR labs and workshops.</p>
+                            <div class="project-tools">
+                                <span class="tool-tag">Humanitarian</span>
+                                <span class="tool-tag">Mobile Labs</span>
+                                <span class="tool-tag">Language Support</span>
+                            </div>
+                            <p class="project-outcome">8 camps served, 250+ devices deployed</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Description container on the right -->
+                <div class="description-container">
+                    <div class="description-content">
+                        <h3 class="description-title">About This Portfolio</h3>
+                        <p class="description-text">
+                            This portfolio section showcases our virtual reality, artificial intelligence, event organization, and charity projects, demonstrating our expertise in immersive technology solutions. Each project card includes key details about the work, technologies used, and measurable outcomes achieved. The portfolio is organized by project categories, with visual elements that provide a glimpse into each project's focus and results. We are proud of the impact our work has had, from transforming medical training to fostering community connections through technology.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Testimonials Section -->
+            <h2 class="section-title">What Our Clients Say About Us</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Virtuquest transformed our medical training program with their VR solution. The engagement and retention rates have been phenomenal."</p>
+                    <div class="client-info">
+                        <div class="client-avatar">JD</div>
+                        <div class="client-details">
+                            <div class="client-name">Dr. James Daudi</div>
+                            <div class="client-role">Medical Director, Kenya Health Initiative</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"The AI matching system Virtuquest developed for our conference created meaningful connections that lasted well beyond the event."</p>
+                    <div class="client-info">
+                        <div class="client-avatar">SM</div>
+                        <div class="client-details">
+                            <div class="client-name">Sarah Mwangi</div>
+                            <div class="client-role">CEO, TechConnect Africa</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Their VR property tours helped us close deals during lockdowns when physical viewings weren't possible. Game-changing technology."</p>
+                    <div class="client-info">
+                        <div class="client-avatar">TK</div>
+                        <div class="client-details">
+                            <div class="client-name">Thomas Kariuki</div>
+                            <div class="client-role">Sales Director, SmartVille Properties</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container container">
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="footer-links">
+                    <li><a href="mailto:arcade1999kenya@gmail.com"><i class="fas fa-envelope me-2"></i>arcade1999kenya@gmail.com</a></li>
+                    <li><a href="tel:+254111955641"><i class="fas fa-phone-alt me-2"></i>+254 111 955 641</a></li>
+                    <li><i class="fas fa-map-marker-alt me-2"></i>Nairobi, Kenya</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul class="footer-links social-links">
+                    <li><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                    <li><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i> Twitter</a></li>
+                    <li><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i> LinkedIn</a></li>
+                    <li><a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i> Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 Virtuquest. All rights reserved. Shaping tomorrow's reality today.
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navMenu = document.getElementById('navMenu');
+            
+            // Toggle mobile menu
+            if (mobileMenuBtn && navMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                    // Update button icon
+                    const icon = navMenu.classList.contains('active') ? 'times' : 'bars';
+                    this.innerHTML = `<i class="fas fa-${icon}"></i>`;
+                });
+            } else {
+                console.error("Mobile menu button or navigation menu not found.");
+            }
+            
+            // Close menu when clicking on links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (navMenu && navMenu.classList.contains('active')) { // Only close if menu is open
+                        navMenu.classList.remove('active');
+                        if (mobileMenuBtn) {
+                            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                        }
+                    }
+                });
+            });
+            
+            // Highlight current page in navigation
+            const path = location.pathname.split('/').pop();
+            document.querySelectorAll('.nav-link').forEach(link => {
+                const linkPath = link.getAttribute('href').split('/').pop();
+                if (linkPath === path) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active'); // Ensure only one is active
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (header) { // Ensure header exists
+                if (window.scrollY > 50) {
+                    header.style.boxShadow = '0 5px 20px var(--shadow-medium)'; /* Consistent shadow */
+                    header.style.backgroundColor = 'rgba(10, 13, 20, 0.98)'; /* Consistent header background */
+                } else {
+                    header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)'; /* Lighter shadow */
+                    header.style.backgroundColor = 'rgba(10, 13, 20, 0.98)'; /* Consistent header background */
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Virtuquest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Bootstrap CSS - Added for consistent grid/utility classes -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            /* New Color Palette: Modern Dark & Gradient (from main index.html) */
+            --background: #0A0D14; /* Very dark blue-black */
+            --header-bg: rgba(10, 13, 20, 0.98); /* Almost opaque header */
+            --container-bg: rgba(25, 30, 40, 0.6); /* Slightly lighter, transparent dark blue-gray for cards/containers */
+            --text-main: #E0E6F0; /* Soft white for body text */
+            --text-heading: #F8FAFC; /* Pure white for main headings */
+            --white: #FFFFFF;
+
+            /* Accent Colors - Sleeker, sophisticated */
+            --primary-accent: #6C5CE7; /* Deep, rich violet */
+            --secondary-accent: #00BCD4; /* Vibrant, modern cyan */
+            --cta-gradient-start: #FF6B6B; /* Soft red for CTA */
+            --cta-gradient-end: #FF9A8B; /* Lighter red for CTA */
+
+            /* Shadows & Glows - Subtler, more elegant */
+            --shadow-light: rgba(0, 0, 0, 0.2);
+            --shadow-medium: rgba(0, 0, 0, 0.4);
+            --shadow-strong: rgba(0, 0, 0, 0.6);
+            --accent-glow-light: rgba(108, 92, 231, 0.3); /* Violet glow */
+            --accent-glow-medium: rgba(108, 92, 231, 0.5);
+            --accent-glow-strong: rgba(108, 92, 231, 0.7);
+            --border-gradient: linear-gradient(90deg, transparent, var(--primary-accent) 20%, var(--secondary-accent) 80%, transparent);
+            --cta-shadow-color: rgba(255, 107, 107, 0.5);
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--text-main);
+            line-height: 1.8;
+            overflow-x: hidden;
+            padding-top: 80px; /* Space for fixed header */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(var(--primary-accent),0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(var(--primary-accent),0.02) 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 3px var(--accent-glow-light); /* Softer glow */
+        }
+
+        h1 {
+            font-size: 3.8rem; /* Larger, more impactful title */
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 25px var(--accent-glow-medium), 0 0 50px var(--accent-glow-strong);
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 3.2rem; /* Consistent with main page section titles */
+            margin-bottom: 4rem; /* Consistent spacing */
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px var(--accent-glow-medium), 0 0 40px var(--accent-glow-strong);
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px; /* Adjusted position */
+            left: 0;
+            width: 100%;
+            height: 3px; /* Thicker underline */
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            box-shadow: 0 0 10px var(--primary-accent);
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            font-weight: 300;
+            color: var(--text-main);
+        }
+
+        a {
+            color: var(--secondary-accent);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-accent);
+            text-shadow: 0 0 10px var(--secondary-accent);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem; /* Consistent padding with main page */
+            position: relative;
+            z-index: 1;
+            background: var(--container-bg);
+            border: 1px solid rgba(var(--primary-accent), 0.2);
+            border-radius: 16px;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 8px 25px var(--shadow-medium);
+        }
+
+        .container:hover {
+            transform: translateY(-8px) scale(1.005);
+            box-shadow: 0 15px 40px var(--shadow-strong), 0 0 30px var(--accent-glow-medium);
+            border-color: var(--primary-accent);
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            background-color: var(--header-bg);
+            border-bottom: 1px solid rgba(var(--primary-accent), 0.1);
+            box-shadow: 0 5px 20px var(--shadow-medium);
+            padding: 1rem 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2.5rem; /* Consistent padding with main page */
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem; /* Consistent with main page */
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary-accent) 0%, var(--secondary-accent) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px var(--accent-glow-medium);
+            letter-spacing: 1.5px;
+            position: relative;
+        }
+
+        .logo::before { /* Underline effect for logo */
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            box-shadow: 0 0 10px var(--primary-accent);
+            transform-origin: left;
+            transform: scaleX(0);
+            transition: transform 0.4s ease-out;
+        }
+
+        .logo:hover::before {
+            transform: scaleX(1);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 3rem; /* Consistent gap */
+        }
+
+        nav ul li a {
+            font-family: 'Inter', sans-serif; /* Changed to Inter for nav links */
+            font-weight: 600;
+            font-size: 1rem;
+            position: relative;
+            padding: 0.8rem 0; /* Consistent padding */
+            color: var(--text-main); /* Consistent color */
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px; /* Consistent position */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px; /* Consistent thickness */
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        nav ul li a.active {
+            color: var(--primary-accent);
+            text-shadow: 0 0 8px var(--primary-accent);
+        }
+        nav ul li a.active::after {
+            width: 100%;
+            background: var(--primary-accent);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-accent); /* Consistent color */
+            font-size: 2.5rem; /* Consistent size */
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .mobile-menu-btn:hover {
+            color: var(--secondary-accent);
+        }
+
+        @media (max-width: 992px) {
+            nav ul {
+                position: fixed;
+                top: 80px; /* Adjust for header height */
+                right: -100%;
+                width: 280px; /* Slightly wider mobile menu */
+                height: calc(100vh - 80px);
+                background-color: var(--header-bg); /* Use header background */
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 30px;
+                transition: right 0.3s ease;
+                z-index: 1000;
+                border-left: 1px solid rgba(var(--primary-accent), 0.1);
+                box-shadow: -5px 0 20px var(--shadow-medium);
+            }
+
+            nav ul.active {
+                right: 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                z-index: 1001;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+            .header-container {
+                padding: 0 1.5rem;
+            }
+            .logo {
+                font-size: 1.8rem;
+            }
+            nav ul {
+                top: 70px; /* Adjust for smaller header height */
+                height: calc(100vh - 70px);
+            }
+        }
+        @media (max-width: 480px) {
+            body {
+                padding-top: 60px;
+            }
+            .header-container {
+                padding: 0 1rem;
+            }
+            .logo {
+                font-size: 1.5rem;
+            }
+            nav ul {
+                top: 60px; /* Adjust for smaller header height */
+                width: 100%; /* Full width mobile menu */
+                height: calc(100vh - 60px);
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px; /* Adjust for fixed header */
+            background: var(--background); /* Use main background */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(108, 92, 231, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(0, 188, 212, 0.08) 0%, transparent 50%);
+            z-index: 0;
+            mix-blend-mode: screen;
+        }
+
+        .hero-container {
+            display: flex;
+            align-items: stretch;
+            min-height: calc(100vh - 80px); /* Adjust for header */
+            background: var(--container-bg); /* Use container background */
+            border-radius: 16px; /* Consistent border radius */
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow-medium), 0 0 40px var(--accent-glow-light); /* Consistent shadow */
+            border: 1px solid rgba(var(--primary-accent), 0.4); /* Consistent border */
+            gap: 0;
+        }
+
+        .hero-content-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            padding: 60px;
+            background: linear-gradient(
+                90deg, 
+                var(--container-bg) 0%, 
+                rgba(25, 30, 40, 0.4) 70%, /* Softer gradient fade */
+                transparent 100%
+            );
+            backdrop-filter: blur(8px);
+            position: relative;
+            z-index: 2;
+            border-right: 1px solid rgba(var(--primary-accent), 0.2); /* Softer border */
+        }
+
+        .hero-content {
+            max-width: 600px;
+            flex: 1;
+            padding-right: 40px;
+            position: relative;
+        }
+
+        .hero-content::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: linear-gradient(
+                to bottom, 
+                transparent, 
+                var(--primary-accent), 
+                var(--secondary-accent), 
+                transparent
+            );
+            box-shadow: 0 0 15px var(--primary-accent), 0 0 15px var(--secondary-accent);
+        }
+
+        .hero-accent-line {
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            margin: 30px 0;
+            border-radius: 2px;
+            box-shadow: 0 0 10px var(--primary-accent), 0 0 10px var(--secondary-accent);
+        }
+
+        .hero-image {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            border-left: 1px solid rgba(var(--secondary-accent), 0.2); /* Softer border */
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.5s ease;
+            filter: brightness(0.7); /* Darken image to fit theme */
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg, 
+                rgba(0, 0, 0, 0.3) 0%, /* Darker overlay */
+                transparent 100%
+            );
+            z-index: 1;
+        }
+
+        .hero-image:hover img {
+            transform: scale(1.05);
+            filter: brightness(1); /* Full brightness on hover */
+        }
+
+        .hero h1 {
+            font-size: 4.2rem; /* Adjusted for hero section */
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 
+                0 0 15px var(--accent-glow-medium),
+                0 0 25px var(--accent-glow-strong);
+        }
+
+        .hero p {
+            font-size: 1.3rem; /* Adjusted for hero section */
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            color: var(--text-main);
+        }
+
+        /* About Sections */
+        .section {
+            padding: 6rem 0; /* Consistent padding */
+            position: relative;
+            background-color: var(--background);
+        }
+
+        .section:nth-child(even) {
+            background-color: rgba(var(--primary-accent), 0.03); /* Subtle accent background for even sections */
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: none; /* Removed the old overlay */
+            pointer-events: none;
+        }
+
+        /* Who We Are */
+        .who-we-are {
+            max-width: 900px; /* Increased max-width */
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .who-we-are p {
+            font-size: 1.15rem; /* Slightly larger text */
+            line-height: 1.8;
+        }
+
+        /* Mission & Vision */
+        .mission-vision {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Adjusted minmax */
+            gap: 3rem; /* Increased gap */
+            margin-top: 4rem; /* More space */
+        }
+
+        .card {
+            background: var(--container-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 16px; /* More rounded */
+            padding: 3rem; /* More padding */
+            border: 1px solid rgba(var(--primary-accent), 0.15);
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px var(--shadow-light); /* Softer shadow */
+        }
+
+        .card:hover {
+            transform: translateY(-8px); /* More pronounced lift */
+            box-shadow: 0 15px 40px var(--shadow-medium), 0 0 30px var(--accent-glow-light);
+            border-color: var(--primary-accent);
+        }
+
+        .card h3 {
+            font-size: 2rem; /* Larger heading */
+            margin-bottom: 1.5rem;
+            color: var(--primary-accent);
+            text-shadow: 0 0 12px var(--accent-glow-light);
+        }
+
+        /* Core Values */
+        .core-values {
+            display: grid;
+            /* Increased minmax for better sizing on larger screens */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 3rem; /* Increased gap for better spacing */
+            margin-top: 4rem;
+        }
+
+        .value-item {
+            background: var(--container-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 2.5rem; /* More padding */
+            text-align: center;
+            border: 1px solid rgba(var(--primary-accent), 0.1);
+            transition: all 0.4s ease;
+            box-shadow: 0 6px 20px var(--shadow-light);
+        }
+
+        .value-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px var(--accent-glow-light);
+            border-color: var(--primary-accent);
+        }
+
+        .value-icon {
+            font-size: 3.5rem; /* Larger icons */
+            margin-bottom: 1.5rem;
+            color: var(--secondary-accent); /* Use secondary accent */
+            transition: all 0.4s ease;
+            filter: drop-shadow(0 0 15px var(--accent-glow-medium));
+        }
+
+        .value-item:hover .value-icon {
+            transform: scale(1.15);
+            filter: drop-shadow(0 0 25px var(--accent-glow-strong));
+            color: var(--primary-accent);
+        }
+
+        .value-item h4 {
+            font-size: 1.4rem; /* Larger heading */
+            margin-bottom: 1rem;
+            color: var(--text-heading);
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Adjusted minmax */
+            gap: 3rem; /* Increased gap */
+            margin-top: 4rem;
+        }
+
+        .team-member {
+            background: var(--container-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 16px; /* More rounded */
+            overflow: hidden;
+            border: 1px solid rgba(var(--primary-accent), 0.15);
+            transition: all 0.4s ease;
+            text-align: center;
+            box-shadow: 0 8px 25px var(--shadow-light);
+        }
+
+        .team-member:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px var(--shadow-medium), 0 0 30px var(--accent-glow-light);
+            border-color: var(--primary-accent);
+        }
+
+        .member-photo {
+            width: 100%;
+            height: 280px; /* Taller photo area */
+            background-color: var(--background); /* Use main background for placeholder */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            font-size: 1.2rem;
+            position: relative;
+            overflow: hidden;
+            background-size: cover; /* Ensure background image covers */
+            background-position: center;
+            filter: brightness(0.7); /* Darken image */
+            transition: filter 0.4s ease;
+        }
+
+        .team-member:hover .member-photo {
+            filter: brightness(1); /* Full brightness on hover */
+        }
+
+        .photo-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 50%); /* Darker overlay */
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            color: var(--white);
+            font-size: 1rem;
+        }
+        /* Removed old ::after and ::before for member-photo as per previous instruction */
+        .member-photo::after, .member-photo::before {
+            display: none;
+        }
+
+        .member-info {
+            padding: 2rem; /* More padding */
+        }
+
+        .member-info h3 {
+            font-size: 1.6rem; /* Larger heading */
+            margin-bottom: 0.5rem;
+            color: var(--text-heading);
+        }
+
+        .member-info p {
+            color: var(--primary-accent); /* Accent color for role */
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Image Frame */
+        .image-frame {
+            width: 100%;
+            height: 450px; /* Taller frame */
+            margin: 6rem 0; /* Consistent margin */
+            position: relative;
+            border-radius: 16px; /* Consistent border radius */
+            overflow: hidden;
+            box-shadow: 0 0 40px var(--accent-glow-light); /* Softer glow */
+        }
+
+        .image-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://placehold.co/1200x600/6C5CE7/FFFFFF?text=Virtuquest+Image') center/cover no-repeat; /* Placeholder image */
+            filter: brightness(0.6); /* Darken image */
+            transition: filter 0.4s ease;
+        }
+        .image-frame:hover::before {
+            filter: brightness(1); /* Full brightness on hover */
+        }
+
+        .image-frame::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, var(--primary-accent), var(--secondary-accent), var(--primary-accent));
+            z-index: -1;
+            border-radius: 20px; /* Slightly larger radius for glow */
+            animation: borderGlow 3s linear infinite alternate; /* Added alternate */
+            opacity: 0.7;
+        }
+
+        @keyframes borderGlow {
+            0% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.01); }
+            100% { opacity: 0.3; transform: scale(1); }
+        }
+
+        /* Futuristic Slideshow styles */
+        .futuristic-slideshow {
+            position: relative;
+            margin: 6rem 0; /* Consistent margin */
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 0 40px var(--accent-glow-light);
+            border: 1px solid rgba(var(--primary-accent), 0.3);
+        }
+
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 550px; /* Taller slideshow */
+            perspective: 1000px;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transform-style: preserve-3d;
+            transition: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, transparent 100%); /* Darker overlay */
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: rotateY(0deg);
+            z-index: 10;
+        }
+
+        .slide.next {
+            opacity: 0.5;
+            transform: rotateY(20deg) translateZ(-100px);
+            z-index: 5;
+        }
+
+        .slide.prev {
+            opacity: 0.5;
+            transform: rotateY(-20deg) translateZ(-100px);
+            z-index: 5;
+        }
+
+        .slideshow-controls {
+            position: absolute;
+            bottom: 30px; /* More space from bottom */
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px; /* More space */
+            z-index: 100;
+        }
+
+        .prev-btn, .next-btn {
+            background: var(--container-bg); /* Use container background */
+            backdrop-filter: blur(5px);
+            border: 1px solid var(--primary-accent); /* Use primary accent */
+            color: var(--primary-accent);
+            width: 45px; /* Larger buttons */
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px var(--accent-glow-light);
+        }
+
+        .prev-btn:hover, .next-btn:hover {
+            background: var(--primary-accent);
+            color: var(--background); /* Dark text on accent hover */
+            box-shadow: 0 0 20px var(--primary-accent);
+        }
+
+        .dots-container {
+            display: flex;
+            gap: 12px; /* More space */
+        }
+
+        .dot {
+            width: 14px; /* Larger dots */
+            height: 14px;
+            border-radius: 50%;
+            background: var(--text-main); /* Use text color for dots */
+            opacity: 0.5;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--primary-accent);
+            opacity: 1;
+            box-shadow: 0 0 10px var(--primary-accent);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--header-bg); /* Consistent with header */
+            padding: 5rem 0 3rem; /* Consistent padding */
+            position: relative;
+            border-top: 3px solid;
+            border-image: var(--border-gradient) 1; /* Gradient border */
+            box-shadow: 0 0 25px var(--shadow-medium); /* Consistent shadow */
+            color: var(--text-main);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax */
+            gap: 3.5rem; /* Increased gap */
+            margin-bottom: 3rem; /* Consistent margin */
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 2.5rem;
+        }
+
+        .footer-brand {
+            max-width: 350px; /* Slightly wider */
+        }
+
+        .footer-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem; /* Consistent with main page footer */
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary-accent) 0%, var(--secondary-accent) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px var(--accent-glow-medium);
+            margin-bottom: 1.5rem; /* Consistent margin */
+            display: inline-block;
+        }
+
+        .footer-brand p {
+            font-size: 0.95rem; /* Slightly larger */
+            line-height: 1.7;
+            color: var(--text-main);
+        }
+
+        .footer-links h3 {
+            font-size: 1.8rem; /* Consistent with main page footer */
+            margin-bottom: 1.8rem; /* Consistent margin */
+            color: var(--primary-accent);
+            position: relative;
+            text-shadow: 0 0 12px var(--accent-glow-light);
+        }
+        .footer-links h3::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-accent);
+            box-shadow: 0 0 8px var(--primary-accent);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 1rem; /* Consistent margin */
+        }
+
+        .footer-links ul li a {
+            font-size: 1rem; /* Slightly larger */
+            color: var(--text-main);
+            transition: all 0.3s ease;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--secondary-accent);
+            padding-left: 8px; /* Slightly more prominent hover effect */
+            text-shadow: 0 0 8px var(--secondary-accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.8rem; /* Consistent gap */
+            margin-top: 2rem; /* Consistent margin */
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px; /* Larger icons */
+            height: 48px;
+            border-radius: 50%;
+            background-color: rgba(var(--primary-accent), 0.1); /* Subtle background */
+            color: var(--secondary-accent); /* Accent color for icons */
+            transition: all 0.3s ease;
+            font-size: 1.8rem; /* Larger icon size */
+            box-shadow: 0 0 10px var(--accent-glow-light);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-accent);
+            color: var(--background); /* Dark text on accent hover */
+            transform: translateY(-5px) scale(1.1); /* More pronounced hover */
+            box-shadow: 0 0 20px var(--primary-accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2.5rem; /* Consistent padding */
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: var(--text-main);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 3.2rem;
+            }
+            h2 {
+                font-size: 2.8rem;
+            }
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            .hero-content-container {
+                padding: 50px;
+            }
+            .hero-image {
+                min-height: 400px;
+            }
+            .section {
+                padding: 5rem 0;
+            }
+            .who-we-are h2 {
+                font-size: 2.2rem;
+            }
+            .card h3 {
+                font-size: 1.8rem;
+            }
+            .value-icon {
+                font-size: 3rem;
+            }
+            .value-item h4 {
+                font-size: 1.3rem;
+            }
+            .team-member {
+                padding: 1.5rem;
+            }
+            .member-photo {
+                height: 250px;
+            }
+            .member-info h3 {
+                font-size: 1.4rem;
+            }
+            .image-frame {
+                height: 350px;
+                margin: 5rem 0;
+            }
+            .slideshow-container {
+                height: 450px;
+            }
+            .footer-content {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 3rem;
+            }
+            .footer-links h3 {
+                font-size: 1.5rem;
+            }
+            .footer-column h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .social-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1.5rem;
+            }
+            h1 {
+                font-size: 2.5rem;
+                text-align: center;
+            }
+            h2 {
+                font-size: 2.2rem;
+                text-align: center;
+            }
+            h2::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .hero-container {
+                flex-direction: column;
+                min-height: auto;
+            }
+            .hero-content-container {
+                padding: 40px 20px;
+                border-right: none;
+                border-bottom: 1px solid rgba(var(--primary-accent), 0.2);
+                text-align: left; /* Align text to start */
+            }
+            .hero-content {
+                padding-right: 0;
+                text-align: left; /* Align text to start */
+            }
+            .hero-content::after {
+                display: none;
+            }
+            .hero-accent-line {
+                margin-left: 0; /* Align to start */
+                margin-right: auto;
+            }
+            .hero h1, .hero p {
+                text-align: left; /* Align text to start */
+            }
+            .who-we-are {
+                text-align: left; /* Align text to start */
+            }
+            .mission-vision, .core-values, .team-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .card, .value-item, .team-member {
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 450px; /* Constrain width for single column */
+                text-align: left; /* Align card content to start */
+            }
+            .service-card { /* If this was a service card, align its text to start */
+                text-align: left;
+            }
+            .value-item { /* Specific override for value-item to keep center aligned icons/titles */
+                text-align: center;
+            }
+            .image-frame {
+                height: 300px;
+            }
+            .slideshow-container {
+                height: 350px;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .footer-links h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .social-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .hero-content-container {
+                padding: 30px 15px;
+            }
+            .hero-image {
+                min-height: 250px;
+            }
+            .section {
+                padding: 4rem 0;
+            }
+            .card {
+                padding: 2rem;
+            }
+            .value-item {
+                padding: 1.5rem;
+            }
+            .value-icon {
+                font-size: 2.5rem;
+            }
+            .value-item h4 {
+                font-size: 1.1rem;
+            }
+            .team-member {
+                padding: 1rem;
+            }
+            .member-photo {
+                height: 200px;
+            }
+            .member-info h3 {
+                font-size: 1.2rem;
+            }
+            .image-frame {
+                height: 250px;
+                margin: 4rem 0;
+            }
+            .slideshow-container {
+                height: 280px;
+            }
+            .prev-btn, .next-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+            .dot {
+                width: 10px;
+                height: 10px;
+            }
+            .footer-content {
+                padding: 0 1rem;
+            }
+            .footer-logo {
+                font-size: 1.8rem;
+            }
+            .footer-links h3 {
+                font-size: 1.4rem;
+            }
+            .social-links a {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+            .copyright {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="header-container container">
+            <a href="index.html" class="logo">Virtuquest</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about-us.html" class="nav-link active">About Us</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <script>
+        // Mobile Navigation - Fixed Version
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navMenu = document.getElementById('navMenu');
+            
+            // Toggle mobile menu
+            mobileMenuBtn.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                // Update button icon
+                const icon = navMenu.classList.contains('active') ? 'times' : 'bars';
+                this.innerHTML = `<i class="fas fa-${icon}"></i>`;
+            });
+            
+            // Close menu when clicking on links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (navMenu.classList.contains('active')) { // Only close if menu is open
+                        navMenu.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                });
+            });
+            
+            // Highlight current page in navigation
+            const path = location.pathname.split('/').pop();
+            document.querySelectorAll('.nav-link').forEach(link => {
+                const linkPath = link.getAttribute('href').split('/').pop();
+                if (linkPath === path) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active'); // Ensure only one is active
+                }
+            });
+        });
+    </script>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-content-container">
+                <div class="hero-content">
+                    <h1>About Virtuquest</h1>
+                    <p>Discover the vision, mission, and values that drive our innovative approach to technology and creativity. At Virtuquest, we don’t just build solutions—we craft meaningful, immersive experiences that connect people, empower communities, and shape a smarter, more inclusive future. Our commitment to innovation, integrity, and impact fuels everything we do, from cutting-edge VR and AI applications to socially conscious event design.</p>
+                    <div class="hero-accent-line"></div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="image-overlay"></div>
+                <!-- Placeholder image, replace with actual image later -->
+                <img src="https://placehold.co/800x600/6C5CE7/FFFFFF?text=About+Us+Hero" alt="Virtuquest Team">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Who We Are -->
+    <section class="section">
+        <div class="container">
+            <div class="card"> <!-- Replaced neon-card with standard card for consistency -->
+                <h2 class="text-center">Who We Are</h2> <!-- Centered for this section -->
+                <p class="text-center">We are a passionate, impact-driven team blending technology, creativity, and compassion to shape experiences that matter. At Virtuquest, our strength lies in the synergy between human-centered design and cutting-edge innovation. Whether it's building immersive VR environments, designing AI solutions that understand and serve real needs, or organizing meaningful tech-driven events, we are guided by a shared purpose: to create experiences that leave a lasting, positive impact. Every project we undertake reflects our dedication to not just pushing boundaries—but doing so with empathy, inclusivity, and social responsibility at the core</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="section">
+        <div class="container">
+            <h2 class="text-center">Our Mission & Vision</h2>
+            <div class="mission-vision">
+                <div class="card">
+                    <h3>Our Mission</h3>
+                    <p>To empower businesses and individuals through innovative digital solutions that bridge the gap between technology and human experience, fostering growth, learning, and connection.</p>
+                </div>
+                <div class="card">
+                    <h3>Our Vision</h3>
+                    <p>To lead the global transformation towards a more interconnected and equitable future, where immersive technologies serve as catalysts for positive social and economic change.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values -->
+    <section class="section">
+        <div class="container">
+            <h2 class="text-center">Our Core Values</h2>
+            <div class="core-values">
+                <div class="value-item">
+                    <i class="fas fa-lightbulb value-icon"></i>
+                    <h4>Innovation</h4>
+                    <p>Continuously pushing boundaries to create groundbreaking solutions.</p>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-handshake value-icon"></i>
+                    <h4>Integrity</h4>
+                    <p>Operating with transparency, honesty, and ethical responsibility.</p>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-users value-icon"></i>
+                    <h4>Collaboration</h4>
+                    <p>Fostering teamwork and diverse perspectives for collective success.</p>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-heart value-icon"></i>
+                    <h4>Impact</h4>
+                    <p>Committed to creating positive social and technological change.</p>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-brain value-icon"></i>
+                    <h4>Excellence</h4>
+                    <p>Delivering superior quality and exceeding expectations in every endeavor.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="text-center">Meet Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-photo" style="background-image: url('https://placehold.co/400x400/00BCD4/FFFFFF?text=Team+Member+1');">
+                        <div class="photo-overlay">John Doe, CEO</div>
+                    </div>
+                    <div class="member-info">
+                        <h3>John Doe</h3>
+                        <p>Chief Executive Officer</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-photo" style="background-image: url('https://placehold.co/400x400/6C5CE7/FFFFFF?text=Team+Member+2');">
+                        <div class="photo-overlay">Jane Smith, CTO</div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Jane Smith</h3>
+                        <p>Chief Technology Officer</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-photo" style="background-image: url('https://placehold.co/400x400/00BCD4/FFFFFF?text=Team+Member+3');">
+                        <div class="photo-overlay">Alice Johnson, Lead Designer</div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Alice Johnson</h3>
+                        <p>Lead UX/UI Designer</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-photo" style="background-image: url('https://placehold.co/400x400/6C5CE7/FFFFFF?text=Team+Member+4');">
+                        <div class="photo-overlay">Robert Brown, AI Specialist</div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Robert Brown</h3>
+                        <p>AI & Machine Learning Specialist</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Frame (Example of a featured image section) -->
+    <section class="section">
+        <div class="container">
+            <h2 class="text-center">Our Innovative Workspace</h2>
+            <div class="image-frame">
+                <!-- Image is set via ::before pseudo-element in CSS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Futuristic Slideshow (Example of a dynamic content section) -->
+    <section class="section">
+        <div class="container">
+            <h2 class="text-center">Our Journey Milestones</h2>
+            <div class="futuristic-slideshow">
+                <div class="slideshow-container">
+                    <div class="slide active" style="background-image: url('https://placehold.co/1200x600/6C5CE7/FFFFFF?text=Milestone+1');"></div>
+                    <div class="slide next" style="background-image: url('https://placehold.co/1200x600/00BCD4/FFFFFF?text=Milestone+2');"></div>
+                    <div class="slide prev" style="background-image: url('https://placehold.co/1200x600/6C5CE7/FFFFFF?text=Milestone+3');"></div>
+                </div>
+                <div class="slideshow-controls">
+                    <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                    <div class="dots-container">
+                        <span class="dot active" data-slide="0"></span>
+                        <span class="dot" data-slide="1"></span>
+                        <span class="dot" data-slide="2"></span>
+                    </div>
+                    <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column footer-brand">
+                <a href="index.html" class="footer-logo">Virtuquest</a>
+                <p>Shaping tomorrow's reality today through cutting-edge VR, AI, and immersive digital solutions.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-column footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column footer-links">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><a href="mailto:arcade1999kenya@gmail.com"><i class="fas fa-envelope me-2"></i>arcade1999kenya@gmail.com</a></li>
+                    <li><a href="tel:+254111955641"><i class="fas fa-phone-alt me-2"></i>+254 111 955 641</a></li>
+                    <li><i class="fas fa-map-marker-alt me-2"></i>Nairobi, Kenya</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 Virtuquest. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Slideshow functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            let currentSlide = 0;
+            let slideInterval;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.remove('active', 'prev', 'next');
+                    if (i === index) {
+                        slide.classList.add('active');
+                    } else if (i === (index - 1 + slides.length) % slides.length) {
+                        slide.classList.add('prev');
+                    } else if (i === (index + 1) % slides.length) {
+                        slide.classList.add('next');
+                    }
+                });
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            function startSlideshow() {
+                slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+            }
+
+            function stopSlideshow() {
+                clearInterval(slideInterval);
+            }
+
+            prevBtn.addEventListener('click', () => {
+                stopSlideshow();
+                prevSlide();
+                startSlideshow();
+            });
+
+            nextBtn.addEventListener('click', () => {
+                stopSlideshow();
+                nextSlide();
+                startSlideshow();
+            });
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', (e) => {
+                    stopSlideshow();
+                    currentSlide = parseInt(e.target.dataset.slide);
+                    showSlide(currentSlide);
+                    startSlideshow();
+                });
+            });
+
+            showSlide(currentSlide);
+            startSlideshow();
+
+            // Pause slideshow on hover
+            const slideshowContainer = document.querySelector('.futuristic-slideshow');
+            slideshowContainer.addEventListener('mouseenter', stopSlideshow);
+            slideshowContainer.addEventListener('mouseleave', startSlideshow);
+        });
+    </script>
+</body>
+</html>

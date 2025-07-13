@@ -1,0 +1,848 @@
+:root {
+    /* New Color Palette: Modern Dark & Gradient */
+    --background: #0A0D14; /* Very dark blue-black */
+    --header-bg: rgba(10, 13, 20, 0.98); /* Almost opaque header */
+    --container-bg: rgba(25, 30, 40, 0.6); /* Slightly lighter, transparent dark blue-gray for cards/containers */
+    --text-main: #E0E6F0; /* Soft white for body text */
+    --text-heading: #F8FAFC; /* Pure white for main headings */
+    --white: #FFFFFF;
+
+    /* Accent Colors - Sleeker, sophisticated */
+    --primary-accent: #6C5CE7; /* Deep, rich violet */
+    --secondary-accent: #00BCD4; /* Vibrant, modern cyan */
+    --cta-gradient-start: #FF6B6B; /* Soft red for CTA */
+    --cta-gradient-end: #FF9A8B; /* Lighter red for CTA */
+
+    /* Shadows & Glows - Subtler, more elegant */
+    --shadow-light: rgba(0, 0, 0, 0.2);
+    --shadow-medium: rgba(0, 0, 0, 0.4);
+    --shadow-strong: rgba(0, 0, 0, 0.6);
+    --accent-glow-light: rgba(108, 92, 231, 0.3); /* Violet glow */
+    --accent-glow-medium: rgba(108, 92, 231, 0.5);
+    --accent-glow-strong: rgba(108, 92, 231, 0.7);
+    --border-gradient: linear-gradient(90deg, transparent, var(--primary-accent) 20%, var(--secondary-accent) 80%, transparent);
+    --cta-shadow-color: rgba(255, 107, 107, 0.5);
+
+    /* Animation durations */
+    --animation-speed-fast: 0.3s;
+    --animation-speed-normal: 0.5s;
+    --animation-speed-slow: 0.8s;
+}
+
+/* Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.8; /* Increased line height for better readability */
+    margin: 0;
+    padding-top: 80px; /* Space for fixed header */
+    position: relative;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Background Grid Overlay */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        linear-gradient(rgba(var(--primary-accent),0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(var(--primary-accent),0.02) 1px, transparent 1px);
+    background-size: 30px 30px; /* Larger, more subtle grid */
+    opacity: 0.05; /* Very subtle grid */
+    z-index: -1;
+}
+
+h1, h2, h3, h4 {
+    color: var(--text-heading);
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 3px var(--accent-glow-light); /* Softer glow for headings */
+    font-weight: 700; /* Ensure Orbitron headings are bold */
+}
+
+p {
+    margin-bottom: 1.2rem;
+    font-weight: 300;
+}
+
+a {
+    color: var(--secondary-accent); /* Links use secondary accent */
+    text-decoration: none;
+    transition: all var(--animation-speed-fast) ease;
+}
+
+a:hover {
+    color: var(--primary-accent); /* Primary accent on hover */
+    text-shadow: 0 0 10px var(--secondary-accent);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem; /* Increased padding for more breathing room */
+    background: var(--container-bg);
+    border: 1px solid rgba(108, 92, 231, 0.2); /* Softer border using RGB for primary-accent */
+    border-radius: 16px; /* More rounded corners */
+    transition: all var(--animation-speed-normal) cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 8px 25px var(--shadow-medium); /* Deeper shadow */
+    position: relative; /* For potential pseudo-elements or animations */
+    overflow: hidden; /* Ensures inner elements don't overflow rounded corners */
+}
+
+.container:hover {
+    transform: translateY(-8px) scale(1.005); /* More pronounced lift */
+    box-shadow: 0 15px 40px var(--shadow-strong), 0 0 30px var(--accent-glow-medium); /* Stronger shadow and glow */
+    border-color: var(--primary-accent); /* Border brightens on hover */
+}
+
+section {
+    padding: 6rem 0; /* More vertical spacing between sections */
+    position: relative;
+    z-index: 1; /* Ensure sections are above background grid */
+}
+
+.section-title {
+    text-align: center;
+    font-size: 3.8rem; /* Larger, more impactful title */
+    margin-bottom: 5rem; /* More space below title */
+    background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 25px var(--accent-glow-medium), 0 0 50px var(--accent-glow-strong); /* Stronger, but sleek glow */
+    font-weight: 700;
+}
+
+/* Header Styles */
+.header {
+    background: var(--header-bg);
+    box-shadow: 0 5px 20px var(--shadow-medium); /* Softer header shadow */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 1rem 0;
+    backdrop-filter: blur(8px); /* Stronger frosted glass effect */
+    border-bottom: 1px solid rgba(108, 92, 231, 0.1); /* Subtle bottom border using RGB */
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2.5rem; /* Consistent padding */
+}
+
+/* Logo Styles */
+.logo {
+    background: linear-gradient(90deg, var(--primary-accent) 0%, var(--secondary-accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 2.5rem; /* Larger, more prominent logo */
+    font-weight: 700;
+    text-shadow: 0 0 15px var(--accent-glow-medium); /* Sleeker glow */
+    position: relative;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1.5px; /* More spacing for impact */
+}
+
+.logo::before { /* Underline effect for logo */
+    content: "";
+    position: absolute;
+    bottom: -10px; /* Adjusted position */
+    left: 0;
+    width: 100%;
+    height: 4px; /* Thicker underline */
+    background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+    box-shadow: 0 0 10px var(--primary-accent);
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform var(--animation-speed-normal) ease-out;
+}
+
+.logo:hover::before {
+    transform: scaleX(1);
+}
+
+/* Navigation Styles */
+.navbar {
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 3rem; /* Increased gap between nav items */
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link {
+    color: var(--text-main);
+    padding: 0.8rem 0;
+    display: block;
+    position: relative;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px; /* More spacing */
+    transition: color var(--animation-speed-fast) ease, text-shadow var(--animation-speed-fast) ease;
+}
+
+.nav-link:hover {
+    color: var(--primary-accent);
+    text-shadow: 0 0 10px var(--primary-accent);
+}
+
+.nav-link.active {
+    color: var(--primary-accent);
+    text-shadow: 0 0 8px var(--primary-accent);
+}
+
+.nav-link::after { /* Underline hover effect */
+    content: "";
+    position: absolute;
+    bottom: -8px; /* Position below text */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px; /* Thicker underline */
+    background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+    transition: width var(--animation-speed-fast) ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link.active::after {
+    width: 100%;
+    background: var(--primary-accent);
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, rgba(108, 92, 231, 0.08), rgba(0, 188, 212, 0.03)); /* Subtle gradient background using RGB */
+    border: 1px solid rgba(108, 92, 231, 0.4); /* Softer border */
+    border-radius: 20px; /* Even more rounded */
+    box-shadow: 0 10px 30px var(--shadow-medium), 0 0 40px var(--accent-glow-light); /* Deeper, softer glow */
+    padding: 5rem 0; /* Adjusted padding */
+    margin-top: 120px;
+    text-align: center;
+    overflow: hidden;
+    position: relative; /* For particle effects or other overlays */
+}
+
+/* Ensure padding inside the fluid container for hero content */
+.hero-content {
+    display: flex;
+    align-items: center;
+    gap: 4rem; /* Increased gap */
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1200px; /* Constrain content width */
+    margin: 0 auto;
+    padding: 0 2.5rem; /* Inner padding for content */
+}
+
+.hero-text-content {
+    flex: 1 1 500px; /* Adjusted flex basis for better text flow */
+    text-align: left;
+    animation: fadeInSlideUp var(--animation-speed-slow) forwards; /* New fade-in animation */
+    opacity: 0; /* Hidden by default for animation */
+    transform: translateY(20px);
+}
+
+.hero h1 {
+    font-size: 4.8rem; /* Even larger heading */
+    line-height: 1.1;
+    margin-bottom: 2.5rem;
+    text-align: left;
+    animation: glow 3s infinite alternate; /* Slower, more impactful glow */
+}
+
+.hero p {
+    font-size: 1.4rem; /* Larger body text */
+    max-width: 900px;
+    margin: 0 0 3rem 0; /* Adjusted margin */
+    text-align: left;
+    font-weight: 300;
+}
+
+.hero-image-container {
+    flex: 0 0 450px; /* Larger image container */
+    min-width: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn var(--animation-speed-slow) 0.2s forwards; /* New fade-in animation */
+    opacity: 0;
+}
+
+.hero-image {
+    width: 100%;
+    height: auto;
+    max-height: 450px; /* Max height for image */
+    object-fit: contain;
+    border-radius: 16px;
+    box-shadow: 0 0 40px var(--accent-glow-medium), 0 0 80px var(--accent-glow-strong); /* Intense, but sleek glow */
+    transition: transform 0.6s ease-in-out;
+}
+
+.hero-image:hover {
+    transform: scale(1.03); /* Subtle zoom effect on hover */
+}
+
+.cta-button {
+    background: linear-gradient(45deg, var(--cta-gradient-start), var(--cta-gradient-end)); /* Gradient background */
+    color: var(--white); /* White text on CTA button */
+    border: none;
+    padding: 1.2rem 3rem; /* More padding */
+    font-size: 1.3rem; /* Larger font */
+    border-radius: 10px; /* Slightly more rounded */
+    cursor: pointer;
+    transition: all 0.5s ease;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1.8px; /* More spacing */
+    font-weight: 700;
+    box-shadow: 0 8px 25px var(--cta-shadow-color); /* Stronger shadow */
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.cta-button::before { /* Hover effect overlay */
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: all 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: -1;
+}
+
+.cta-button:hover::before {
+    left: 100%;
+}
+
+.cta-button:hover {
+    background: linear-gradient(45deg, var(--cta-gradient-end), var(--cta-gradient-start)); /* Reverse gradient on hover */
+    box-shadow: 0 10px 30px var(--cta-shadow-color);
+    transform: translateY(-5px);
+}
+
+/* Card Styles */
+.card {
+    background: var(--container-bg);
+    border: 1px solid rgba(108, 92, 231, 0.15); /* Softer border initially */
+    border-radius: 12px;
+    padding: 2.5rem; /* More padding */
+    transition: all var(--animation-speed-normal) cubic-bezier(0.25, 0.8, 0.25, 1);
+    margin-bottom: 2.5rem;
+    box-shadow: 0 6px 20px var(--shadow-light); /* Subtle initial shadow */
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before { /* Top border glow */
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px; /* Thicker border */
+    background: linear-gradient(90deg, transparent, var(--primary-accent), transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--animation-speed-normal) ease-out;
+}
+
+.card:hover::before {
+    transform: scaleX(1);
+}
+
+.card:hover {
+    transform: translateY(-10px); /* More pronounced lift */
+    box-shadow: 0 15px 40px var(--shadow-medium), 0 0 30px var(--accent-glow-light); /* Stronger shadow and glow */
+    border-color: var(--primary-accent);
+}
+
+/* About Section */
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem; /* Increased gap */
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.about-text {
+    flex: 1 1 550px; /* Adjusted flex basis */
+    font-size: 1.2rem;
+    line-height: 1.9;
+}
+
+.mission-vision {
+    flex: 1 1 480px; /* Adjusted flex basis */
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem; /* More space between cards */
+}
+
+.mission-card, .vision-card {
+    margin-bottom: 0;
+}
+
+.mission-card h3, .vision-card h3 {
+    color: var(--primary-accent);
+    margin-bottom: 1rem;
+    font-size: 2rem; /* Larger heading */
+    text-shadow: 0 0 12px var(--accent-glow-light);
+}
+
+/* Services Section */
+.service-card {
+    text-align: center;
+    padding: 3rem; /* More padding */
+}
+
+.service-card h3 {
+    font-size: 2.2rem; /* Larger heading */
+}
+
+.service-icon {
+    font-size: 4rem; /* Larger icons */
+    color: var(--secondary-accent); /* Use secondary accent for icons */
+    margin-bottom: 2rem; /* More space below icon */
+    filter: drop-shadow(0 0 15px var(--accent-glow-medium)); /* Stronger icon glow */
+    transition: all var(--animation-speed-normal) ease;
+}
+
+.service-card:hover .service-icon {
+    color: var(--primary-accent); /* Primary accent on hover */
+    transform: scale(1.2) rotate(8deg); /* More dynamic hover */
+    filter: drop-shadow(0 0 20px var(--accent-glow-strong));
+}
+
+/* Tech Slideshow */
+.tech-slideshow {
+    display: flex;
+    overflow-x: auto;
+    gap: 40px; /* More space between cards */
+    padding: 30px 2.5rem; /* More padding for scrollable area */
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 4rem;
+    align-items: stretch;
+    /* Hide scrollbar by default for a cleaner look, but allow scrolling */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+.tech-slideshow::-webkit-scrollbar {
+    height: 12px; /* Thicker scrollbar */
+}
+
+.tech-slideshow::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.08); /* Slightly more visible track */
+    border-radius: 6px;
+}
+
+.tech-slideshow::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+    border-radius: 6px;
+    border: 2px solid var(--background); /* Border for thumb */
+}
+
+.tech-card {
+    min-width: 350px; /* Wider cards */
+    flex: 0 0 auto;
+    border-radius: 16px; /* More rounded */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: var(--container-bg);
+    border: 1px solid rgba(108, 92, 231, 0.2); /* Stronger border */
+    box-shadow: 0 8px 25px var(--shadow-light);
+    transition: all var(--animation-speed-normal) ease;
+}
+
+.tech-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px var(--shadow-medium), 0 0 25px var(--accent-glow-light);
+}
+
+.tech-card-image {
+    width: 100%;
+    height: 220px; /* Taller images */
+    background-size: cover;
+    background-position: center;
+    border-bottom: 3px solid var(--primary-accent); /* Thicker border */
+    filter: brightness(0.6); /* Darker image to fit theme */
+    transition: filter var(--animation-speed-normal) ease;
+}
+
+.tech-card:hover .tech-card-image {
+    filter: brightness(1); /* Full brightness on hover */
+}
+
+.tech-card-content {
+    padding: 2rem; /* More padding */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.tech-card h3 {
+    color: var(--primary-accent);
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    text-shadow: 0 0 10px var(--accent-glow-light);
+}
+
+.tech-card p {
+    font-size: 1.05rem;
+    color: var(--text-main);
+    margin-bottom: 0;
+}
+
+/* Contact Section specific styling */
+#contact .card {
+    background: rgba(25, 30, 40, 0.8); /* Slightly more opaque for forms */
+    border-color: rgba(108, 92, 231, 0.3);
+}
+#contact .form-label {
+    color: var(--text-main);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+#contact .form-control {
+    background-color: rgba(40, 45, 55, 0.7);
+    border: 1px solid rgba(108, 92, 231, 0.3);
+    color: var(--text-main);
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+#contact .form-control:focus {
+    background-color: rgba(40, 45, 55, 0.9);
+    border-color: var(--secondary-accent);
+    box-shadow: 0 0 0 0.25rem rgba(0, 188, 212, 0.25);
+    color: var(--white);
+}
+#contact .form-control::placeholder {
+    color: rgba(224, 230, 240, 0.6);
+}
+
+
+/* Footer */
+footer {
+    background: var(--header-bg); /* Matches header background */
+    color: var(--text-main);
+    padding: 5rem 0 3rem; /* Adjusted padding */
+    box-shadow: 0 0 25px var(--shadow-medium); /* Stronger footer shadow */
+    position: relative;
+    border-top: 3px solid;
+    border-image: var(--border-gradient) 1; /* Gradient border */
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3.5rem; /* Increased gap */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+}
+
+.footer-column h3 {
+    color: var(--primary-accent);
+    margin-bottom: 2rem; /* More space */
+    position: relative;
+    font-size: 2rem; /* Larger heading */
+    text-shadow: 0 0 12px var(--accent-glow-light);
+}
+
+.footer-column h3::after {
+    content: "";
+    position: absolute;
+    bottom: -12px; /* Adjusted position */
+    left: 0;
+    width: 70px; /* Longer underline */
+    height: 4px; /* Thicker underline */
+    background: var(--primary-accent);
+    box-shadow: 0 0 10px var(--primary-accent);
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 1.2rem; /* More space between links */
+}
+
+.footer-links a {
+    color: var(--text-main);
+    font-weight: 300;
+    transition: color var(--animation-speed-fast) ease;
+}
+
+.footer-links a:hover {
+    color: var(--secondary-accent);
+    text-shadow: 0 0 8px var(--secondary-accent);
+}
+
+.social-icons {
+    display: flex;
+    gap: 1.8rem; /* More space between icons */
+    margin-top: 2rem;
+}
+
+.social-icon {
+    font-size: 2.2rem; /* Larger social icons */
+    color: var(--secondary-accent); /* Use secondary accent for icons */
+    transition: all var(--animation-speed-fast) ease;
+    filter: drop-shadow(0 0 8px var(--accent-glow-light));
+}
+
+.social-icon:hover {
+    color: var(--primary-accent); /* Primary accent on hover */
+    transform: scale(1.25);
+    filter: drop-shadow(0 0 20px var(--accent-glow-medium));
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 3rem;
+    margin-top: 3rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.9rem;
+    color: var(--text-main);
+}
+
+/* Animations */
+@keyframes glow {
+    from {
+        text-shadow: 0 0 15px var(--primary-accent), 0 0 25px var(--secondary-accent);
+    }
+    to {
+        text-shadow: 0 0 25px var(--primary-accent), 0 0 40px var(--secondary-accent);
+    }
+}
+
+/* Fade In Animation for content on scroll */
+.fade-in-element {
+    opacity: 0;
+    transition: opacity var(--animation-speed-slow) ease-out, transform var(--animation-speed-slow) ease-out;
+    transform: translateY(20px);
+}
+
+.fade-in-element.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .nav-list {
+        flex-direction: column;
+        display: none; /* Hidden by default for mobile toggle */
+        background: var(--header-bg);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        z-index: 999;
+        padding: 1rem 0;
+        box-shadow: 0 15px 25px var(--shadow-medium);
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
+    .nav-list.show {
+        display: flex; /* Show when toggled */
+    }
+
+    .nav-link {
+        padding: 1rem 2rem;
+        text-align: center;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+        background: transparent;
+        border: none;
+        color: var(--text-main);
+        font-size: 2rem;
+        cursor: pointer;
+        z-index: 1001; /* Ensure button is clickable */
+    }
+
+    /* Hero Section adjustments for medium screens */
+    .hero h1, .hero p, .hero-text-content {
+        text-align: center; /* Center align on medium screens */
+    }
+    .cta-button {
+        margin: 0 auto; /* Center button on medium screens */
+    }
+
+    /* About Section adjustments for medium screens */
+    .about-text, .mission-vision {
+        text-align: center; /* Center align content in about section */
+    }
+    .mission-card, .vision-card {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .footer-column h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 70px;
+    }
+    .header-inner {
+        padding: 0 1.5rem;
+    }
+    .logo {
+        font-size: 1.8rem;
+    }
+    .hero {
+        padding: 3rem 0; /* Adjust hero padding */
+        margin-top: 100px;
+    }
+    .hero-content {
+        padding: 0 1.5rem; /* Inner padding for hero content on smaller screens */
+    }
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+    .hero p {
+        font-size: 1.1rem;
+    }
+    .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+    }
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .social-icons {
+        justify-content: center;
+    }
+    /* Align text to start on smaller screens */
+    .about-text, .mission-card, .vision-card,
+    .service-card, .tech-card-content {
+        text-align: left;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .service-card, .tech-card {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .tech-slideshow {
+        padding: 24px 1.5rem; /* Adjusted padding */
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding-top: 60px;
+    }
+    .header-inner {
+        padding: 0 1rem;
+    }
+    .logo {
+        font-size: 1.5rem;
+    }
+    .hero {
+        padding: 2rem 0; /* Adjust hero padding */
+        margin-top: 80px;
+    }
+    .hero-content {
+        padding: 0 1rem; /* Inner padding for hero content on smallest screens */
+    }
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+    .cta-button {
+        font-size: 1rem;
+        padding: 0.7rem 1.8rem;
+    }
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 2.5rem;
+    }
+    .tech-slideshow {
+        padding: 24px 1rem;
+    }
+    .tech-card {
+        min-width: 280px;
+    }
+    .tech-card-image {
+        height: 160px;
+    }
+    .tech-card-content {
+        padding: 1rem;
+    }
+    .tech-card h3 {
+        font-size: 1.4rem;
+    }
+}

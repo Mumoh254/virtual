@@ -1,0 +1,361 @@
+
+
+:root {
+    --primary: #00e0ff;
+    --secondary: #b388eb;
+    --bg-dark: #232323; /* Light black background */
+    --bg-darker: #23242a;
+    --text-light: #ffffff;
+    --text-lighter: #ffffff;
+    --glass: rgba(35, 35, 35, 0.7);
+    --glass-light: rgba(255, 255, 255, 0.15);
+}
+
+html {
+    scroll-behavior: smooth; /* For smooth scrolling to sections */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll due to glows */
+    padding-top: 20px; /* Account for fixed header height */
+}
+
+/* Accessibility: Focus styles for keyboard navigation */
+*:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+    border-radius: 4px; /* Slightly rounded outline */
+}
+
+/* Container for consistent content width */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+    /* Neon blue glow from sides */
+    box-shadow:
+        0 0 40px 10px #00f2ff88,
+        0 0 80px 30px #00e0ff44,
+        0 0 120px 60px #00bfff22;
+    border-radius: 18px; /* Apply border-radius directly to container */
+}
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+    pointer-events: none;
+    z-index: -1;
+    border-radius: 18px; /* Match container radius */
+    box-shadow:
+        0 0 60px 20px #00e0ff55,
+        0 0 40px 10px #00bfff44,
+        0 0 120px 60px #00f2ff22;
+    opacity: 0.7;
+    animation: borderGlow 4s infinite alternate ease-in-out; /* Added animation */
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    color: var(--text-lighter);
+    margin-bottom: 1rem;
+}
+h2 {
+    font-size: 2.5rem; /* Slightly larger heading */
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 2rem; /* More space below heading */
+}
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px; /* Adjust underline position */
+    left: 0;
+    width: 100%;
+    height: 3px; /* Slightly thicker underline */
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+p {
+    margin-bottom: 1rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.9); /* Slightly desaturated for better readability */
+}
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+a:hover {
+    text-shadow: 0 0 10px var(--primary);
+}
+
+/* Main Content */
+main {
+    min-height: calc(100vh - 80px - 200px); /* Adjust min-height, leave space for footer */
+}
+
+/* Services Section */
+.services-section {
+    padding: 80px 0; /* More vertical padding for sections */
+    text-align: center; /* Center the main heading */
+}
+.services-grid {
+    display: grid;
+    /* Responsive grid: auto-fit columns with min-width of 320px, max to 1fr */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px; /* Increased gap between cards */
+    margin-top: 60px; /* More space below section heading */
+}
+.service-card {
+    background-color: var(--glass);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 12px; /* Slightly larger radius for the cards */
+    padding: 30px; /* More internal padding */
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 24px 4px #00e0ff55, 0 0 0 transparent; /* Existing neon effect */
+    border: 1px solid rgba(0, 224, 255, 0.1); /* Subtle border for definition */
+}
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: -2px; bottom: -2px; left: -2px; right: -2px; /* For a border-like glow */
+    background: linear-gradient(45deg, var(--primary), var(--secondary), var(--primary));
+    z-index: -1;
+    border-radius: 14px; /* Slightly larger than card radius */
+    opacity: 0;
+    transition: opacity 0.3s ease, filter 0.3s ease;
+    filter: blur(8px); /* Subtle blur for the internal glow */
+}
+.service-card:hover {
+    transform: translateY(-10px); /* Lift card on hover */
+    box-shadow: 0 0 35px 8px #00e0ff77, 0 0 10px transparent; /* Enhanced hover glow */
+}
+.service-card:hover::before {
+    opacity: 1; /* Show inner glow on hover */
+    filter: blur(12px); /* Intensify blur on hover */
+}
+/* Animation for service cards on scroll-in */
+.service-card.animate {
+    animation: fadeInScale 0.8s ease-out forwards;
+}
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.service-card h3 {
+    font-size: 2rem; /* Consistent heading size for cards */
+    margin-bottom: 15px;
+    color: var(--primary);
+    text-shadow: 0 0 8px rgba(0, 224, 255, 0.4); /* Soft glow for card titles */
+}
+.service-content {
+    display: grid;
+    grid-template-columns: 1fr; /* Default to single column for small screens */
+    gap: 25px; /* Spacing between image and text */
+    align-items: center;
+    text-align: left; /* Ensure text alignment within card content */
+}
+.service-image {
+    border-radius: 10px;
+    overflow: hidden;
+    height: 220px; /* Consistent image height */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); /* Deeper shadow for images */
+}
+.service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.service-card:hover .service-image img {
+    transform: scale(1.05);
+}
+.service-details p {
+    margin-bottom: 1rem;
+}
+.service-features {
+    list-style: none;
+    padding-left: 0; /* Remove default padding for ul */
+    margin-top: 15px;
+}
+.service-features li {
+    position: relative;
+    padding-left: 30px; /* More space for icon */
+    margin-bottom: 10px;
+}
+.service-features li::before {
+    content: '\f054'; /* Font Awesome chevron-right icon */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%);
+    color: var(--secondary);
+    font-size: 0.9rem; /* Slightly larger icon */
+    text-shadow: 0 0 5px var(--secondary); /* Icon glow */
+}
+
+/* Carousel Styles */
+.carousel-section {
+    padding: 80px 0; /* Consistent vertical padding */
+    background: linear-gradient(to top, var(--bg-darker) 0%, transparent 100%);
+    margin-top: 50px; /* Space above the carousel section */
+}
+.carousel-container {
+    max-width: 1000px; /* Slightly narrower max-width for carousel aesthetic */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.carousel {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    background-color: rgba(0, 0, 0, 0.2); /* Subtle background for carousel area */
+    padding: 20px; /* Internal padding for the carousel content */
+    box-shadow: 0 0 20px rgba(0, 224, 255, 0.1); /* Subtle container glow */
+}
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* Smoother transition */
+}
+.carousel-slide {
+    min-width: 100%;
+    padding: 15px; /* Padding inside each slide */
+    box-sizing: border-box;
+}
+.neon-frame {
+    height: 400px; /* Increased height for carousel images */
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    box-shadow:
+        0 0 30px 8px #00e0ff88,
+        0 0 60px 16px #00bfff44;
+    animation: neon-pulse 3s infinite alternate ease-in-out;
+}
+.neon-frame:hover {
+    box-shadow:
+        0 0 40px 12px #00e0ffcc,
+        0 0 80px 24px #00bfff66;
+}
+.neon-frame::before {
+    content: '';
+    position: absolute;
+    top: -3px; left: -3px; right: -3px; bottom: -3px; /* For a glowing border effect */
+    background: linear-gradient(45deg, var(--primary), var(--secondary), var(--primary));
+    border-radius: 12px;
+    z-index: -1;
+    opacity: 0.7;
+    filter: blur(15px); /* Soften the glow */
+    transition: opacity 0.3s ease, filter 0.3s ease;
+}
+.neon-frame:hover::before {
+    opacity: 1;
+    filter: blur(20px);
+}
+.neon-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.5s ease;
+}
+.neon-frame:hover img {
+    transform: scale(1.03);
+}
+
+/* Navigation Controls */
+.carousel-prev, .carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 224, 255, 0.5); /* Slightly less transparent background */
+    backdrop-filter: blur(5px);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all 0.3s ease;
+    border: 1px solid var(--primary); /* Added border */
+    box-shadow: 0 0 15px var(--primary); /* Initial glow for buttons */
+}
+.carousel-prev {
+    left: 20px;
+}
+.carousel-next {
+    right: 20px;
+}
+.carousel-prev svg, .carousel-next svg {
+    width: 28px; /* Larger SVG icons */
+    height: 28px;
+    fill: var(--bg-darker); /* Darker arrow color for contrast */
+    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.5)); /* Subtle shadow on SVG */
+    transition: all 0.3s ease;
+}
+.carousel-prev:hover, .carousel-next:hover {
+    background: var(--primary); /* Solid color on hover */
+    box-shadow: 0 0 25px var(--primary); /* Stronger glow on hover */
+    transform: translateY(-50%) scale(1.1); /* Slight scale effect */
+}
+.carousel-prev:hover svg, .carousel-next:hover svg {
+    fill: var(--bg-dark); /* Darken SVG on hover for contrast with solid background */
+    filter: drop-shadow(0 0 5px var(--bg-dark));
+}
+
+/* Dots Navigation */
+.carousel-dots {
+    position: absolute;
+    bottom: 25px; /* Slightly higher from the bottom */
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* More space between dots */
+    z-index: 10;
+}
+.dot {
+    width: 14px; /* Larger dots */
+    height: 14px;
+    border-radius: 50%;
+    background: rgba(0, 224, 255, 0.3); /* Slightly more opaque */
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.dot.active {
+    background: var(--primary);
+    box-shadow: 0 0 12px var(--primary); /* Active dot glow */
+}
+.dot:hover {
+    background: var(--primary);
+    transform: scale(1.2);
+    box-shadow: 0 0 15px var(--primary);
+}

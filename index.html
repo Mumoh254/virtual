@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtuquest - Future Technology Solutions</title>
+    <!-- Google Fonts: Orbitron for headings, Inter for body text -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables for a modern, dark, futuristic theme */
+        :root {
+            --background: #0a0f1d;
+            --surface: #121a2b;
+            --surface-alt: #1a2438;
+            --primary: #6c5ce7; /* Vibrant Purple */
+            --primary-light: #7d6ff0;
+            --secondary: #00d4c8; /* Bright Cyan */
+            --accent: #ff6b6b; /* Red Accent */
+            --text-main: #e0e6f0; /* Light Grey for body text */
+            --text-heading: #ffffff; /* White for headings */
+            --border: rgba(108, 92, 231, 0.2); /* Subtle border color */
+            --success: #00e676;
+            --warning: #ffc107;
+            --error: #ff5252;
+            
+            /* Shadows & Glows */
+            --shadow-xs: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 10px 15px rgba(0, 0, 0, 0.2);
+            --shadow-lg: 0 20px 25px rgba(0, 0, 0, 0.3);
+            --glow-primary: 0 0 15px rgba(108, 92, 231, 0.4);
+            --glow-secondary: 0 0 15px rgba(0, 212, 200, 0.4);
+            
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 3rem;
+            --spacing-xl: 4rem;
+            --spacing-xxl: 6rem;
+            
+            /* Typography */
+            --font-heading: 'Orbitron', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --text-xs: 0.75rem;
+            --text-sm: 0.875rem;
+            --text-base: 1rem;
+            --text-lg: 1.125rem;
+            --text-xl: 1.25rem;
+            --text-2xl: 1.5rem;
+            --text-3xl: 1.875rem;
+            --text-4xl: 2.25rem;
+            --text-5xl: 3rem;
+            --text-6xl: 3.75rem;
+            
+            /* Borders */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-full: 9999px;
+            
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.4s ease;
+            --transition-slow: 0.6s ease;
+        }
+
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            font-size: var(--text-base);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Background Grid Pattern */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(108, 92, 231, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(108, 92, 231, 0.02) 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.05;
+            z-index: -2; /* Behind all content */
+        }
+
+        /* General Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5 {
+            color: var(--text-heading);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-md);
+        }
+
+        h1 {
+            font-size: var(--text-6xl); /* Larger for hero */
+            letter-spacing: -0.5px;
+        }
+
+        h2 {
+            font-size: var(--text-4xl);
+            position: relative;
+            display: inline-block; /* For underline positioning */
+            margin-bottom: var(--spacing-lg);
+        }
+
+        h2:after {
+            content: "";
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: var(--radius-full);
+        }
+
+        h3 {
+            font-size: var(--text-3xl);
+        }
+
+        h4 {
+            font-size: var(--text-2xl);
+        }
+
+        p {
+            margin-bottom: var(--spacing-md);
+            font-weight: 300;
+        }
+
+        a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        a:hover {
+            color: var(--primary-light);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 32px;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: var(--text-base);
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: var(--radius-full);
+            transition: all var(--transition-normal);
+            cursor: pointer;
+            border: none;
+            outline: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary), var(--primary-light));
+            color: white;
+            box-shadow: var(--shadow-sm), var(--glow-primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md), var(--glow-primary);
+        }
+
+        .btn-primary:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.6s;
+            z-index: -1;
+        }
+
+        .btn-primary:hover:before {
+            left: 100%;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 212, 200, 0.1);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-sm), var(--glow-secondary);
+        }
+
+        /* Header (Navbar) */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: var(--spacing-sm) 0;
+            background: rgba(10, 15, 29, 0.9); /* Darker, semi-transparent */
+            backdrop-filter: blur(10px); /* Frosted glass effect */
+            border-bottom: 1px solid var(--border);
+            transition: all var(--transition-normal);
+        }
+
+        .header-scrolled {
+            padding: 0.5rem 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        /* Logo */
+        .logo {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: var(--text-2xl);
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text; /* For text gradient */
+            background-clip: text;
+            color: transparent; /* Hide original text color */
+            letter-spacing: 1px;
+        }
+
+        /* Navigation */
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: var(--spacing-lg);
+        }
+
+        .nav-link {
+            color: var(--text-main);
+            font-weight: 500;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-link:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width var(--transition-fast);
+        }
+
+        .nav-link:hover:after,
+        .nav-link.active:after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--text-heading);
+        }
+
+        .mobile-menu-btn {
+            display: none; /* Hidden on desktop */
+            background: transparent;
+            border: none;
+            color: var(--text-main);
+            font-size: var(--text-2xl);
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: var(--spacing-xxl); /* Space for fixed header */
+            padding-bottom: var(--spacing-xxl);
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('https://placehold.co/1920x1080/0a0f1d/6c5ce7?text=Virtuquest+VR+Experience') no-repeat center center/cover; /* Placeholder, replace with actual VR image */
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xl);
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+            z-index: 1; /* Ensure text is above image overlay */
+        }
+
+        .hero h1 {
+            margin-bottom: var(--spacing-md);
+            font-size: var(--text-6xl);
+            line-height: 1.1;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 20px var(--primary); /* Subtle glow */
+        }
+
+        .hero p {
+            font-size: var(--text-lg);
+            margin-bottom: var(--spacing-xl);
+            max-width: 90%;
+            opacity: 0.9;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            min-width: 300px; /* Ensure image doesn't shrink too much */
+        }
+
+        .hero-image-container {
+            width: 100%;
+            max-width: 550px;
+            height: 450px;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--shadow-lg), var(--glow-primary);
+            transform: perspective(1000px) rotateY(-5deg); /* 3D tilt effect */
+            transition: transform var(--transition-normal);
+            background-color: var(--surface-alt); /* Fallback/base for placeholder */
+        }
+
+        .hero-image-container:hover {
+            transform: perspective(1000px) rotateY(0deg); /* Straighten on hover */
+        }
+
+        .hero-image-container:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(108, 92, 231, 0.1), rgba(0, 212, 200, 0.1)); /* Subtle overlay */
+            z-index: 1;
+        }
+
+        .hero-image-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary)); /* Gradient placeholder */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: var(--text-lg);
+            text-align: center;
+            padding: var(--spacing-md);
+            z-index: 0; /* Behind the overlay */
+        }
+
+        /* Section General Styling */
+        .section {
+            padding: var(--spacing-xxl) 0;
+            position: relative;
+        }
+
+        .section-title-container {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .section-title-container h2:after {
+            left: 50%;
+            transform: translateX(-50%); /* Center the underline */
+        }
+
+        /* Card Styles */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            transition: all var(--transition-normal);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-md), var(--glow-primary);
+            border-color: var(--primary);
+        }
+
+        .card:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--transition-normal);
+        }
+
+        .card:hover:before {
+            transform: scaleX(1);
+        }
+
+        .card-icon {
+            font-size: var(--text-3xl);
+            color: var(--secondary);
+            margin-bottom: var(--spacing-md);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-full);
+            background: rgba(0, 212, 200, 0.1); /* Light cyan background for icon */
+        }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            gap: var(--spacing-md);
+        }
+
+        .grid-cols-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .grid-cols-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            gap: var(--spacing-xl);
+            align-items: flex-start;
+            flex-wrap: wrap; /* Allow wrapping */
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px; /* Ensure text block doesn't get too small */
+        }
+
+        .mission-vision {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+            min-width: 300px; /* Ensure cards don't get too small */
+        }
+
+        .mission-card, .vision-card {
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-sm); /* Apply card shadow */
+        }
+
+        .mission-card h3, .vision-card h3 {
+            color: var(--secondary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* Services Section */
+        .service-card {
+            text-align: center;
+            padding: var(--spacing-lg);
+        }
+
+        .service-card .card-icon {
+            margin: 0 auto var(--spacing-md); /* Center icon */
+        }
+
+        .service-card h3 {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* Technologies Section (Custom CSS for the diagram) */
+        .tech-diagram-container {
+            position: relative;
+            width: 100%;
+            height: 500px; /* Fixed height for the diagram area */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: var(--spacing-xl);
+            background: radial-gradient(circle at center, rgba(108, 92, 231, 0.05) 0%, transparent 70%);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+        }
+
+        .tech-line {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            position: absolute;
+            opacity: 0.6;
+            transition: all var(--transition-normal);
+            box-shadow: 0 0 8px rgba(0, 212, 200, 0.4);
+        }
+        /* Specific line positioning and rotation */
+        .tech-line.h-center-left { height: 2px; width: 20%; top: 50%; left: 20%; transform: translateY(-50%); }
+        .tech-line.h-center-right { height: 2px; width: 20%; top: 50%; right: 20%; transform: translateY(-50%); }
+        .tech-line.v-center-top { width: 2px; height: 40%; left: 50%; top: 10%; transform: translateX(-50%); }
+        .tech-line.v-center-bottom { width: 2px; height: 40%; left: 50%; bottom: 10%; transform: translateX(-50%); }
+        .tech-line.diag-top-left { width: 2px; height: 18%; top: 16%; left: 30%; transform: rotate(-45deg) translateY(-50%); transform-origin: top left; }
+        .tech-line.diag-bottom-left { width: 2px; height: 18%; bottom: 16%; left: 30%; transform: rotate(45deg) translateY(50%); transform-origin: bottom left; }
+        .tech-line.diag-top-right { width: 2px; height: 18%; top: 16%; right: 30%; transform: rotate(45deg) translateY(-50%); transform-origin: top right; }
+        .tech-line.diag-bottom-right { width: 2px; height: 18%; bottom: 16%; right: 30%; transform: rotate(-45deg) translateY(50%); transform-origin: bottom right; }
+
+
+        #tech-hub {
+            width: 140px;
+            height: 140px;
+            border-radius: var(--radius-full);
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: var(--text-lg);
+            box-shadow: var(--shadow-lg), var(--glow-primary);
+            z-index: 10;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: var(--spacing-sm);
+        }
+
+        .tech-node {
+            width: 120px;
+            height: 120px;
+            border-radius: var(--radius-full);
+            background: var(--surface-alt);
+            border: 2px solid var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: var(--spacing-xs);
+            font-weight: 600;
+            color: var(--text-main);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-fast);
+            cursor: pointer;
+            z-index: 5;
+            position: absolute;
+            transform: translate(-50%, -50%); /* Center nodes based on top/left */
+        }
+
+        .tech-node:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--secondary);
+            box-shadow: var(--shadow-md), var(--glow-secondary);
+            transform: translate(-50%, -50%) scale(1.05); /* Slight scale on hover */
+        }
+
+        /* Specific node positions */
+        .tech-node[data-tech="vr"] { top: 15%; left: 50%; }
+        .tech-node[data-tech="ai"] { top: 50%; left: 10%; }
+        .tech-node[data-tech="blockchain"] { top: 50%; left: 90%; }
+        .tech-node[data-tech="ar"] { top: 85%; left: 25%; }
+        .tech-node[data-tech="cloud"] { top: 85%; left: 75%; }
+        .tech-node[data-tech="iot"] { top: 15%; left: 25%; } /* New node example */
+        .tech-node[data-tech="cybersecurity"] { top: 15%; left: 75%; } /* New node example */
+
+
+        #tech-tooltip {
+            position: absolute;
+            bottom: 20px; /* Position above the bottom of the container */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 450px;
+            background: rgba(0, 0, 0, 0.85); /* Darker background for tooltip */
+            color: white;
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+            z-index: 20;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity var(--transition-fast), visibility var(--transition-fast);
+        }
+
+        #tech-tooltip.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Contact Section */
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-md);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            font-weight: 500;
+            color: var(--text-heading);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--background); /* Darker input background */
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            font-size: var(--text-base);
+            transition: all var(--transition-fast);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(0, 212, 200, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--surface);
+            padding: var(--spacing-xxl) 0 var(--spacing-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .footer-column h3 {
+            font-size: var(--text-lg);
+            margin-bottom: var(--spacing-md);
+            position: relative;
+            padding-bottom: var(--spacing-sm);
+        }
+
+        .footer-column h3:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--secondary);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-links a {
+            color: var(--text-main);
+            transition: color var(--transition-fast), transform var(--transition-fast);
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-md);
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-full);
+            background: var(--surface-alt);
+            color: var(--text-main);
+            transition: all var(--transition-fast);
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid var(--border);
+            font-size: var(--text-sm);
+            color: rgba(224, 230, 240, 0.7);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .animate {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .animate-fade-in {
+            animation: fadeInScale 0.8s ease forwards;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-text {
+                max-width: 100%;
+            }
+            
+            .hero p {
+                max-width: 100%;
+            }
+            
+            .hero-image {
+                width: 100%;
+                max-width: 500px;
+                margin: var(--spacing-xl) auto 0; /* Adjust margin for spacing */
+            }
+            
+            .grid-cols-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--spacing-xl);
+            }
+
+            .tech-diagram-container {
+                height: 600px; /* Increase height for better spacing on smaller screens */
+            }
+            .tech-node {
+                width: 100px;
+                height: 100px;
+                font-size: var(--text-sm);
+            }
+            #tech-hub {
+                width: 120px;
+                height: 120px;
+                font-size: var(--text-base);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: var(--text-4xl);
+            }
+            
+            h2 {
+                font-size: var(--text-3xl);
+            }
+            
+            .grid-cols-2,
+            .grid-cols-3 {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-list {
+                position: fixed;
+                top: 0;
+                right: -100%; /* Off-screen by default */
+                height: 100vh;
+                width: 280px;
+                background: var(--surface);
+                flex-direction: column;
+                padding: var(--spacing-xxl) var(--spacing-lg);
+                transition: right var(--transition-normal);
+                box-shadow: var(--shadow-lg);
+                z-index: 1000;
+            }
+            
+            .nav-list.active {
+                right: 0; /* Slide in */
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tech-diagram-container {
+                height: 700px; /* Further increase height for mobile */
+            }
+            .tech-node {
+                width: 90px;
+                height: 90px;
+                font-size: var(--text-xs);
+            }
+            #tech-hub {
+                width: 110px;
+                height: 110px;
+                font-size: var(--text-sm);
+            }
+            /* Adjust node positions for smaller screens if needed */
+            .tech-node[data-tech="vr"] { top: 10%; left: 50%; }
+            .tech-node[data-tech="ai"] { top: 30%; left: 15%; }
+            .tech-node[data-tech="blockchain"] { top: 30%; left: 85%; }
+            .tech-node[data-tech="ar"] { top: 70%; left: 15%; }
+            .tech-node[data-tech="cloud"] { top: 70%; left: 85%; }
+            .tech-node[data-tech="iot"] { top: 50%; left: 10%; } /* Adjusting for more space */
+            .tech-node[data-tech="cybersecurity"] { top: 50%; left: 90%; } /* Adjusting for more space */
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: var(--text-3xl);
+            }
+            
+            h2 {
+                font-size: var(--text-2xl);
+            }
+            
+            .hero {
+                padding: var(--spacing-xl) 0;
+            }
+            
+            .section {
+                padding: var(--spacing-xl) 0;
+            }
+            .tech-diagram-container {
+                height: 800px; /* Max height for very small screens */
+            }
+            .tech-node {
+                width: 80px;
+                height: 80px;
+                font-size: 0.65rem; /* Smaller font for small nodes */
+            }
+            #tech-hub {
+                width: 100px;
+                height: 100px;
+                font-size: var(--text-sm);
+            }
+            /* Fine-tune node positions for very small screens */
+            .tech-node[data-tech="vr"] { top: 8%; left: 50%; }
+            .tech-node[data-tech="ai"] { top: 25%; left: 10%; }
+            .tech-node[data-tech="blockchain"] { top: 25%; left: 90%; }
+            .tech-node[data-tech="ar"] { top: 75%; left: 10%; }
+            .tech-node[data-tech="cloud"] { top: 75%; left: 90%; }
+            .tech-node[data-tech="iot"] { top: 50%; left: 10%; }
+            .tech-node[data-tech="cybersecurity"] { top: 50%; left: 90%; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <div class="logo">Virtuquest</div>
+            <nav class="navbar-nav-custom"> <!-- Custom class to avoid Bootstrap conflict -->
+                <ul class="nav-list" id="navMenu">
+                    <li><a href="#hero" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#technologies" class="nav-link">Technologies</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>SHAPING TOMORROW'S REALITY TODAY</h1>
+                    <p>Virtuquest pioneers cutting-edge virtual reality experiences, AI-driven solutions, and immersive digital platforms that transform how we work, learn, and connect. We specialize in creating boundary-pushing XR environments and intelligent automation systems.</p>
+                    <a href="#contact" class="btn btn-primary mr-3">Explore Possibilities</a>
+                    <a href="#services" class="btn btn-secondary">Our Services</a>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-image-container">
+                        <div class="hero-image-placeholder">
+                            <i class="fas fa-headset fa-4x" style="color: white; text-shadow: 0 0 15px rgba(255,255,255,0.5);"></i>
+                            <p class="mt-3">Immersive VR Experience</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-title-container">
+                <h2>About Virtuquest</h2>
+            </div>
+            <div class="about-content animate">
+                <div class="about-text">
+                    <p>At Virtuquest, we merge imagination with technology to create transformative experiences. As pioneers in virtual reality and artificial intelligence, we develop solutions that redefine how businesses engage with their audiences, how professionals acquire new skills, and how communities access technology.</p>
+                    <p>Our multidisciplinary team of technologists, creatives, and social innovators collaborates to build immersive platforms that solve real-world challenges while pushing the boundaries of what's possible in digital spaces.</p>
+                </div>
+                <div class="mission-vision">
+                    <div class="card mission-card">
+                        <h3>Our Mission</h3>
+                        <p>To democratize access to emerging technologies by creating affordable, scalable solutions that enhance education, professional development, and community engagement across diverse populations.</p>
+                    </div>
+                    <div class="card vision-card">
+                        <h3>Our Vision</h3>
+                        <p>A world where geographical and socioeconomic barriers are eliminated through immersive technologies that connect, educate, and empower individuals and organizations globally.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="section-title-container">
+                <h2>Our Services</h2>
+            </div>
+            <div class="grid grid-cols-3">
+                <div class="service-card card animate">
+                    <div class="card-icon">
+                        <i class="fas fa-vr-cardboard"></i>
+                    </div>
+                    <h3>XR Experience Development</h3>
+                    <p>Crafting immersive Virtual, Augmented, and Mixed Reality applications for training, entertainment, and interactive marketing.</p>
+                </div>
+                <div class="service-card card animate">
+                    <div class="card-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI & Automation Solutions</h3>
+                    <p>Implementing intelligent systems for data analysis, predictive modeling, and process automation to drive efficiency.</p>
+                </div>
+                <div class="service-card card animate">
+                    <div class="card-icon">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <h3>Digital Platform Integration</h3>
+                    <p>Seamlessly integrating cutting-edge technologies into existing systems to enhance functionality and user experience.</p>
+                </div>
+                <div class="service-card card animate">
+                    <div class="card-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Tech for Social Impact</h3>
+                    <p>Developing accessible technology solutions and initiatives to bridge the digital divide and empower underserved communities.</p>
+                </div>
+                <div class="service-card card animate">
+                    <div class="card-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Cloud Infrastructure</h3>
+                    <p>Designing and deploying scalable, secure cloud solutions for robust data management and application hosting.</p>
+                </div>
+                <div class="service-card card animate">
+                    <div class="card-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Cybersecurity Consulting</h3>
+                    <p>Protecting your digital assets with advanced security strategies, threat detection, and compliance solutions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies Section (Interactive Diagram) -->
+    <section class="section" id="technologies">
+        <div class="container">
+            <div class="section-title-container">
+                <h2>Our Technology Stack</h2>
+                <p class="text-main">Technology is the engine of our innovation. This diagram illustrates the key technologies we leverage. Hover over any node to understand how we utilize it to build intelligent, secure, and scalable solutions for our partners.</p>
+            </div>
+            <div class="tech-diagram-container">
+                <!-- Lines connecting the nodes -->
+                <div class="tech-line h-center-left"></div>
+                <div class="tech-line h-center-right"></div>
+                <div class="tech-line v-center-top"></div>
+                <div class="tech-line v-center-bottom"></div>
+                <div class="tech-line diag-top-left"></div>
+                <div class="tech-line diag-bottom-left"></div>
+                <div class="tech-line diag-top-right"></div>
+                <div class="tech-line diag-bottom-right"></div>
+
+                <!-- Central Hub -->
+                <div id="tech-hub">Virtuquest Core</div>
+
+                <!-- Technology Nodes -->
+                <div data-tech="vr" class="tech-node">Virtual Reality</div>
+                <div data-tech="ai" class="tech-node">Artificial Intelligence</div>
+                <div data-tech="blockchain" class="tech-node">Blockchain</div>
+                <div data-tech="ar" class="tech-node">Augmented Reality</div>
+                <div data-tech="cloud" class="tech-node">Cloud Computing</div>
+                <div data-tech="iot" class="tech-node">IoT Solutions</div>
+                <div data-tech="cybersecurity" class="tech-node">Cybersecurity</div>
+                
+                <!-- Tooltip for details on hover -->
+                <div id="tech-tooltip">
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-title-container">
+                <h2>Get in Touch</h2>
+            </div>
+            <div class="contact-form animate">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="your.email@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject" class="form-label">Subject</label>
+                        <input type="text" id="subject" name="subject" class="form-control" placeholder="Inquiry Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea id="message" name="message" class="form-control" rows="5" placeholder="Your message here..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-full">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <div class="logo mb-3">Virtuquest</div>
+                    <p>Pioneering immersive experiences and intelligent solutions for a connected future.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#technologies">Technologies</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#services">XR Development</a></li>
+                        <li><a href="#services">AI Solutions</a></li>
+                        <li><a href="#services">Platform Integration</a></li>
+                        <li><a href="#services">Social Impact Tech</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <p>123 Tech Avenue, Future City, FC 98765</p>
+                    <p>Email: info@virtuquest.com</p>
+                    <p>Phone: +1 (555) 123-4567</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Virtuquest. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery, Popper.js, and Bootstrap JS (for carousel and toggler) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-list a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId && targetId !== '#') {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                        // Close mobile menu if open
+                        const navMenu = document.getElementById('navMenu');
+                        if (navMenu.classList.contains('active')) {
+                            navMenu.classList.remove('active');
+                        }
+                    }
+                }
+            });
+        });
+
+        // Add 'scrolled' class to header on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+
+            // Highlight active nav link based on scroll position
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - header.offsetHeight - 20; // Adjusted for header height
+                const sectionBottom = sectionTop + section.offsetHeight;
+                const scrollPosition = window.scrollY;
+
+                if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === '#' + section.id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        });
+
+        // Technology Diagram Tooltip Logic
+        const techNodes = document.querySelectorAll('.tech-node');
+        const techTooltip = document.getElementById('tech-tooltip');
+        const tooltipText = techTooltip.querySelector('p');
+
+        const techDescriptions = {
+            vr: "Our Virtual Reality solutions create fully immersive digital environments for training, simulation, and entertainment.",
+            ai: "Leveraging Artificial Intelligence for intelligent automation, data analysis, and predictive insights across various industries.",
+            blockchain: "Implementing secure and transparent Blockchain technology for decentralized applications, digital assets, and supply chain management.",
+            ar: "Developing Augmented Reality experiences that blend digital information with the real world, enhancing interaction and productivity.",
+            cloud: "Building scalable and resilient Cloud Computing infrastructures for robust data storage, processing, and application delivery.",
+            iot: "Connecting physical devices to the internet for smart automation, data collection, and real-time monitoring in various sectors.",
+            cybersecurity: "Providing advanced Cybersecurity measures to protect digital assets, ensure data privacy, and maintain system integrity against evolving threats."
+        };
+
+        techNodes.forEach(node => {
+            node.addEventListener('mouseenter', function() {
+                const techKey = this.dataset.tech;
+                if (techDescriptions[techKey]) {
+                    tooltipText.textContent = techDescriptions[techKey];
+                    techTooltip.classList.add('visible');
+                }
+            });
+
+            node.addEventListener('mouseleave', function() {
+                techTooltip.classList.remove('visible');
+            });
+
+            // For touch devices: show tooltip on tap, hide on next tap anywhere else
+            node.addEventListener('click', function(e) {
+                e.stopPropagation(); // Prevent document click from immediately hiding
+                const techKey = this.dataset.tech;
+                if (techDescriptions[techKey]) {
+                    tooltipText.textContent = techDescriptions[techKey];
+                    techTooltip.classList.add('visible');
+                }
+            });
+        });
+
+        // Hide tooltip when clicking anywhere else on touch devices
+        document.addEventListener('click', function(e) {
+            if (!techTooltip.contains(e.target) && !e.target.closest('.tech-node')) {
+                techTooltip.classList.remove('visible');
+            }
+        });
+    </script>
+</body>
+</html>

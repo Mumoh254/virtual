@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | Virtuquest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Bootstrap CSS - Added for consistent grid/utility classes -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            /* New Color Palette: Modern Dark & Gradient (from main index.html) */
+            --background: #0A0D14; /* Very dark blue-black */
+            --header-bg: rgba(10, 13, 20, 0.98); /* Almost opaque header */
+            --container-bg: rgba(25, 30, 40, 0.6); /* Slightly lighter, transparent dark blue-gray for cards/containers */
+            --text-main: #E0E6F0; /* Soft white for body text */
+            --text-heading: #F8FAFC; /* Pure white for main headings */
+            --white: #FFFFFF;
+
+            /* Accent Colors - Sleeker, sophisticated */
+            --primary-accent: #6C5CE7; /* Deep, rich violet */
+            --secondary-accent: #00BCD4; /* Vibrant, modern cyan */
+            --cta-gradient-start: #FF6B6B; /* Soft red for CTA */
+            --cta-gradient-end: #FF9A8B; /* Lighter red for CTA */
+
+            /* Shadows & Glows - Subtler, more elegant */
+            --shadow-light: rgba(0, 0, 0, 0.2);
+            --shadow-medium: rgba(0, 0, 0, 0.4);
+            --shadow-strong: rgba(0, 0, 0, 0.6);
+            --accent-glow-light: rgba(108, 92, 231, 0.3); /* Violet glow */
+            --accent-glow-medium: rgba(108, 92, 231, 0.5);
+            --accent-glow-strong: rgba(108, 92, 231, 0.7);
+            --border-gradient: linear-gradient(90deg, transparent, var(--primary-accent) 20%, var(--secondary-accent) 80%, transparent);
+            --cta-shadow-color: rgba(255, 107, 107, 0.5);
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--text-main);
+            line-height: 1.8;
+            overflow-x: hidden;
+            padding-top: 80px; /* Space for fixed header */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(var(--primary-accent),0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(var(--primary-accent),0.02) 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 3px var(--accent-glow-light); /* Softer glow */
+        }
+
+        h1 {
+            font-size: 3.8rem; /* Larger, more impactful title */
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 25px var(--accent-glow-medium), 0 0 50px var(--accent-glow-strong);
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 3.2rem; /* Consistent with main page section titles */
+            margin-bottom: 4rem; /* Consistent spacing */
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px var(--accent-glow-medium), 0 0 40px var(--accent-glow-strong);
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px; /* Adjusted position */
+            left: 0;
+            width: 100%;
+            height: 3px; /* Thicker underline */
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            box-shadow: 0 0 10px var(--primary-accent);
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            font-weight: 300;
+            color: var(--text-main);
+        }
+
+        a {
+            color: var(--secondary-accent);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-accent);
+            text-shadow: 0 0 10px var(--secondary-accent);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem; /* Consistent padding with main page */
+            position: relative;
+            z-index: 1;
+            background: var(--container-bg);
+            border: 1px solid rgba(var(--primary-accent), 0.2);
+            border-radius: 16px;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 8px 25px var(--shadow-medium);
+        }
+
+        .container:hover {
+            transform: translateY(-8px) scale(1.005);
+            box-shadow: 0 15px 40px var(--shadow-strong), 0 0 30px var(--accent-glow-medium);
+            border-color: var(--primary-accent);
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            background-color: var(--header-bg);
+            border-bottom: 1px solid rgba(var(--primary-accent), 0.1);
+            box-shadow: 0 5px 20px var(--shadow-medium);
+            padding: 1rem 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2.5rem; /* Consistent padding with main page */
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem; /* Consistent with main page */
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary-accent) 0%, var(--secondary-accent) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px var(--accent-glow-medium);
+            letter-spacing: 1.5px;
+            position: relative;
+        }
+
+        .logo::before { /* Underline effect for logo */
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            box-shadow: 0 0 10px var(--primary-accent);
+            transform-origin: left;
+            transform: scaleX(0);
+            transition: transform 0.4s ease-out;
+        }
+
+        .logo:hover::before {
+            transform: scaleX(1);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 3rem; /* Consistent gap */
+        }
+
+        nav ul li a {
+            font-family: 'Inter', sans-serif; /* Changed to Inter for nav links */
+            font-weight: 600;
+            font-size: 1rem;
+            position: relative;
+            padding: 0.8rem 0; /* Consistent padding */
+            color: var(--text-main); /* Consistent color */
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px; /* Consistent position */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px; /* Consistent thickness */
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        nav ul li a.active {
+            color: var(--primary-accent);
+            text-shadow: 0 0 8px var(--primary-accent);
+        }
+        nav ul li a.active::after {
+            width: 100%;
+            background: var(--primary-accent);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-accent); /* Consistent color */
+            font-size: 2.5rem; /* Consistent size */
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .mobile-menu-btn:hover {
+            color: var(--secondary-accent);
+        }
+
+        @media (max-width: 992px) {
+            nav ul {
+                position: fixed;
+                top: 80px; /* Adjust for header height */
+                right: -100%;
+                width: 280px; /* Slightly wider mobile menu */
+                height: calc(100vh - 80px);
+                background-color: var(--header-bg); /* Use header background */
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 30px;
+                transition: right 0.3s ease;
+                z-index: 1000;
+                border-left: 1px solid rgba(var(--primary-accent), 0.1);
+                box-shadow: -5px 0 20px var(--shadow-medium);
+            }
+
+            nav ul.active {
+                right: 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                z-index: 1001;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+            .header-container {
+                padding: 0 1.5rem;
+            }
+            .logo {
+                font-size: 1.8rem;
+            }
+            nav ul {
+                top: 70px; /* Adjust for smaller header height */
+                height: calc(100vh - 70px);
+            }
+        }
+        @media (max-width: 480px) {
+            body {
+                padding-top: 60px;
+            }
+            .header-container {
+                padding: 0 1rem;
+            }
+            .logo {
+                font-size: 1.5rem;
+            }
+            nav ul {
+                top: 60px; /* Adjust for smaller header height */
+                width: 100%; /* Full width mobile menu */
+                height: calc(100vh - 60px);
+            }
+        }
+
+        /* Hero Section for Services Page */
+        .services-hero {
+            min-height: 70vh; /* Shorter hero for internal pages */
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            background: var(--background);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .services-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(108, 92, 231, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(0, 188, 212, 0.08) 0%, transparent 50%);
+            z-index: 0;
+            mix-blend-mode: screen;
+        }
+
+        .services-hero .container {
+            background: var(--container-bg);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px var(--shadow-medium), 0 0 40px var(--accent-glow-light);
+            border: 1px solid rgba(var(--primary-accent), 0.4);
+            padding: 4rem; /* Adjusted padding */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 50vh; /* Ensure container has height */
+        }
+
+        .services-hero h1 {
+            font-size: 4.2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 
+                0 0 15px var(--accent-glow-medium),
+                0 0 25px var(--accent-glow-strong);
+        }
+
+        .services-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin-bottom: 0;
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 6rem 0;
+            background-color: var(--background);
+        }
+
+        .services-section:nth-child(even) {
+            background-color: rgba(var(--primary-accent), 0.03);
+        }
+
+        .services-section h2 {
+            text-align: center;
+            font-size: 3.2rem;
+            margin-bottom: 4rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjusted minmax for better card sizing */
+            gap: 3rem; /* Increased gap */
+        }
+
+        .service-card {
+            background: var(--container-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(var(--primary-accent), 0.15);
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px var(--shadow-light);
+            display: flex;
+            flex-direction: column; /* Ensure content stacks vertically */
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px var(--shadow-medium), 0 0 30px var(--accent-glow-light);
+            border-color: var(--primary-accent);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 220px; /* Consistent height for images */
+            overflow: hidden;
+            position: relative;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            filter: brightness(0.7); /* Darken image */
+            transition: filter 0.4s ease;
+        }
+
+        .service-card:hover .service-image img {
+            filter: brightness(1); /* Full brightness on hover */
+        }
+
+        .service-details {
+            padding: 2rem; /* Consistent padding */
+            flex-grow: 1; /* Allow details section to grow */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-details h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-accent);
+            text-shadow: 0 0 12px var(--accent-glow-light);
+        }
+
+        .service-details p {
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1; /* Allow paragraph to grow */
+        }
+
+        .service-features {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 1rem; /* Space from paragraph */
+        }
+
+        .service-features li {
+            position: relative;
+            padding-left: 1.8rem; /* Space for icon */
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        .service-features li::before {
+            content: "\f00c"; /* FontAwesome checkmark icon */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 0.1rem;
+            color: var(--secondary-accent); /* Accent color for checkmark */
+            font-size: 1.1rem;
+        }
+
+        /* Carousel Section */
+        .carousel-section {
+            padding: 6rem 0;
+            background-color: var(--background);
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 0 40px var(--accent-glow-light);
+            border: 1px solid rgba(var(--primary-accent), 0.3);
+            background: var(--container-bg); /* Match container background */
+            padding: 2rem; /* Add padding inside for carousel controls */
+        }
+        
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 550px; /* Taller carousel */
+            perspective: 1000px;
+            overflow: hidden; /* Hide overflow from track */
+            border-radius: 12px; /* Inner border radius */
+            background-color: rgba(0,0,0,0.2); /* Slightly darker background for carousel area */
+        }
+
+        .carousel-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7); /* Darken image */
+            transition: filter 0.4s ease;
+        }
+
+        .carousel-slide:hover img {
+            filter: brightness(1); /* Full brightness on hover */
+        }
+
+        .carousel-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, transparent 100%);
+            z-index: 1;
+        }
+
+        .carousel-prev, .carousel-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--container-bg);
+            backdrop-filter: blur(5px);
+            border: 1px solid var(--primary-accent);
+            color: var(--primary-accent);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px var(--accent-glow-light);
+            z-index: 100;
+            font-size: 1.5rem;
+        }
+
+        .carousel-prev:hover, .carousel-next:hover {
+            background: var(--primary-accent);
+            color: var(--background);
+            box-shadow: 0 0 20px var(--primary-accent);
+        }
+
+        .carousel-prev {
+            left: 3.5rem; /* Adjusted position */
+        }
+
+        .carousel-next {
+            right: 3.5rem; /* Adjusted position */
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 3.5rem; /* Adjusted position */
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 100;
+            background: rgba(25, 30, 40, 0.8); /* Background for dots container */
+            padding: 0.75rem 1.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(var(--primary-accent), 0.2);
+            box-shadow: 0 0 15px rgba(var(--primary-accent), 0.2);
+        }
+
+        .dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--text-main);
+            opacity: 0.5;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--primary-accent);
+            opacity: 1;
+            box-shadow: 0 0 10px var(--primary-accent);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--header-bg); /* Consistent with header */
+            padding: 5rem 0 3rem; /* Consistent padding */
+            position: relative;
+            border-top: 3px solid;
+            border-image: var(--border-gradient) 1; /* Gradient border */
+            box-shadow: 0 0 25px var(--shadow-medium); /* Consistent shadow */
+            color: var(--text-main);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax */
+            gap: 3.5rem; /* Increased gap */
+            margin-bottom: 3rem; /* Consistent margin */
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 2.5rem;
+        }
+
+        .footer-column {
+            text-align: left; /* Default to left align */
+        }
+
+        .footer-column h3 {
+            font-size: 1.8rem; /* Consistent with main page footer */
+            margin-bottom: 1.8rem; /* Consistent margin */
+            color: var(--primary-accent);
+            position: relative;
+            text-shadow: 0 0 12px var(--accent-glow-light);
+        }
+        .footer-column h3::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-accent);
+            box-shadow: 0 0 8px var(--primary-accent);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem; /* Consistent margin */
+        }
+
+        .footer-links li a {
+            font-size: 1rem; /* Slightly larger */
+            color: var(--text-main);
+            transition: all 0.3s ease;
+            display: flex; /* For icon alignment */
+            align-items: center;
+        }
+
+        .footer-links li a .fas {
+            margin-right: 0.75rem; /* Space for icon */
+            color: var(--secondary-accent);
+        }
+
+        .footer-links li a:hover {
+            color: var(--secondary-accent);
+            padding-left: 8px; /* Slightly more prominent hover effect */
+            text-shadow: 0 0 8px var(--secondary-accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.8rem; /* Consistent gap */
+            margin-top: 2rem; /* Consistent margin */
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px; /* Larger icons */
+            height: 48px;
+            border-radius: 50%;
+            background-color: rgba(var(--primary-accent), 0.1); /* Subtle background */
+            color: var(--secondary-accent); /* Accent color for icons */
+            transition: all 0.3s ease;
+            font-size: 1.8rem; /* Larger icon size */
+            box-shadow: 0 0 10px var(--accent-glow-light);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-accent);
+            color: var(--background); /* Dark text on accent hover */
+            transform: translateY(-5px) scale(1.1); /* More pronounced hover */
+            box-shadow: 0 0 20px var(--primary-accent);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2.5rem; /* Consistent padding */
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: var(--text-main);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .services-hero h1 {
+                font-size: 3.2rem;
+            }
+            .services-hero p {
+                font-size: 1.1rem;
+            }
+            .services-section h2 {
+                font-size: 2.8rem;
+            }
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 2.5rem;
+            }
+            .service-card {
+                padding: 1.5rem;
+            }
+            .service-details h3 {
+                font-size: 1.8rem;
+            }
+            .carousel-container {
+                padding: 1.5rem;
+            }
+            .carousel {
+                height: 450px;
+            }
+            .carousel-prev {
+                left: 2rem;
+            }
+            .carousel-next {
+                right: 2rem;
+            }
+            .carousel-dots {
+                bottom: 2rem;
+                padding: 0.6rem 1.2rem;
+            }
+            .footer-column {
+                text-align: center; /* Center align footer columns on smaller screens */
+            }
+            .footer-column h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .social-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .services-hero h1 {
+                font-size: 2.5rem;
+            }
+            .services-hero p {
+                font-size: 1rem;
+            }
+            .services-section h2 {
+                font-size: 2.2rem;
+            }
+            .services-grid {
+                grid-template-columns: 1fr; /* Single column on very small screens */
+                gap: 2rem;
+            }
+            .service-card {
+                max-width: 450px; /* Constrain width for single column */
+                margin: 0 auto; /* Center single column cards */
+            }
+            .carousel {
+                height: 350px;
+            }
+            .carousel-prev {
+                left: 1rem;
+            }
+            .carousel-next {
+                right: 1rem;
+            }
+            .carousel-dots {
+                bottom: 1.5rem;
+                padding: 0.5rem 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .services-hero .container {
+                padding: 2rem 1rem;
+            }
+            .services-hero h1 {
+                font-size: 2rem;
+            }
+            .services-hero p {
+                font-size: 0.9rem;
+            }
+            .services-section h2 {
+                font-size: 1.8rem;
+            }
+            .service-card {
+                padding: 1rem;
+            }
+            .service-details h3 {
+                font-size: 1.5rem;
+            }
+            .service-details p {
+                font-size: 0.9rem;
+            }
+            .service-features li {
+                font-size: 0.85rem;
+            }
+            .carousel {
+                height: 280px;
+            }
+            .carousel-prev, .carousel-next {
+                width: 35px;
+                height: 35px;
+                font-size: 1.2rem;
+            }
+            .carousel-prev {
+                left: 0.5rem;
+            }
+            .carousel-next {
+                right: 0.5rem;
+            }
+            .carousel-dots {
+                bottom: 1rem;
+                gap: 8px;
+            }
+            .dot {
+                width: 10px;
+                height: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container container">
+            <a href="index.html" class="logo">Virtuquest</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about-us.html" class="nav-link">About Us</a></li>
+                    <li><a href="services.html" class="nav-link active">Services</a></li>
+                    <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="services-hero">
+            <div class="container">
+                <h1>Our Services</h1>
+                <p>Explore the comprehensive range of cutting-edge technology solutions and immersive experiences we offer to transform your business and engage your audience.</p>
+            </div>
+        </section>
+
+        <section class="services-section">
+            <div class="container">
+                <h2>What We Offer</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-content">
+                            <div class="service-image">
+                                <img src="https://placehold.co/600x400/6C5CE7/FFFFFF?text=Virtual+Reality" alt="Virtual Reality headset in a futuristic setting">
+                            </div>
+                            <div class="service-details">
+                                <h3>Virtual Reality</h3>
+                                <p>Immersive solutions for training, tours, and engagement.</p>
+                                <ul class="service-features">
+                                    <li>Custom VR Applications</li>
+                                    <li>360° Tours</li>
+                                    <li>Simulations for Training & Education</li>
+                                    <li>VR Product Demos</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-content">
+                            <div class="service-image">
+                                <img src="https://placehold.co/600x400/00BCD4/FFFFFF?text=Artificial+Intelligence" alt="Artificial Intelligence network">
+                            </div>
+                            <div class="service-details">
+                                <h3>Artificial Intelligence</h3>
+                                <p>Smart AI tools to optimize experiences and automate workflows.</p>
+                                <ul class="service-features">
+                                    <li>Custom Chatbots & NLP</li>
+                                    <li>Automation for Business Processes</li>
+                                    <li>AI Analytics & Forecasting</li>
+                                    <li>Personalized AI Assistants</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-content">
+                            <div class="service-image">
+                                <img src="https://placehold.co/600x400/6C5CE7/FFFFFF?text=Event+Organization" alt="Organized tech event with glowing lights">
+                            </div>
+                            <div class="service-details">
+                                <h3>Event Organization</h3>
+                                <p>Blending tech and logistics for unforgettable event experiences.</p>
+                                <ul class="service-features">
+                                    <li>Virtual & Hybrid Event Planning</li>
+                                    <li>Live Streaming & VR Booth Integration</li>
+                                    <li>Full-Scale Event Logistics</li>
+                                    <li>Tech-Enhanced Audience Engagement</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-content">
+                            <div class="service-image">
+                                <img src="https://placehold.co/600x400/00BCD4/FFFFFF?text=Charity+Community" alt="Hands holding a glowing globe, symbolizing community">
+                            </div>
+                            <div class="service-details">
+                                <h3>Charity & Community Work</h3>
+                                <p>Tech for social good through inclusive learning and outreach.</p>
+                                <ul class="service-features">
+                                    <li>Free Tech Bootcamps</li>
+                                    <li>"Tech4Teens" Program</li>
+                                    <li>VR for Public Awareness Campaigns</li>
+                                    <li>NGO & CSR Partnerships</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="carousel-section">
+            <div class="carousel-container">
+                <div class="carousel">
+                    <div class="carousel-track">
+                        <div class="carousel-slide" style="background-image: url('https://placehold.co/1200x600/6C5CE7/FFFFFF?text=VR+Tech');"></div>
+                        <div class="carousel-slide" style="background-image: url('https://placehold.co/1200x600/00BCD4/FFFFFF?text=AI+Interface');"></div>
+                        <div class="carousel-slide" style="background-image: url('https://placehold.co/1200x600/6C5CE7/FFFFFF?text=Conference');"></div>
+                        <div class="carousel-slide" style="background-image: url('https://placehold.co/1200x600/00BCD4/FFFFFF?text=Futuristic+City');"></div>
+                    </div>
+                    
+                    <button class="carousel-prev" aria-label="Previous slide">
+                        <svg viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg>
+                    </button>
+                    <button class="carousel-next" aria-label="Next slide">
+                        <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+                    </button>
+                    
+                    <div class="carousel-dots">
+                        <button class="dot active" aria-label="Go to slide 1"></button>
+                        <button class="dot" aria-label="Go to slide 2"></button>
+                        <button class="dot" aria-label="Go to slide 3"></button>
+                        <button class="dot" aria-label="Go to slide 4"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="footer-container container">
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="footer-links">
+                    <li><a href="mailto:arcade1999kenya@gmail.com"><i class="fas fa-envelope me-2"></i>arcade1999kenya@gmail.com</a></li>
+                    <li><a href="tel:+254111955641"><i class="fas fa-phone-alt me-2"></i>+254 111 955 641</a></li>
+                    <li><i class="fas fa-map-marker-alt me-2"></i>Nairobi, Kenya</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul class="footer-links social-links">
+                    <li><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                    <li><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i> Twitter</a></li>
+                    <li><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i> LinkedIn</a></li>
+                    <li><a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i> Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 Virtuquest. All rights reserved. Shaping tomorrow's reality today.
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navMenu = document.getElementById('navMenu');
+            
+            // Toggle mobile menu
+            if (mobileMenuBtn && navMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                    // Update button icon
+                    const icon = navMenu.classList.contains('active') ? 'times' : 'bars';
+                    this.innerHTML = `<i class="fas fa-${icon}"></i>`;
+                });
+            } else {
+                console.error("Mobile menu button or navigation menu not found.");
+            }
+            
+            // Close menu when clicking on links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (navMenu && navMenu.classList.contains('active')) { // Only close if menu is open
+                        navMenu.classList.remove('active');
+                        if (mobileMenuBtn) {
+                            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                        }
+                    }
+                });
+            });
+            
+            // Highlight current page in navigation
+            const path = location.pathname.split('/').pop();
+            document.querySelectorAll('.nav-link').forEach(link => {
+                const linkPath = link.getAttribute('href').split('/').pop();
+                if (linkPath === path) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active'); // Ensure only one is active
+                }
+            });
+
+            // Carousel functionality
+            const carouselSection = document.querySelector('.carousel-section');
+            const carouselContainerElement = carouselSection ? carouselSection.querySelector('.carousel') : null;
+
+            let track = null;
+            let slides = [];
+            let dots = [];
+            let prevBtn = null;
+            let nextBtn = null;
+
+            if (carouselContainerElement) {
+                track = carouselContainerElement.querySelector('.carousel-track');
+                slides = Array.from(carouselContainerElement.querySelectorAll('.carousel-slide'));
+                dots = Array.from(carouselContainerElement.querySelectorAll('.dot'));
+                prevBtn = carouselContainerElement.querySelector('.carousel-prev');
+                nextBtn = carouselContainerElement.querySelector('.carousel-next');
+            }
+            
+            // Check if all necessary carousel elements exist before initializing
+            if (track && slides.length > 0 && dots.length > 0 && prevBtn && nextBtn && carouselContainerElement) {
+                let currentIndex = 0;
+                let intervalId;
+                const slideInterval = 5000; // 5 seconds
+                
+                function updateCarousel() {
+                    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                    
+                    dots.forEach((dot, index) => {
+                        dot.classList.toggle('active', index === currentIndex);
+                    });
+                }
+                
+                function goToSlide(index) {
+                    currentIndex = index;
+                    updateCarousel();
+                    resetAutoSlide();
+                }
+                
+                function nextSlide() {
+                    currentIndex = (currentIndex + 1) % slides.length;
+                    updateCarousel();
+                }
+                
+                function prevSlide() {
+                    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                    updateCarousel();
+                }
+                
+                function startAutoSlide() {
+                    intervalId = setInterval(nextSlide, slideInterval);
+                }
+                
+                function resetAutoSlide() {
+                    clearInterval(intervalId);
+                    startAutoSlide();
+                }
+                
+                prevBtn.addEventListener('click', () => {
+                    prevSlide();
+                    resetAutoSlide();
+                });
+                
+                nextBtn.addEventListener('click', () => {
+                    nextSlide();
+                    resetAutoSlide();
+                });
+                
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        goToSlide(index);
+                    });
+                });
+                
+                // Check if carousel element itself exists before adding event listeners
+                if (carouselContainerElement) { 
+                    carouselContainerElement.addEventListener('mouseenter', () => {
+                        clearInterval(intervalId);
+                    });
+                    
+                    carouselContainerElement.addEventListener('mouseleave', () => {
+                        startAutoSlide();
+                    });
+                } else {
+                    console.error("Carousel container element not found for hover events.");
+                }
+                
+                updateCarousel(); // Initialize carousel position
+                startAutoSlide(); // Start auto-sliding
+            } else {
+                console.error("One or more carousel elements not found. Carousel will not be initialized. Details: ", {
+                    track: track,
+                    slidesLength: slides.length,
+                    dotsLength: dots.length,
+                    prevBtn: prevBtn,
+                    nextBtn: nextBtn,
+                    carouselContainerElement: carouselContainerElement
+                });
+            }
+
+            // Add animation to service cards on scroll
+            const observerOptions = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.service-card').forEach(card => {
+                observer.observe(card);
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (header) { // Ensure header exists
+                if (window.scrollY > 50) {
+                    header.style.boxShadow = '0 5px 20px var(--shadow-medium)'; /* Consistent shadow */
+                    header.style.backgroundColor = 'rgba(10, 13, 20, 0.98)'; /* Consistent header background */
+                } else {
+                    header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)'; /* Lighter shadow */
+                    header.style.backgroundColor = 'rgba(10, 13, 20, 0.98)'; /* Consistent header background */
+                }
+            }
+        });
+    </script>
+</body>
+</html>
