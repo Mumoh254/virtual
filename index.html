@@ -3,444 +3,466 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Virtuquest - Future Technology Solutions</title>
-    <!-- Google Fonts: Orbitron for headings, Inter for body text -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap">
-    <!-- Font Awesome for icons -->
+    <title>Virtuquest - Pioneering Virtual Reality Solutions</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap">
     <style>
-        /* CSS Variables for a modern, dark, futuristic theme */
+        /* Base Styles */
         :root {
-            --background: #0a0f1d;
+            --primary: #6c5ce7;
+            --primary-light: #7d6ff0;
+            --secondary: #00d4c8;
+            --accent: #ff6b6b;
+            --dark-bg: #0a0f1d;
             --surface: #121a2b;
             --surface-alt: #1a2438;
-            --primary: #6c5ce7; /* Vibrant Purple */
-            --primary-light: #7d6ff0;
-            --secondary: #00d4c8; /* Bright Cyan */
-            --accent: #ff6b6b; /* Red Accent */
-            --text-main: #e0e6f0; /* Light Grey for body text */
-            --text-heading: #ffffff; /* White for headings */
-            --border: rgba(108, 92, 231, 0.2); /* Subtle border color */
-            --success: #00e676;
-            --warning: #ffc107;
-            --error: #ff5252;
-            
-            /* Shadows & Glows */
-            --shadow-xs: 0 1px 3px rgba(0, 0, 0, 0.1);
-            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --shadow-md: 0 10px 15px rgba(0, 0, 0, 0.2);
-            --shadow-lg: 0 20px 25px rgba(0, 0, 0, 0.3);
-            --glow-primary: 0 0 15px rgba(108, 92, 231, 0.4);
-            --glow-secondary: 0 0 15px rgba(0, 212, 200, 0.4);
-            
-            /* Spacing */
-            --spacing-xs: 0.5rem;
-            --spacing-sm: 1rem;
-            --spacing-md: 2rem;
-            --spacing-lg: 3rem;
-            --spacing-xl: 4rem;
-            --spacing-xxl: 6rem;
-            
-            /* Typography */
-            --font-heading: 'Orbitron', sans-serif;
-            --font-body: 'Inter', sans-serif;
-            --text-xs: 0.75rem;
-            --text-sm: 0.875rem;
-            --text-base: 1rem;
-            --text-lg: 1.125rem;
-            --text-xl: 1.25rem;
-            --text-2xl: 1.5rem;
-            --text-3xl: 1.875rem;
-            --text-4xl: 2.25rem;
-            --text-5xl: 3rem;
-            --text-6xl: 3.75rem;
-            
-            /* Borders */
-            --radius-sm: 4px;
-            --radius-md: 8px;
-            --radius-lg: 16px;
-            --radius-xl: 24px;
-            --radius-full: 9999px;
-            
-            /* Transitions */
-            --transition-fast: 0.2s ease;
-            --transition-normal: 0.4s ease;
-            --transition-slow: 0.6s ease;
+            --text-main: #e0e6f0;
+            --text-heading: #f8fafc;
+            --glow-primary: rgba(108, 92, 231, 0.4);
+            --glow-secondary: rgba(0, 212, 200, 0.4);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-
-        /* Base Styles */
+        
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        
         body {
-            background: var(--background);
+            background: var(--dark-bg);
             color: var(--text-main);
-            font-family: var(--font-body);
-            font-size: var(--text-base);
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
             overflow-x: hidden;
+            line-height: 1.7;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
-
-        /* Background Grid Pattern */
-        body::before {
-            content: "";
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--text-heading);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        
+        a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: var(--primary-light);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            border-radius: 30px;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary), var(--primary-light));
+            color: white;
+            box-shadow: 0 10px 20px rgba(108, 92, 231, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(108, 92, 231, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-main);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(108, 92, 231, 0.1);
+        }
+        
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .section-heading {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+        
+        .section-heading h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--text-heading), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .section-heading .line-dec {
+            width: 80px;
+            height: 3px;
+            background: var(--secondary);
+            margin: 0 auto;
+        }
+        
+        /* Preloader */
+        #preloader {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: 
-                linear-gradient(rgba(108, 92, 231, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(108, 92, 231, 0.02) 1px, transparent 1px);
-            background-size: 30px 30px;
-            opacity: 0.05;
-            z-index: -2; /* Behind all content */
+            background: var(--dark-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
         }
-
-        /* General Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--spacing-md);
-        }
-
-        /* Typography */
-        h1, h2, h3, h4, h5 {
-            color: var(--text-heading);
-            font-family: var(--font-heading);
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: var(--spacing-md);
-        }
-
-        h1 {
-            font-size: var(--text-6xl); /* Larger for hero */
-            letter-spacing: -0.5px;
-        }
-
-        h2 {
-            font-size: var(--text-4xl);
-            position: relative;
-            display: inline-block; /* For underline positioning */
-            margin-bottom: var(--spacing-lg);
-        }
-
-        h2:after {
-            content: "";
-            position: absolute;
-            bottom: -12px;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: var(--radius-full);
-        }
-
-        h3 {
-            font-size: var(--text-3xl);
-        }
-
-        h4 {
-            font-size: var(--text-2xl);
-        }
-
-        p {
-            margin-bottom: var(--spacing-md);
-            font-weight: 300;
-        }
-
-        a {
-            color: var(--secondary);
-            text-decoration: none;
-            transition: color var(--transition-fast);
-        }
-
-        a:hover {
-            color: var(--primary-light);
-        }
-
-        /* Buttons */
-        .btn {
-            display: inline-block;
-            padding: 12px 32px;
-            font-family: var(--font-heading);
-            font-weight: 600;
-            font-size: var(--text-base);
+        
+        .preloader-content {
             text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-radius: var(--radius-full);
-            transition: all var(--transition-normal);
-            cursor: pointer;
-            border: none;
-            outline: none;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
         }
-
-        .btn-primary {
-            background: linear-gradient(45deg, var(--primary), var(--primary-light));
-            color: white;
-            box-shadow: var(--shadow-sm), var(--glow-primary);
+        
+        .preloader-logo {
+            font-size: 48px;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 30px;
         }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md), var(--glow-primary);
+        
+        .preloader-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
         }
-
-        .btn-primary:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.6s;
-            z-index: -1;
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
-
-        .btn-primary:hover:before {
-            left: 100%;
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--secondary);
-            border: 2px solid var(--secondary);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(0, 212, 200, 0.1);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-sm), var(--glow-secondary);
-        }
-
-        /* Header (Navbar) */
-        .header {
+        
+        /* Header */
+        header {
+            background: rgba(10, 15, 29, 0.95);
+            backdrop-filter: blur(10px);
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            padding: var(--spacing-sm) 0;
-            background: rgba(10, 15, 29, 0.9); /* Darker, semi-transparent */
-            backdrop-filter: blur(10px); /* Frosted glass effect */
-            border-bottom: 1px solid var(--border);
-            transition: all var(--transition-normal);
+            padding: 15px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
         }
-
-        .header-scrolled {
-            padding: 0.5rem 0;
-            box-shadow: var(--shadow-md);
+        
+        header.header-scrolled {
+            padding: 10px 0;
         }
-
-        .header-inner {
+        
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--spacing-md);
         }
-
-        /* Logo */
+        
         .logo {
-            font-family: var(--font-heading);
+            font-size: 28px;
             font-weight: 700;
-            font-size: var(--text-2xl);
             background: linear-gradient(90deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text; /* For text gradient */
+            -webkit-background-clip: text;
             background-clip: text;
-            color: transparent; /* Hide original text color */
+            color: transparent;
             letter-spacing: 1px;
         }
-
-        /* Navigation */
-        .nav-list {
+        
+        nav ul {
             display: flex;
             list-style: none;
-            gap: var(--spacing-lg);
         }
-
-        .nav-link {
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
             color: var(--text-main);
             font-weight: 500;
+            font-size: 16px;
             position: relative;
-            padding: 8px 0;
         }
-
-        .nav-link:after {
-            content: "";
+        
+        nav ul li a:after {
+            content: '';
             position: absolute;
-            bottom: 0;
+            bottom: -5px;
             left: 0;
             width: 0;
             height: 2px;
             background: var(--secondary);
-            transition: width var(--transition-fast);
+            transition: width 0.3s;
         }
-
-        .nav-link:hover:after,
-        .nav-link.active:after {
+        
+        nav ul li a:hover:after,
+        nav ul li a.active:after {
             width: 100%;
         }
-
-        .nav-link.active {
-            color: var(--text-heading);
-        }
-
+        
         .mobile-menu-btn {
-            display: none; /* Hidden on desktop */
+            display: none;
             background: transparent;
             border: none;
             color: var(--text-main);
-            font-size: var(--text-2xl);
+            font-size: 24px;
             cursor: pointer;
-            z-index: 1001;
         }
-
+        
         /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding-top: var(--spacing-xxl); /* Space for fixed header */
-            padding-bottom: var(--spacing-xxl);
+            padding-top: 100px;
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.1) 0%, rgba(0, 212, 200, 0.05) 100%);
             position: relative;
             overflow: hidden;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('https://placehold.co/1920x1080/0a0f1d/6c5ce7?text=Virtuquest+VR+Experience') no-repeat center center/cover; /* Placeholder, replace with actual VR image */
         }
-
-        .hero-content {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-xl);
-            flex-wrap: wrap; /* Allow wrapping on smaller screens */
-        }
-
-        .hero-text {
-            flex: 1;
-            max-width: 600px;
-            z-index: 1; /* Ensure text is above image overlay */
-        }
-
-        .hero h1 {
-            margin-bottom: var(--spacing-md);
-            font-size: var(--text-6xl);
-            line-height: 1.1;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 20px var(--primary); /* Subtle glow */
-        }
-
-        .hero p {
-            font-size: var(--text-lg);
-            margin-bottom: var(--spacing-xl);
-            max-width: 90%;
-            opacity: 0.9;
-        }
-
-        .hero-image {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            min-width: 300px; /* Ensure image doesn't shrink too much */
-        }
-
-        .hero-image-container {
-            width: 100%;
-            max-width: 550px;
-            height: 450px;
-            border-radius: var(--radius-xl);
-            overflow: hidden;
-            position: relative;
-            box-shadow: var(--shadow-lg), var(--glow-primary);
-            transform: perspective(1000px) rotateY(-5deg); /* 3D tilt effect */
-            transition: transform var(--transition-normal);
-            background-color: var(--surface-alt); /* Fallback/base for placeholder */
-        }
-
-        .hero-image-container:hover {
-            transform: perspective(1000px) rotateY(0deg); /* Straighten on hover */
-        }
-
-        .hero-image-container:before {
-            content: "";
+        
+        .hero:before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(45deg, rgba(108, 92, 231, 0.1), rgba(0, 212, 200, 0.1)); /* Subtle overlay */
-            z-index: 1;
+            background: radial-gradient(circle at center, var(--glow-primary) 0%, transparent 70%);
+            opacity: 0.3;
+            z-index: -1;
         }
-
-        .hero-image-placeholder {
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-content h6 {
+            font-size: 18px;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .hero-content h1 {
+            font-size: 64px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, var(--text-heading), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .hero-content p {
+            font-size: 18px;
+            max-width: 600px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .vr-headset {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.7;
+            animation: floatHeadset 8s infinite ease-in-out;
+        }
+        
+        .vr-headset:before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border: 2px solid var(--secondary);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: pulseRing 3s infinite;
+        }
+        
+        .vr-headset img {
+            width: 250px;
+            transform: rotate(-15deg);
+            filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.5));
+        }
+        
+        @keyframes floatHeadset {
+            0%, 100% { transform: translateY(-50%) translateX(0) rotate(-5deg); }
+            50% { transform: translateY(-53%) translateX(20px) rotate(5deg); }
+        }
+        
+        @keyframes pulseRing {
+            0% { transform: scale(0.8); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0.1; }
+            100% { transform: scale(0.8); opacity: 0.3; }
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .about-image {
+            flex: 1;
+            position: relative;
+        }
+        
+        .about-image img {
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .about-image:after {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: 20px;
+            bottom: 20px;
+            border: 2px solid var(--secondary);
+            border-radius: 20px;
+            z-index: -1;
+            opacity: 0.5;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 36px;
+            margin-bottom: 25px;
+        }
+        
+        .about-text p {
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+        
+        .mission-vision {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .mission-card, .vision-card {
+            background: var(--surface);
+            border-radius: 15px;
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(108, 92, 231, 0.2);
+        }
+        
+        .mission-card:before, .vision-card:before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, var(--primary), var(--secondary)); /* Gradient placeholder */
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        
+        .mission-card h4, .vision-card h4 {
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: var(--text-lg);
-            text-align: center;
-            padding: var(--spacing-md);
-            z-index: 0; /* Behind the overlay */
+            gap: 10px;
+            font-size: 20px;
+            margin-bottom: 15px;
         }
-
-        /* Section General Styling */
-        .section {
-            padding: var(--spacing-xxl) 0;
-            position: relative;
+        
+        .mission-card i, .vision-card i {
+            color: var(--secondary);
+            font-size: 24px;
         }
-
-        .section-title-container {
-            text-align: center;
-            margin-bottom: var(--spacing-xl);
-        }
-
-        .section-title-container h2:after {
-            left: 50%;
-            transform: translateX(-50%); /* Center the underline */
-        }
-
-        /* Card Styles */
-        .card {
+        
+        /* Services Section */
+        .services {
             background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: var(--spacing-lg);
-            transition: all var(--transition-normal);
-            height: 100%;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: var(--surface-alt);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(108, 92, 231, 0.2);
             position: relative;
             overflow: hidden;
-            box-shadow: var(--shadow-sm);
         }
-
-        .card:hover {
+        
+        .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: var(--shadow-md), var(--glow-primary);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
             border-color: var(--primary);
         }
-
-        .card:before {
-            content: "";
+        
+        .service-card:before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
@@ -449,535 +471,464 @@
             background: linear-gradient(90deg, var(--primary), var(--secondary));
             transform: scaleX(0);
             transform-origin: left;
-            transition: transform var(--transition-normal);
+            transition: transform 0.5s;
         }
-
-        .card:hover:before {
+        
+        .service-card:hover:before {
             transform: scaleX(1);
         }
-
-        .card-icon {
-            font-size: var(--text-3xl);
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(108, 92, 231, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 32px;
             color: var(--secondary);
-            margin-bottom: var(--spacing-md);
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: var(--radius-full);
-            background: rgba(0, 212, 200, 0.1); /* Light cyan background for icon */
+            transition: var(--transition);
         }
-
-        /* Grid Layout */
-        .grid {
-            display: grid;
-            gap: var(--spacing-md);
-        }
-
-        .grid-cols-2 {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        .grid-cols-3 {
-            grid-template-columns: repeat(3, 1fr);
-        }
-
-        /* About Section */
-        .about-content {
-            display: flex;
-            gap: var(--spacing-xl);
-            align-items: flex-start;
-            flex-wrap: wrap; /* Allow wrapping */
-        }
-
-        .about-text {
-            flex: 1;
-            min-width: 300px; /* Ensure text block doesn't get too small */
-        }
-
-        .mission-vision {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-md);
-            min-width: 300px; /* Ensure cards don't get too small */
-        }
-
-        .mission-card, .vision-card {
-            padding: var(--spacing-lg);
-            box-shadow: var(--shadow-sm); /* Apply card shadow */
-        }
-
-        .mission-card h3, .vision-card h3 {
-            color: var(--secondary);
-            margin-bottom: var(--spacing-sm);
-        }
-
-        /* Services Section */
-        .service-card {
-            text-align: center;
-            padding: var(--spacing-lg);
-        }
-
-        .service-card .card-icon {
-            margin: 0 auto var(--spacing-md); /* Center icon */
-        }
-
-        .service-card h3 {
-            margin-bottom: var(--spacing-sm);
-        }
-
-        /* Technologies Section (Custom CSS for the diagram) */
-        .tech-diagram-container {
-            position: relative;
-            width: 100%;
-            height: 500px; /* Fixed height for the diagram area */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: var(--spacing-xl);
-            background: radial-gradient(circle at center, rgba(108, 92, 231, 0.05) 0%, transparent 70%);
-            border-radius: var(--radius-xl);
-            overflow: hidden;
-        }
-
-        .tech-line {
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            position: absolute;
-            opacity: 0.6;
-            transition: all var(--transition-normal);
-            box-shadow: 0 0 8px rgba(0, 212, 200, 0.4);
-        }
-        /* Specific line positioning and rotation */
-        .tech-line.h-center-left { height: 2px; width: 20%; top: 50%; left: 20%; transform: translateY(-50%); }
-        .tech-line.h-center-right { height: 2px; width: 20%; top: 50%; right: 20%; transform: translateY(-50%); }
-        .tech-line.v-center-top { width: 2px; height: 40%; left: 50%; top: 10%; transform: translateX(-50%); }
-        .tech-line.v-center-bottom { width: 2px; height: 40%; left: 50%; bottom: 10%; transform: translateX(-50%); }
-        .tech-line.diag-top-left { width: 2px; height: 18%; top: 16%; left: 30%; transform: rotate(-45deg) translateY(-50%); transform-origin: top left; }
-        .tech-line.diag-bottom-left { width: 2px; height: 18%; bottom: 16%; left: 30%; transform: rotate(45deg) translateY(50%); transform-origin: bottom left; }
-        .tech-line.diag-top-right { width: 2px; height: 18%; top: 16%; right: 30%; transform: rotate(45deg) translateY(-50%); transform-origin: top right; }
-        .tech-line.diag-bottom-right { width: 2px; height: 18%; bottom: 16%; right: 30%; transform: rotate(-45deg) translateY(50%); transform-origin: bottom right; }
-
-
-        #tech-hub {
-            width: 140px;
-            height: 140px;
-            border-radius: var(--radius-full);
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            font-family: var(--font-heading);
-            font-weight: 700;
-            font-size: var(--text-lg);
-            box-shadow: var(--shadow-lg), var(--glow-primary);
-            z-index: 10;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: var(--spacing-sm);
-        }
-
-        .tech-node {
-            width: 120px;
-            height: 120px;
-            border-radius: var(--radius-full);
-            background: var(--surface-alt);
-            border: 2px solid var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: var(--spacing-xs);
-            font-weight: 600;
-            color: var(--text-main);
-            box-shadow: var(--shadow-sm);
-            transition: all var(--transition-fast);
-            cursor: pointer;
-            z-index: 5;
-            position: absolute;
-            transform: translate(-50%, -50%); /* Center nodes based on top/left */
-        }
-
-        .tech-node:hover {
+        
+        .service-card:hover .service-icon {
             background: var(--primary);
             color: white;
-            border-color: var(--secondary);
-            box-shadow: var(--shadow-md), var(--glow-secondary);
-            transform: translate(-50%, -50%) scale(1.05); /* Slight scale on hover */
+            transform: scale(1.1);
         }
-
-        /* Specific node positions */
-        .tech-node[data-tech="vr"] { top: 15%; left: 50%; }
-        .tech-node[data-tech="ai"] { top: 50%; left: 10%; }
-        .tech-node[data-tech="blockchain"] { top: 50%; left: 90%; }
-        .tech-node[data-tech="ar"] { top: 85%; left: 25%; }
-        .tech-node[data-tech="cloud"] { top: 85%; left: 75%; }
-        .tech-node[data-tech="iot"] { top: 15%; left: 25%; } /* New node example */
-        .tech-node[data-tech="cybersecurity"] { top: 15%; left: 75%; } /* New node example */
-
-
-        #tech-tooltip {
+        
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        /* Technologies Section */
+        .tech-showcase {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .tech-item {
+            width: 280px;
+            background: var(--surface);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+        
+        .tech-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(108, 92, 231, 0.3);
+        }
+        
+        .tech-header {
+            height: 180px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tech-header:before {
+            content: '';
             position: absolute;
-            bottom: 20px; /* Position above the bottom of the container */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 450px;
-            background: rgba(0, 0, 0, 0.85); /* Darker background for tooltip */
-            color: white;
-            padding: var(--spacing-md);
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-lg);
-            z-index: 20;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            opacity: 0.7;
+        }
+        
+        .tech-header h3 {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-size: 24px;
+            z-index: 2;
+        }
+        
+        .tech-content {
+            padding: 25px;
+        }
+        
+        .tech-content p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        /* Portfolio Section */
+        .portfolio {
+            background: var(--surface);
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .portfolio-item {
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            height: 300px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 15, 29, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
             opacity: 0;
-            visibility: hidden;
-            transition: opacity var(--transition-fast), visibility var(--transition-fast);
+            transition: var(--transition);
         }
-
-        #tech-tooltip.visible {
+        
+        .portfolio-item:hover .portfolio-overlay {
             opacity: 1;
-            visibility: visible;
         }
-
+        
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .portfolio-overlay h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .portfolio-overlay p {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
         /* Contact Section */
+        .contact-section {
+            background: var(--surface-alt);
+            border-radius: 20px;
+            padding: 60px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
         .contact-form {
             max-width: 700px;
             margin: 0 auto;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: var(--spacing-xl);
-            box-shadow: var(--shadow-md);
         }
-
+        
         .form-group {
-            margin-bottom: var(--spacing-md);
+            margin-bottom: 25px;
         }
-
-        .form-label {
+        
+        .form-group label {
             display: block;
-            margin-bottom: var(--spacing-xs);
+            margin-bottom: 8px;
             font-weight: 500;
-            color: var(--text-heading);
         }
-
+        
         .form-control {
             width: 100%;
-            padding: 14px 16px;
-            background: var(--background); /* Darker input background */
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
             color: var(--text-main);
-            font-family: var(--font-body);
-            font-size: var(--text-base);
-            transition: all var(--transition-fast);
+            font-size: 16px;
+            transition: var(--transition);
         }
-
+        
         .form-control:focus {
             outline: none;
-            border-color: var(--secondary);
-            box-shadow: 0 0 0 3px rgba(0, 212, 200, 0.2);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
         }
-
+        
         textarea.form-control {
             min-height: 150px;
             resize: vertical;
         }
-
-        /* Footer */
-        .footer {
-            background: var(--surface);
-            padding: var(--spacing-xxl) 0 var(--spacing-md);
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-grid {
+        
+        .contact-info {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: var(--spacing-lg);
-            margin-bottom: var(--spacing-xl);
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
         }
-
-        .footer-column h3 {
-            font-size: var(--text-lg);
-            margin-bottom: var(--spacing-md);
-            position: relative;
-            padding-bottom: var(--spacing-sm);
-        }
-
-        .footer-column h3:after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background: var(--secondary);
-        }
-
-        .footer-links {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer-links li {
-            margin-bottom: var(--spacing-sm);
-        }
-
-        .footer-links a {
-            color: var(--text-main);
-            transition: color var(--transition-fast), transform var(--transition-fast);
-            display: inline-block;
-        }
-
-        .footer-links a:hover {
-            color: var(--secondary);
-            transform: translateX(5px);
-        }
-
-        .social-links {
+        
+        .info-card {
             display: flex;
-            gap: var(--spacing-sm);
-            margin-top: var(--spacing-md);
+            align-items: center;
+            gap: 20px;
         }
-
-        .social-link {
+        
+        .info-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(108, 92, 231, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 24px;
+            color: var(--secondary);
+        }
+        
+        .info-content h4 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--surface);
+            padding: 80px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--text-main);
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
             width: 40px;
             height: 40px;
-            border-radius: var(--radius-full);
-            background: var(--surface-alt);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: var(--text-main);
-            transition: all var(--transition-fast);
+            transition: var(--transition);
         }
-
+        
         .social-link:hover {
             background: var(--primary);
-            color: white;
-            transform: translateY(-3px);
+            transform: translateY(-5px);
         }
-
+        
         .copyright {
             text-align: center;
-            padding-top: var(--spacing-lg);
-            border-top: 1px solid var(--border);
-            font-size: var(--text-sm);
-            color: rgba(224, 230, 240, 0.7);
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
         }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInScale {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .animate {
-            animation: fadeIn 0.8s ease forwards;
-        }
-
-        .animate-fade-in {
-            animation: fadeInScale 0.8s ease forwards;
-        }
-
+        
         /* Responsive Design */
-        @media (max-width: 1024px) {
-            .hero-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .hero-text {
-                max-width: 100%;
-            }
-            
-            .hero p {
-                max-width: 100%;
-            }
-            
-            .hero-image {
-                width: 100%;
-                max-width: 500px;
-                margin: var(--spacing-xl) auto 0; /* Adjust margin for spacing */
-            }
-            
-            .grid-cols-3 {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: var(--spacing-xl);
-            }
-
-            .tech-diagram-container {
-                height: 600px; /* Increase height for better spacing on smaller screens */
-            }
-            .tech-node {
-                width: 100px;
-                height: 100px;
-                font-size: var(--text-sm);
-            }
-            #tech-hub {
-                width: 120px;
-                height: 120px;
-                font-size: var(--text-base);
+        @media (max-width: 1200px) {
+            .vr-headset {
+                width: 400px;
+                height: 400px;
             }
         }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: var(--text-4xl);
+        
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 48px;
             }
             
-            h2 {
-                font-size: var(--text-3xl);
-            }
-            
-            .grid-cols-2,
-            .grid-cols-3 {
-                grid-template-columns: 1fr;
+            .vr-headset {
+                position: relative;
+                top: auto;
+                transform: none;
+                margin: 50px auto 0;
+                width: 350px;
+                height: 350px;
             }
             
             .about-content {
                 flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 36px;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--surface);
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
             }
             
             .mobile-menu-btn {
                 display: block;
             }
             
-            .nav-list {
-                position: fixed;
-                top: 0;
-                right: -100%; /* Off-screen by default */
-                height: 100vh;
-                width: 280px;
-                background: var(--surface);
-                flex-direction: column;
-                padding: var(--spacing-xxl) var(--spacing-lg);
-                transition: right var(--transition-normal);
-                box-shadow: var(--shadow-lg);
-                z-index: 1000;
+            .contact-section {
+                padding: 40px 20px;
             }
             
-            .nav-list.active {
-                right: 0; /* Slide in */
-            }
-            
-            .footer-grid {
+            .mission-vision {
                 grid-template-columns: 1fr;
             }
-
-            .tech-diagram-container {
-                height: 700px; /* Further increase height for mobile */
-            }
-            .tech-node {
-                width: 90px;
-                height: 90px;
-                font-size: var(--text-xs);
-            }
-            #tech-hub {
-                width: 110px;
-                height: 110px;
-                font-size: var(--text-sm);
-            }
-            /* Adjust node positions for smaller screens if needed */
-            .tech-node[data-tech="vr"] { top: 10%; left: 50%; }
-            .tech-node[data-tech="ai"] { top: 30%; left: 15%; }
-            .tech-node[data-tech="blockchain"] { top: 30%; left: 85%; }
-            .tech-node[data-tech="ar"] { top: 70%; left: 15%; }
-            .tech-node[data-tech="cloud"] { top: 70%; left: 85%; }
-            .tech-node[data-tech="iot"] { top: 50%; left: 10%; } /* Adjusting for more space */
-            .tech-node[data-tech="cybersecurity"] { top: 50%; left: 90%; } /* Adjusting for more space */
         }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: var(--text-3xl);
+        
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 32px;
             }
             
-            h2 {
-                font-size: var(--text-2xl);
+            .hero-btns {
+                flex-direction: column;
             }
             
-            .hero {
-                padding: var(--spacing-xl) 0;
+            .hero-btns .btn {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 15px;
             }
-            
-            .section {
-                padding: var(--spacing-xl) 0;
-            }
-            .tech-diagram-container {
-                height: 800px; /* Max height for very small screens */
-            }
-            .tech-node {
-                width: 80px;
-                height: 80px;
-                font-size: 0.65rem; /* Smaller font for small nodes */
-            }
-            #tech-hub {
-                width: 100px;
-                height: 100px;
-                font-size: var(--text-sm);
-            }
-            /* Fine-tune node positions for very small screens */
-            .tech-node[data-tech="vr"] { top: 8%; left: 50%; }
-            .tech-node[data-tech="ai"] { top: 25%; left: 10%; }
-            .tech-node[data-tech="blockchain"] { top: 25%; left: 90%; }
-            .tech-node[data-tech="ar"] { top: 75%; left: 10%; }
-            .tech-node[data-tech="cloud"] { top: 75%; left: 90%; }
-            .tech-node[data-tech="iot"] { top: 50%; left: 10%; }
-            .tech-node[data-tech="cybersecurity"] { top: 50%; left: 90%; }
         }
     </style>
 </head>
 <body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="preloader-logo">Virtuquest</div>
+            <div class="preloader-spinner"></div>
+        </div>
+    </div>
+
     <!-- Header -->
-    <header class="header" id="header">
-        <div class="header-inner">
-            <div class="logo">Virtuquest</div>
-            <nav class="navbar-nav-custom"> <!-- Custom class to avoid Bootstrap conflict -->
-                <ul class="nav-list" id="navMenu">
-                    <li><a href="#hero" class="nav-link active">Home</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#services" class="nav-link">Services</a></li>
-                    <li><a href="#technologies" class="nav-link">Technologies</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
+    <header id="header">
+        <div class="container">
+            <div class="header-container">
+                <a href="#" class="logo">Virtuquest</a>
+                <nav>
+                    <ul id="navMenu">
+                        <li><a href="#home" class="nav-link active">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#tech">Technologies</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </nav>
+            </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
+    <!-- Home Section -->
+    <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-text">
-                    <h1>SHAPING TOMORROW'S REALITY TODAY</h1>
-                    <p>Virtuquest pioneers cutting-edge virtual reality experiences, AI-driven solutions, and immersive digital platforms that transform how we work, learn, and connect. We specialize in creating boundary-pushing XR environments and intelligent automation systems.</p>
-                    <a href="#contact" class="btn btn-primary mr-3">Explore Possibilities</a>
-                    <a href="#services" class="btn btn-secondary">Our Services</a>
+                <h6>IMMERSIVE TECHNOLOGY SOLUTIONS</h6>
+                <h1>SHAPING TOMORROW'S REALITY TODAY</h1>
+                <p>Virtuquest pioneers cutting-edge virtual reality experiences, AI-driven solutions, and immersive digital platforms that transform how we work, learn, and connect.</p>
+                <div class="hero-btns">
+                    <a href="#services" class="btn btn-primary">Explore Services</a>
+                    <a href="#contact" class="btn btn-secondary">Contact Us</a>
                 </div>
-                <div class="hero-image">
-                    <div class="hero-image-container">
-                        <div class="hero-image-placeholder">
-                            <i class="fas fa-headset fa-4x" style="color: white; text-shadow: 0 0 15px rgba(255,255,255,0.5);"></i>
-                            <p class="mt-3">Immersive VR Experience</p>
+            </div>
+        </div>
+        <div class="vr-headset">
+            <img src="https://cdn-icons-png.flaticon.com/512/6866/6866849.png" alt="VR Headset">
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-heading">
+                <h2>About Virtuquest</h2>
+                <div class="line-dec"></div>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="VR Experience">
+                </div>
+                <div class="about-text">
+                    <h3>Pioneering Immersive Experiences</h3>
+                    <p>At Virtuquest, we merge imagination with technology to create transformative experiences. As pioneers in virtual reality and artificial intelligence, we develop solutions that redefine how businesses engage with their audiences, how professionals acquire new skills, and how communities access technology.</p>
+                    <p>Our multidisciplinary team of technologists, creatives, and social innovators collaborates to build immersive platforms that solve real-world challenges while pushing the boundaries of what's possible in digital spaces.</p>
+                    <div class="mission-vision">
+                        <div class="mission-card">
+                            <h4><i class="fas fa-bullseye"></i> Our Mission</h4>
+                            <p>To democratize access to emerging technologies by creating affordable, scalable solutions that enhance education, professional development, and community engagement across diverse populations.</p>
+                        </div>
+                        <div class="vision-card">
+                            <h4><i class="fas fa-eye"></i> Our Vision</h4>
+                            <p>A world where geographical and socioeconomic barriers are eliminated through immersive technologies that connect, educate, and empower individuals and organizations globally.</p>
                         </div>
                     </div>
                 </div>
@@ -985,190 +936,264 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="section" id="about">
-        <div class="container">
-            <div class="section-title-container">
-                <h2>About Virtuquest</h2>
-            </div>
-            <div class="about-content animate">
-                <div class="about-text">
-                    <p>At Virtuquest, we merge imagination with technology to create transformative experiences. As pioneers in virtual reality and artificial intelligence, we develop solutions that redefine how businesses engage with their audiences, how professionals acquire new skills, and how communities access technology.</p>
-                    <p>Our multidisciplinary team of technologists, creatives, and social innovators collaborates to build immersive platforms that solve real-world challenges while pushing the boundaries of what's possible in digital spaces.</p>
-                </div>
-                <div class="mission-vision">
-                    <div class="card mission-card">
-                        <h3>Our Mission</h3>
-                        <p>To democratize access to emerging technologies by creating affordable, scalable solutions that enhance education, professional development, and community engagement across diverse populations.</p>
-                    </div>
-                    <div class="card vision-card">
-                        <h3>Our Vision</h3>
-                        <p>A world where geographical and socioeconomic barriers are eliminated through immersive technologies that connect, educate, and empower individuals and organizations globally.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Services Section -->
-    <section class="section" id="services">
+    <section id="services" class="services">
         <div class="container">
-            <div class="section-title-container">
+            <div class="section-heading">
                 <h2>Our Services</h2>
+                <div class="line-dec"></div>
             </div>
-            <div class="grid grid-cols-3">
-                <div class="service-card card animate">
-                    <div class="card-icon">
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
                         <i class="fas fa-vr-cardboard"></i>
                     </div>
                     <h3>XR Experience Development</h3>
                     <p>Crafting immersive Virtual, Augmented, and Mixed Reality applications for training, entertainment, and interactive marketing.</p>
                 </div>
-                <div class="service-card card animate">
-                    <div class="card-icon">
+                
+                <div class="service-card">
+                    <div class="service-icon">
                         <i class="fas fa-robot"></i>
                     </div>
                     <h3>AI & Automation Solutions</h3>
                     <p>Implementing intelligent systems for data analysis, predictive modeling, and process automation to drive efficiency.</p>
                 </div>
-                <div class="service-card card animate">
-                    <div class="card-icon">
+                
+                <div class="service-card">
+                    <div class="service-icon">
                         <i class="fas fa-users-cog"></i>
                     </div>
                     <h3>Digital Platform Integration</h3>
                     <p>Seamlessly integrating cutting-edge technologies into existing systems to enhance functionality and user experience.</p>
                 </div>
-                <div class="service-card card animate">
-                    <div class="card-icon">
+                
+                <div class="service-card">
+                    <div class="service-icon">
                         <i class="fas fa-handshake"></i>
                     </div>
                     <h3>Tech for Social Impact</h3>
                     <p>Developing accessible technology solutions and initiatives to bridge the digital divide and empower underserved communities.</p>
                 </div>
-                <div class="service-card card animate">
-                    <div class="card-icon">
-                        <i class="fas fa-cloud"></i>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
                     </div>
-                    <h3>Cloud Infrastructure</h3>
-                    <p>Designing and deploying scalable, secure cloud solutions for robust data management and application hosting.</p>
+                    <h3>Consulting & Strategy</h3>
+                    <p>Providing expert guidance on emerging tech trends, innovation roadmaps, and digital transformation strategies.</p>
                 </div>
-                <div class="service-card card animate">
-                    <div class="card-icon">
-                        <i class="fas fa-shield-alt"></i>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cubes"></i>
                     </div>
-                    <h3>Cybersecurity Consulting</h3>
-                    <p>Protecting your digital assets with advanced security strategies, threat detection, and compliance solutions.</p>
+                    <h3>Immersive Event Solutions</h3>
+                    <p>Designing and deploying interactive installations and virtual event platforms that create memorable experiences.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Technologies Section (Interactive Diagram) -->
-    <section class="section" id="technologies">
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
         <div class="container">
-            <div class="section-title-container">
-                <h2>Our Technology Stack</h2>
-                <p class="text-main">Technology is the engine of our innovation. This diagram illustrates the key technologies we leverage. Hover over any node to understand how we utilize it to build intelligent, secure, and scalable solutions for our partners.</p>
+            <div class="section-heading">
+                <h2>Our Portfolio</h2>
+                <div class="line-dec"></div>
             </div>
-            <div class="tech-diagram-container">
-                <!-- Lines connecting the nodes -->
-                <div class="tech-line h-center-left"></div>
-                <div class="tech-line h-center-right"></div>
-                <div class="tech-line v-center-top"></div>
-                <div class="tech-line v-center-bottom"></div>
-                <div class="tech-line diag-top-left"></div>
-                <div class="tech-line diag-bottom-left"></div>
-                <div class="tech-line diag-top-right"></div>
-                <div class="tech-line diag-bottom-right"></div>
-
-                <!-- Central Hub -->
-                <div id="tech-hub">Virtuquest Core</div>
-
-                <!-- Technology Nodes -->
-                <div data-tech="vr" class="tech-node">Virtual Reality</div>
-                <div data-tech="ai" class="tech-node">Artificial Intelligence</div>
-                <div data-tech="blockchain" class="tech-node">Blockchain</div>
-                <div data-tech="ar" class="tech-node">Augmented Reality</div>
-                <div data-tech="cloud" class="tech-node">Cloud Computing</div>
-                <div data-tech="iot" class="tech-node">IoT Solutions</div>
-                <div data-tech="cybersecurity" class="tech-node">Cybersecurity</div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1620336655052-b57986f5a26a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="VR Project">
+                    <div class="portfolio-overlay">
+                        <h3>Virtual Training Platform</h3>
+                        <p>Immersive training solution for industrial safety</p>
+                        <a href="#" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
                 
-                <!-- Tooltip for details on hover -->
-                <div id="tech-tooltip">
-                    <p></p>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1589254066213-a0c9dc853511?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="VR Project">
+                    <div class="portfolio-overlay">
+                        <h3>AR Retail Experience</h3>
+                        <p>Augmented reality shopping assistant</p>
+                        <a href="#" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1677442135135-4e7a3a5a5c5a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="VR Project">
+                    <div class="portfolio-overlay">
+                        <h3>VR Educational Platform</h3>
+                        <p>Virtual classrooms for remote learning</p>
+                        <a href="#" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies Section -->
+    <section id="tech">
+        <div class="container">
+            <div class="section-heading">
+                <h2>Our Technologies</h2>
+                <div class="line-dec"></div>
+            </div>
+            <div class="tech-showcase">
+                <div class="tech-item">
+                    <div class="tech-header" style="background: url('https://images.unsplash.com/photo-1589254066213-a0c9dc853511?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80') center/cover;">
+                        <h3>Virtual Reality</h3>
+                    </div>
+                    <div class="tech-content">
+                        <p>Pioneering immersive virtual environments for training, simulation, and collaborative experiences.</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="tech-item">
+                    <div class="tech-header" style="background: url('https://images.unsplash.com/photo-1677442135135-4e7a3a5a5c5a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80') center/cover;">
+                        <h3>Artificial Intelligence</h3>
+                    </div>
+                    <div class="tech-content">
+                        <p>Leveraging AI to build intelligent automation, predictive analytics, and enhanced user interactions.</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="tech-item">
+                    <div class="tech-header" style="background: url('https://images.unsplash.com/photo-1620336655052-b57986f5a26a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80') center/cover;">
+                        <h3>Augmented Reality</h3>
+                    </div>
+                    <div class="tech-content">
+                        <p>Developing AR applications that blend digital content with the real world for interactive experiences.</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="section" id="contact">
+    <section id="contact">
         <div class="container">
-            <div class="section-title-container">
-                <h2>Get in Touch</h2>
+            <div class="section-heading">
+                <h2>Contact Us</h2>
+                <div class="line-dec"></div>
             </div>
-            <div class="contact-form animate">
-                <form action="#" method="POST">
-                    <div class="form-group">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" id="name" name="name" class="form-control" placeholder="Your Name" required>
+            <div class="contact-section">
+                <div class="contact-form">
+                    <p class="text-center" style="margin-bottom: 40px; font-size: 18px;">Have a project in mind or just want to chat about the future of technology? Reach out to us!</p>
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input type="text" class="form-control" placeholder="Your Name" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" class="form-control" placeholder="name@example.com" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Subject</label>
+                            <input type="text" class="form-control" placeholder="Project Inquiry, Partnership, etc." required>
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea class="form-control" placeholder="Tell us about your needs..." required></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="contact-info">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Location</h4>
+                            <p>123 Future Tech Ave, Innovation City</p>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" id="email" name="email" class="form-control" placeholder="your.email@example.com" required>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Phone</h4>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="subject" class="form-label">Subject</label>
-                        <input type="text" id="subject" name="subject" class="form-control" placeholder="Inquiry Subject" required>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Email</h4>
+                            <p>info@virtuquest.com</p>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="message" class="form-label">Message</label>
-                        <textarea id="message" name="message" class="form-control" rows="5" placeholder="Your message here..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary w-full">Send Message</button>
-                </form>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-column">
-                    <div class="logo mb-3">Virtuquest</div>
-                    <p>Pioneering immersive experiences and intelligent solutions for a connected future.</p>
+                    <h3>Virtuquest</h3>
+                    <p>Pioneering cutting-edge virtual reality experiences, AI-driven solutions, and immersive digital platforms.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
+                
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
-                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#home">Home</a></li>
                         <li><a href="#about">About Us</a></li>
                         <li><a href="#services">Services</a></li>
-                        <li><a href="#technologies">Technologies</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#tech">Technologies</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
                     </ul>
                 </div>
+                
                 <div class="footer-column">
                     <h3>Services</h3>
                     <ul class="footer-links">
-                        <li><a href="#services">XR Development</a></li>
-                        <li><a href="#services">AI Solutions</a></li>
-                        <li><a href="#services">Platform Integration</a></li>
-                        <li><a href="#services">Social Impact Tech</a></li>
+                        <li><a href="#">XR Experience Development</a></li>
+                        <li><a href="#">AI & Automation Solutions</a></li>
+                        <li><a href="#">Digital Platform Integration</a></li>
+                        <li><a href="#">Tech for Social Impact</a></li>
+                        <li><a href="#">Consulting & Strategy</a></li>
+                        <li><a href="#">Immersive Event Solutions</a></li>
                     </ul>
                 </div>
+                
                 <div class="footer-column">
-                    <h3>Connect</h3>
-                    <p>123 Tech Avenue, Future City, FC 98765</p>
-                    <p>Email: info@virtuquest.com</p>
-                    <p>Phone: +1 (555) 123-4567</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    </div>
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Future Tech Ave, Innovation City</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@virtuquest.com</li>
+                    </ul>
                 </div>
             </div>
             <div class="copyright">
@@ -1177,112 +1202,105 @@
         </div>
     </footer>
 
-    <!-- jQuery, Popper.js, and Bootstrap JS (for carousel and toggler) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
-
     <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('.nav-list a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-
-                const targetId = this.getAttribute('href');
-                if (targetId && targetId !== '#') {
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                        // Close mobile menu if open
-                        const navMenu = document.getElementById('navMenu');
-                        if (navMenu.classList.contains('active')) {
-                            navMenu.classList.remove('active');
-                        }
-                    }
-                }
-            });
+        // Preloader
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            setTimeout(function() {
+                preloader.style.opacity = '0';
+                preloader.style.visibility = 'hidden';
+            }, 1500);
         });
 
-        // Add 'scrolled' class to header on scroll
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close menu when clicking a nav link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Header scroll effect
         window.addEventListener('scroll', function() {
             const header = document.getElementById('header');
-            if (window.scrollY > 50) {
+            if (window.scrollY > 100) {
                 header.classList.add('header-scrolled');
             } else {
                 header.classList.remove('header-scrolled');
             }
-
-            // Highlight active nav link based on scroll position
+            
+            // Update active nav link
             const sections = document.querySelectorAll('section');
             const navLinks = document.querySelectorAll('.nav-link');
-
+            
             sections.forEach(section => {
-                const sectionTop = section.offsetTop - header.offsetHeight - 20; // Adjusted for header height
-                const sectionBottom = sectionTop + section.offsetHeight;
-                const scrollPosition = window.scrollY;
-
-                if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop - 100 && window.scrollY < sectionTop + sectionHeight - 100) {
+                    const id = section.getAttribute('id');
                     navLinks.forEach(link => {
                         link.classList.remove('active');
-                        if (link.getAttribute('href') === '#' + section.id) {
+                        if (link.getAttribute('href') === `#${id}`) {
                             link.classList.add('active');
                         }
                     });
                 }
             });
         });
-
-        // Mobile menu toggle
-        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
-            const navMenu = document.getElementById('navMenu');
-            navMenu.classList.toggle('active');
-        });
-
-        // Technology Diagram Tooltip Logic
-        const techNodes = document.querySelectorAll('.tech-node');
-        const techTooltip = document.getElementById('tech-tooltip');
-        const tooltipText = techTooltip.querySelector('p');
-
-        const techDescriptions = {
-            vr: "Our Virtual Reality solutions create fully immersive digital environments for training, simulation, and entertainment.",
-            ai: "Leveraging Artificial Intelligence for intelligent automation, data analysis, and predictive insights across various industries.",
-            blockchain: "Implementing secure and transparent Blockchain technology for decentralized applications, digital assets, and supply chain management.",
-            ar: "Developing Augmented Reality experiences that blend digital information with the real world, enhancing interaction and productivity.",
-            cloud: "Building scalable and resilient Cloud Computing infrastructures for robust data storage, processing, and application delivery.",
-            iot: "Connecting physical devices to the internet for smart automation, data collection, and real-time monitoring in various sectors.",
-            cybersecurity: "Providing advanced Cybersecurity measures to protect digital assets, ensure data privacy, and maintain system integrity against evolving threats."
+        
+        // Animation on scroll
+        const animateOnScroll = function() {
+            const elements = document.querySelectorAll('.service-card, .tech-item, .portfolio-item');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
         };
-
-        techNodes.forEach(node => {
-            node.addEventListener('mouseenter', function() {
-                const techKey = this.dataset.tech;
-                if (techDescriptions[techKey]) {
-                    tooltipText.textContent = techDescriptions[techKey];
-                    techTooltip.classList.add('visible');
-                }
-            });
-
-            node.addEventListener('mouseleave', function() {
-                techTooltip.classList.remove('visible');
-            });
-
-            // For touch devices: show tooltip on tap, hide on next tap anywhere else
-            node.addEventListener('click', function(e) {
-                e.stopPropagation(); // Prevent document click from immediately hiding
-                const techKey = this.dataset.tech;
-                if (techDescriptions[techKey]) {
-                    tooltipText.textContent = techDescriptions[techKey];
-                    techTooltip.classList.add('visible');
-                }
-            });
+        
+        // Set initial state for animated elements
+        document.querySelectorAll('.service-card, .tech-item, .portfolio-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         });
-
-        // Hide tooltip when clicking anywhere else on touch devices
-        document.addEventListener('click', function(e) {
-            if (!techTooltip.contains(e.target) && !e.target.closest('.tech-node')) {
-                techTooltip.classList.remove('visible');
+        
+        // Initialize scroll animations
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Trigger on initial load
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set active nav link for home initially
+            if (window.location.hash === '') {
+                document.querySelector('.nav-link[href="#home"]').classList.add('active');
             }
         });
     </script>
