@@ -557,7 +557,7 @@
             flex: 1;
             min-width: 400px;
             height: 450px;
-            background-image: url('../images/background.jpg');
+            background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80');
             background-size: cover;
             background-position: center;
             border-radius: 16px;
@@ -677,7 +677,7 @@
             flex: 1;
             min-width: 400px;
             height: 450px;
-            background-image: url('../images/backgound\ 2.jpg');
+            background-image: url('https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80');
             background-size: cover;
             background-position: center;
             border-radius: 16px;
@@ -731,7 +731,7 @@
         /* Banner Photo Section */
         .banner-photo-section {
             padding: 8rem 0;
-            background-image: url('../images/virtualreality.jpg');
+            background-image: url('https://images.unsplash.com/photo-1511882150382-421056c89033?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80');
             background-size: cover;
             background-position: center;
             position: relative;
@@ -841,7 +841,7 @@
             min-width: 400px;
             max-width: 600px;
             height: 350px;
-            background-image: url('../images/kidvr.jpg');
+            background-image: url('https://images.unsplash.com/photo-1577741314755-048d8525d31e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80');
             background-size: cover;
             background-position: center;
             border-radius: 16px;
@@ -958,6 +958,116 @@
         footer p {
             margin-bottom: 0;
         }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+                margin-bottom: 2.5rem;
+            }
+            
+            .virtual-reality-section, 
+            .white-brain-section,
+            .key-benefits-section {
+                flex-direction: column;
+                gap: 2rem;
+                padding: 3rem 1.5rem;
+            }
+            
+            .virtual-image-box, 
+            .white-brain-image-box,
+            .virtual-text-content,
+            .white-brain-text-content,
+            .key-left-content,
+            .key-right-content {
+                min-width: 100%;
+                max-width: 100%;
+            }
+            
+            .virtual-image-box, 
+            .white-brain-image-box {
+                height: 300px;
+            }
+            
+            .virtual-text-content .main-heading,
+            .white-brain-text-content h2,
+            .key-left-content h2 {
+                font-size: 2.2rem;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .benefit-card h3 {
+                font-size: 1.8rem;
+            }
+            
+            .photo-text-content .main-heading {
+                font-size: 2.5rem;
+            }
+            
+            .follow-section h1 {
+                font-size: 2.2rem;
+            }
+            
+            .key-right-content {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content {
+                padding: 2rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .virtual-text-content .main-heading,
+            .white-brain-text-content h2,
+            .key-left-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .virtual-text-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .virtual-circle-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            
+            .photo-text-content .main-heading {
+                font-size: 2rem;
+            }
+            
+            .follow-social-links a {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            
+            .container {
+                padding: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -984,18 +1094,11 @@
     <main>
         <section class="hero-section">
             <div class="hero-content">
- <div class="hero-content">
-    <h1>Welcome to VirtuQuest</h1>
-    <p>Step into the world of immersive virtual reality with VirtuQuest. We bring cutting-edge VR headsets and experiences to life — whether for gaming, training, or exploration.</p>
-    <a href="./pages/portfolio.html" class="hero-button">Explore More</a>
-</div>
-
-
-             
+                <h1>Welcome to VirtuQuest</h1>
+                <p>Step into the world of immersive virtual reality with VirtuQuest. We bring cutting-edge VR headsets and experiences to life — whether for gaming, training, or exploration.</p>
+                <a href="./pages/portfolio.html" class="hero-button">Explore More</a>
             </div>
         </section>
-
-    
 
         <section class="section virtual-reality-section">
             <div class="virtual-image-box"></div>
@@ -1014,10 +1117,6 @@
                 </div>
             </div>
         </section>
-
-
-
-
 
         <section class="section white-brain-section">
             <div class="white-brain-text-content">
@@ -1054,9 +1153,7 @@
             </div>
         </section>
 
-
-        
-            <section class="section benefits-cards-section">
+        <section class="section benefits-cards-section">
             <div class="container">
                 <h2 class="section-title">VR's Surprising Benefits</h2>
                 <p class="section-subtitle">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
@@ -1089,7 +1186,6 @@
             </div>
         </section>
 
-     
         <section class="section follow-section">
             <h1>Connect with the Virtuquest World</h1>
             <p>Follow us for the latest in immersive experiences, VR gaming, hardware reviews, and futuristic tech.</p>
