@@ -665,7 +665,7 @@
             flex: 1;
             min-width: 400px;
             height: 450px;
-            background-image: url('https://placehold.co/600x450/6C5CE7/FFFFFF?text=Virtual+Reality');
+            background-image: url('../images/background.jpg');
             background-size: cover;
             background-position: center;
             border-radius: 16px;
@@ -771,7 +771,7 @@
             color: var(--text-main);
         }
 
-        /* White Brain Section */
+        /*  Brain Section */
         .white-brain-section {
             padding: 6rem 0;
             display: flex;
@@ -785,7 +785,7 @@
             flex: 1;
             min-width: 400px;
             height: 450px;
-            background-image: url('https://placehold.co/600x450/00BCD4/FFFFFF?text=Brain+Scan');
+            background-image: url('../images/backgound\ 2.jpg');
             background-size: cover;
             background-position: center;
             border-radius: 16px;
@@ -839,7 +839,7 @@
         /* Banner Photo Section */
         .banner-photo-section {
             padding: 8rem 0;
-            background-image: url('./img/background.jpg');
+            background-image: url('../images/vrbg.jpg');
             background-size: cover;
             background-position: center;
             position: relative;
@@ -949,7 +949,7 @@
             min-width: 400px;
             max-width: 600px;
             height: 350px; /* Fixed height for visual consistency */
-            background-image: url('./img/banner.jpg');
+            background-image: url('../images/banner.jpg');
             background-size: cover;
             background-position: center;
             border-radius: 16px;
