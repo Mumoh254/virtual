@@ -12,6 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
      <link rel="stylesheet" href="./styles/index.css">
+     <link rel="stylesheet" href="../styles/footer.css">
     <style>
         :root {
             /* New Color Palette: Modern Dark & Gradient (from main index.html) */
@@ -1162,21 +1163,23 @@
 </head>
 <body>
     <!-- Header & Navigation -->
-    <header>
-        <div class="header-container container">
-            <a href="index.html" class="logo">Virtuquest</a>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-            <nav>
+   <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo" aria-label="Virtuquest Home">
+                <span>Virtuquest</span>
+            </a>
+            <nav class="navbar" id="mainNavbar">
                 <ul id="navMenu">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="about-us.html" class="nav-link active">About Us</a></li>
-                    <li><a href="services.html" class="nav-link">Services</a></li>
-                    <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
-                    <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="./pages/about.html" class="nav-link">About Us</a></li>
+                    <li><a href="./pages/services.html" class="nav-link">Services</a></li>
+                    <li><a href="./pages/portfolio.html" class="nav-link">Portfolio</a></li>
+                    <li><a href="./pages/contact.html" class="nav-link">Contact Us</a></li>
                 </ul>
             </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
 
@@ -1376,9 +1379,30 @@
 
     <!-- Footer -->
   
-    <footer>
-        <p><a href="#">Website Templates</a> created with <a href="">Website Builder Software</a>.</p>
-    </footer>
+    <section class="section follow-section">
+    <h1>Connect with the Virtuquest World</h1>
+    <p>Follow us for the latest in immersive experiences, VR gaming, hardware reviews, and futuristic tech.</p>
+    
+    <div class="follow-social-links">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-pinterest"></i></a>
+    </div>
+    
+    <div class="white-rectangle"></div>
+</section>
+
+<section class="section-footer">
+    <p>Step into new dimensions. Our platform is your gateway to free VR content, guides, and community-driven discovery.</p>
+</section>
+</main>
+
+<footer>
+    <p>VirtualRealityHub  built with 💡 using modern web tools and open-source creativity by welt tallis.</p>
+</footer>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
