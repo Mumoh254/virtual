@@ -1,126 +1,944 @@
-<!DOCTYPE HTML>
-<!--
-	Parallelism by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Parallelism by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		<link rel="stylesheet" href="../styles/footer.css">
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Virtuquest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* New Color Palette: Modern Dark & Gradient (Consistent across pages) */
+            --background: #0A0D14; /* Very dark blue-black */
+            --header-bg: rgba(10, 13, 20, 0.98); /* Almost opaque header */
+            --container-bg: rgba(25, 30, 40, 0.6); /* Slightly lighter, transparent dark blue-gray for cards/containers */
+            --text-main: #E0E6F0; /* Soft white for body text */
+            --text-heading: #F8FAFC; /* Pure white for main headings */
+            --white: #FFFFFF;
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+            /* Accent Colors - Sleeker, sophisticated */
+            --primary-accent: #6C5CE7; /* Deep, rich violet */
+            --secondary-accent: #00BCD4; /* Vibrant, modern cyan */
+            --cta-gradient-start: #FF6B6B; /* Soft red for CTA */
+            --cta-gradient-end: #FF9A8B; /* Lighter red for CTA */
 
-				<!-- Main -->
-					<section id="main">
+            /* Shadows & Glows - Subtler, more elegant */
+            --shadow-light: rgba(0, 0, 0, 0.2);
+            --shadow-medium: rgba(0, 0, 0, 0.4);
+            --shadow-strong: rgba(0, 0, 0, 0.6);
+            --accent-glow-light: rgba(108, 92, 231, 0.3); /* Violet glow */
+            --accent-glow-medium: rgba(108, 92, 231, 0.5);
+            --accent-glow-strong: rgba(108, 92, 231, 0.7);
+            --border-gradient: linear-gradient(90deg, transparent, var(--primary-accent) 20%, var(--secondary-accent) 80%, transparent);
+            --cta-shadow-color: rgba(255, 107, 107, 0.5);
+        }
 
-						<!-- Items -->
-							<div class="items">
+        /* Base Styles (Consistent across pages) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-								<div class="item intro span-2">
-									<h1>Parallelism</h1>
-									<p>A responsive portfolio site<br />
-									template by HTML5 UP</p>
-								</div>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--text-main);
+            line-height: 1.8;
+            overflow-x: hidden;
+            padding-top: 80px; /* Space for fixed header */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
 
-								<article class="item thumb span-1">
-									<h2>You really got me</h2>
-									<a href="images/fulls/01.jpg" class="image"><img src="images/thumbs/01.jpg" alt=""></a>
-								</article>
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(rgba(var(--primary-accent),0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(var(--primary-accent),0.02) 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.05;
+            z-index: -1;
+        }
 
-								<article class="item thumb span-2">
-									<h2>Ad Infinitum</h2>
-									<a href="images/fulls/02.jpg" class="image"><img src="images/thumbs/02.jpg" alt=""></a>
-								</article>
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 3px var(--accent-glow-light); /* Softer glow */
+        }
 
-								<article class="item thumb span-1">
-									<h2>Different.</h2>
-									<a href="images/fulls/03.jpg" class="image"><img src="images/thumbs/03.jpg" alt=""></a>
-								</article>
+        h1 {
+            font-size: 3.8rem; /* Larger, more impactful title */
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 25px var(--accent-glow-medium), 0 0 50px var(--accent-glow-strong);
+            margin-bottom: 2rem;
+        }
 
-								<article class="item thumb span-1">
-									<h2>Elysium</h2>
-									<a href="images/fulls/04.jpg" class="image"><img src="images/thumbs/04.jpg" alt=""></a>
-								</article>
+        h2.section-title { /* Specific for section titles */
+            font-size: 3.2rem; /* Consistent with main page section titles */
+            margin-bottom: 4rem; /* Consistent spacing */
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px var(--accent-glow-medium), 0 0 40px var(--accent-glow-strong);
+            width: 100%; /* Ensure it takes full width for centering */
+            text-align: center; /* Center the title */
+        }
 
-								<article class="item thumb span-3">
-									<h2>Kingdom of the Wind</h2>
-									<a href="images/fulls/05.jpg" class="image"><img src="images/thumbs/05.jpg" alt=""></a>
-								</article>
+        h2.section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px; /* Adjusted position */
+            left: 50%; /* Center the underline */
+            transform: translateX(-50%);
+            width: 80%; /* Shorter underline */
+            max-width: 400px; /* Max width for underline */
+            height: 3px; /* Thicker underline */
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            box-shadow: 0 0 10px var(--primary-accent);
+        }
 
-								<article class="item thumb span-1">
-									<h2>The Pursuit</h2>
-									<a href="images/fulls/06.jpg" class="image"><img src="images/thumbs/06.jpg" alt=""></a>
-								</article>
+        p {
+            margin-bottom: 1.2rem;
+            font-weight: 300;
+            color: var(--text-main);
+        }
 
-								<article class="item thumb span-2">
-									<h2>Boundless</h2>
-									<a href="images/fulls/07.jpg" class="image"><img src="images/thumbs/07.jpg" alt=""></a>
-								</article>
+        a {
+            color: var(--secondary-accent);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
 
-								<article class="item thumb span-2">
-									<h2>The Spectators</h2>
-									<a href="images/fulls/08.jpg" class="image"><img src="images/thumbs/08.jpg" alt=""></a>
-								</article>
+        a:hover {
+            color: var(--primary-accent);
+            text-shadow: 0 0 10px var(--secondary-accent);
+        }
 
-							</div>
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0rem; /* Consistent padding with main page */
+            position: relative;
+            z-index: 1;
+        }
 
-						<!-- Items -->
-							<div class="items">
+        /* Header & Navigation (Consistent across pages) */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            background-color: var(--header-bg);
+            border-bottom: 1px solid rgba(var(--primary-accent), 0.1);
+            box-shadow: 0 5px 20px var(--shadow-medium);
+            padding: 1rem 0;
+        }
 
-								<article class="item thumb span-3"><h2>Kingdom of the Wind</h2><a href="images/fulls/05.jpg" class="image"><img src="images/thumbs/05.jpg" alt=""></a></article>
-								<article class="item thumb span-1"><h2>The Pursuit</h2><a href="images/fulls/06.jpg" class="image"><img src="images/thumbs/06.jpg" alt=""></a></article>
-								<article class="item thumb span-2"><h2>Boundless</h2><a href="images/fulls/07.jpg" class="image"><img src="images/thumbs/07.jpg" alt=""></a></article>
-								<article class="item thumb span-2"><h2>The Spectators</h2><a href="images/fulls/08.jpg" class="image"><img src="images/thumbs/08.jpg" alt=""></a></article>
-								<article class="item thumb span-1"><h2>You really got me</h2><a href="images/fulls/01.jpg" class="image"><img src="images/thumbs/01.jpg" alt=""></a></article>
-								<article class="item thumb span-2"><h2>Ad Infinitum</h2><a href="images/fulls/02.jpg" class="image"><img src="images/thumbs/02.jpg" alt=""></a></article>
-								<article class="item thumb span-1"><h2>Different.</h2><a href="images/fulls/03.jpg" class="image"><img src="images/thumbs/03.jpg" alt=""></a></article>
-								<article class="item thumb span-2"><h2>Kingdom of the Wind</h2><a href="images/fulls/05.jpg" class="image"><img src="images/thumbs/05.jpg" alt=""></a></article>
-								<article class="item thumb span-1"><h2>Elysium</h2><a href="images/fulls/04.jpg" class="image"><img src="images/thumbs/04.jpg" alt=""></a></article>
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2.5rem; /* Consistent padding with main page */
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-							</div>
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem; /* Consistent with main page */
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary-accent) 0%, var(--secondary-accent) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px var(--accent-glow-medium);
+            letter-spacing: 1.5px;
+            position: relative;
+        }
 
-					</section>
-    <section class="section follow-section">
-    <h1>Connect with the Virtuquest World</h1>
-    <p>Follow us for the latest in immersive experiences, VR gaming, hardware reviews, and futuristic tech.</p>
-    
-    <div class="follow-social-links">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#"><i class="fab fa-pinterest"></i></a>
+        .logo::before { /* Underline effect for logo */
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            box-shadow: 0 0 10px var(--primary-accent);
+            transform-origin: left;
+            transform: scaleX(0);
+            transition: transform 0.4s ease-out;
+        }
+
+        .logo:hover::before {
+            transform: scaleX(1);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 3rem; /* Consistent gap */
+        }
+
+        nav ul li a {
+            font-family: 'Inter', sans-serif; /* Changed to Inter for nav links */
+            font-weight: 600;
+            font-size: 1rem;
+            position: relative;
+            padding: 0.8rem 0; /* Consistent padding */
+            color: var(--text-main); /* Consistent color */
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px; /* Consistent position */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px; /* Consistent thickness */
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        nav ul li a.active {
+            color: var(--primary-accent);
+            text-shadow: 0 0 8px var(--primary-accent);
+        }
+        nav ul li a.active::after {
+            width: 100%;
+            background: var(--primary-accent);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-accent); /* Consistent color */
+            font-size: 2.5rem; /* Consistent size */
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .mobile-menu-btn:hover {
+            color: var(--secondary-accent);
+        }
+
+        @media (max-width: 992px) {
+            nav ul {
+                position: fixed;
+                top: 80px; /* Adjust for header height */
+                right: -100%;
+                width: 280px; /* Slightly wider mobile menu */
+                height: calc(100vh - 80px);
+                background-color: var(--header-bg); /* Use header background */
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 30px;
+                transition: right 0.3s ease;
+                z-index: 1000;
+                border-left: 1px solid rgba(var(--primary-accent), 0.1);
+                box-shadow: -5px 0 20px var(--shadow-medium);
+            }
+
+            nav ul.active {
+                right: 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                z-index: 1001;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+            .header-container {
+                padding: 0 1.5rem;
+            }
+            .logo {
+                font-size: 1.8rem;
+            }
+            nav ul {
+                top: 70px; /* Adjust for smaller header height */
+                height: calc(100vh - 70px);
+            }
+        }
+        @media (max-width: 480px) {
+            body {
+                padding-top: 60px;
+            }
+            .header-container {
+                padding: 0 1rem;
+            }
+            .logo {
+                font-size: 1.5rem;
+            }
+            nav ul {
+                top: 60px; /* Adjust for smaller header height */
+                width: 100%; /* Full width mobile menu */
+                height: calc(100vh - 60px);
+            }
+        }
+
+        /* Main Content Wrapper */
+        .main-content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 0; /* Consistent padding with sections */
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Portfolio Section */
+        .portfolio-section {
+            padding: 6rem 0; /* Consistent padding */
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid for images */
+            gap: 2.5rem; /* Consistent gap */
+            margin-top: 4rem; /* Consistent margin */
+            padding: 0 0rem; /* Inner padding */
+        }
+
+        .portfolio-item {
+            background: var(--container-bg);
+            border-radius: 16px; /* Consistent border-radius */
+            /* Enhanced shadow for depth */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2), 0 0 15px rgba(108, 92, 231, 0.1);
+            padding: 1.5rem; /* Padding inside the card */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.3s ease; /* Consistent transition */
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(var(--primary-accent), 0.15); /* Consistent border */
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+            /* More pronounced shadow and glow on hover */
+            box-shadow: 0 15px 40px var(--shadow-medium), 0 0 30px var(--accent-glow-medium);
+            border-color: var(--primary-accent);
+        }
+
+        .portfolio-item .image {
+            display: block;
+            width: 100%;
+            height: 250px; /* Fixed height for consistent image display */
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(var(--secondary-accent), 0.3);
+            background-color: #333; /* Placeholder background */
+            position: relative; /* For overlay */
+        }
+
+        .portfolio-item .image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-item:hover .image img {
+            transform: scale(1.05);
+        }
+
+        /* Image Overlay on Hover */
+        .portfolio-item .image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(108, 92, 231, 0.4), rgba(0, 188, 212, 0.2));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .portfolio-item:hover .image::after {
+            opacity: 1;
+        }
+
+        .portfolio-item h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem; /* Consistent with service card headings */
+            margin-bottom: 0.8rem;
+            color: var(--primary-accent);
+            text-shadow: 0 0 12px var(--accent-glow-light);
+        }
+
+        .portfolio-item p {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            margin-bottom: 0; /* Remove bottom margin for last element in card */
+        }
+
+        /* Intro Item Specific Styling */
+        .intro-item {
+            grid-column: span 2; /* Make it span two columns in the grid */
+            background: linear-gradient(135deg, var(--primary-accent) 0%, var(--secondary-accent) 100%);
+            color: var(--white);
+            padding: 3rem;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 10px 30px var(--shadow-medium);
+            text-shadow: 0 0 15px rgba(0,0,0,0.5);
+            margin-bottom: 2.5rem; /* Add margin below intro item */
+        }
+
+        .intro-item h1 {
+            font-size: 3.5rem;
+            color: var(--white);
+            text-shadow: 0 0 20px rgba(255,255,255,0.7);
+            background: none; /* Override gradient from global h1 */
+            -webkit-background-clip: unset;
+            background-clip: unset;
+        }
+
+        .intro-item p {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--white);
+            max-width: 600px;
+            margin-top: 1rem;
+        }
+
+        /* Follow Section (Consistent across pages) */
+        .follow-section {
+            padding: 6rem 0;
+            text-align: center;
+            background: var(--container-bg);
+            border-radius: 16px;
+            margin-top: 6rem; /* Space from portfolio grid */
+            margin-bottom: 6rem; /* Space from footer */
+            padding: 3rem 2.5rem; /* Consistent padding */
+            border: 1px solid rgba(var(--primary-accent), 0.15);
+            box-shadow: 0 8px 25px var(--shadow-light), 0 0 20px var(--accent-glow-light);
+        }
+
+        .follow-section h1 {
+            font-size: 2.8rem; /* Adjusted size for this section */
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px var(--accent-glow-medium);
+        }
+
+        .follow-section p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem auto;
+        }
+
+        .follow-social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .follow-social-links a {
+            width: 55px; /* Slightly larger social icons */
+            height: 55px;
+            border-radius: 50%;
+            background: rgba(var(--primary-accent), 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-accent);
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+            border: 1px solid var(--primary-accent);
+            box-shadow: 0 0 15px rgba(var(--primary-accent), 0.3);
+        }
+
+        .follow-social-links a:hover {
+            background: var(--secondary-accent);
+            color: var(--background);
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 0 25px var(--accent-glow-medium), 0 0 40px var(--accent-glow-strong);
+        }
+
+        .white-rectangle {
+            width: 100%;
+            min-width: 150px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--secondary-accent), transparent);
+            margin: 0 auto;
+            border-radius: 2px;
+            box-shadow: 0 0 10px var(--secondary-accent);
+        }
+
+        /* Footer (Consistent across pages) */
+        footer {
+            background-color: var(--header-bg); /* Consistent with header */
+            padding: 3rem 0 2rem; /* Adjusted padding */
+            position: relative;
+            border-top: 3px solid;
+            border-image: var(--border-gradient) 1; /* Gradient border */
+            box-shadow: 0 0 25px var(--shadow-medium); /* Consistent shadow */
+            color: var(--text-main);
+            text-align: center;
+            margin-top: 6rem; /* Add margin to separate from content */
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+            align-items: flex-start;
+            margin-bottom: 18px;
+        }
+        .footer-col {
+            min-width: 180px;
+            text-align: left; /* Align text within columns */
+        }
+        .footer-col h4.footer-heading {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary-accent);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            text-shadow: 0 0 5px rgba(108, 92, 231, 0.3);
+        }
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-col li {
+            margin-bottom: 6px;
+        }
+        .footer-col a {
+            color: var(--text-main);
+            text-decoration: none;
+            transition: color 0.2s, text-shadow 0.2s;
+            display: flex; /* For icon alignment */
+            align-items: center;
+        }
+        .footer-col a:hover {
+            color: var(--secondary-accent);
+            text-shadow: 0 0 8px rgba(0, 188, 212, 0.5);
+        }
+        .footer-col a i {
+            margin-right: 8px; /* Space between icon and text */
+            color: var(--secondary-accent); /* Icon color */
+        }
+        .copyright {
+            text-align: center;
+            color: rgba(var(--text-main), 0.6);
+            font-size: 0.95rem;
+            margin-top: 12px;
+        }
+        .copyright span {
+            color: var(--primary-accent);
+            text-shadow: 0 0 8px rgba(108, 92, 231, 0.5);
+        }
+
+        .legal-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .legal-links a {
+            color: rgba(var(--text-main), 0.6); /* Softer color */
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .legal-links a:hover {
+            color: var(--secondary-accent);
+            text-shadow: 0 0 8px var(--secondary-accent);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .intro-item {
+                grid-column: span 1; /* Single column on medium screens */
+                padding: 0rem;
+            }
+            .intro-item h1 {
+                font-size: 2.8rem;
+            }
+            .intro-item p {
+                font-size: 1rem;
+            }
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                padding: 0 1.5rem;
+            }
+            .portfolio-item {
+                padding: 1.2rem;
+            }
+            .portfolio-item .image {
+                height: 200px;
+            }
+            .portfolio-item h3 {
+                font-size: 1.6rem;
+            }
+            .follow-section {
+                padding: 2.5rem 1.5rem;
+                margin-top: 4rem;
+                margin-bottom: 4rem;
+            }
+            .follow-section h1 {
+                font-size: 2.2rem;
+            }
+            .follow-section p {
+                font-size: 1rem;
+            }
+            .follow-social-links a {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            .footer-col {
+                text-align: center;
+            }
+            .footer-col ul {
+                align-items: center;
+            }
+            .footer-col a {
+                justify-content: center;
+            }
+        }
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+            .header-container {
+                padding: 0  0rem;
+            }
+            .logo {
+                font-size: 1.8rem;
+            }
+            nav ul {
+                top: 70px;
+                height: calc(100vh - 70px);
+            }
+            .intro-item h1 {
+                font-size: 2.2rem;
+            }
+            .intro-item p {
+                font-size: 0.9rem;
+            }
+            .portfolio-grid {
+                gap: 2rem;
+            }
+            .portfolio-item .image {
+                height: 180px;
+            }
+            .portfolio-item h3 {
+                font-size: 1.4rem;
+            }
+            .follow-section h1 {
+                font-size: 1.8rem;
+            }
+            .follow-social-links a {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+            footer {
+                padding: 2.5rem 0 1.5rem;
+            }
+        }
+        @media (max-width: 576px) {
+            body {
+                padding-top: 60px;
+            }
+            .header-container {
+                padding: 0 1rem;
+            }
+            .logo {
+                font-size: 1.5rem;
+            }
+            nav ul {
+                top: 60px;
+                width: 100%;
+                height: calc(100vh - 60px);
+            }
+            .main-content-wrapper {
+                padding: 2rem 0;
+            }
+            .intro-item {
+                padding: 2rem;
+            }
+            .intro-item h1 {
+                font-size: 1.8rem;
+            }
+            .portfolio-grid {
+                padding: 0 1rem;
+                gap: 1.5rem;
+            }
+            .portfolio-item {
+                padding: 1rem;
+            }
+            .portfolio-item .image {
+                height: 150px;
+            }
+            .portfolio-item h3 {
+                font-size: 1.2rem;
+            }
+            .follow-section {
+                padding: 2rem 1rem;
+                margin-top: 3rem;
+                margin-bottom: 3rem;
+            }
+            .follow-section h1 {
+                font-size: 1.5rem;
+            }
+            .follow-social-links a {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            .legal-links {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+
+	.portfolio-item.intro-item {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 20px;
+  color: white;
+
+  /* 🔥 Background styling */
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* optional parallax-like effect */
+  background-color: #000;
+
+  transition: background-image 1s ease-in-out;
+  z-index: 1;
+}
+
+.portfolio-item.intro-item h1,
+.portfolio-item.intro-item p {
+  z-index: 2;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+    </style>
+</head>
+<body>
+    <!-- Wrapper -->
+    <div id="wrapper">
+        <!-- Header -->
+        <header>
+            <div class="header-container container">
+                <a href="index.html" class="logo" aria-label="Virtuquest Home">
+                    <span>Virtuquest</span>
+                </a>
+                <nav class="navbar" id="mainNavbar">
+                    <ul id="navMenu">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="about-us.html" class="nav-link">About Us</a></li>
+                        <li><a href="services.html" class="nav-link">Services</a></li>
+                        <li><a href="portfolio.html" class="nav-link active">Portfolio</a></li>
+                        <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content-wrapper">
+            <section class="portfolio-section">
+                <div class="container">
+                    <h2 class="section-title">Our Portfolio</h2>
+                    <div class="portfolio-grid">
+<div class="portfolio-item intro-item">
+    <h1>Our Vision in Pixels</h1>
+    <p>Explore a curated collection of our most impactful projects, showcasing our expertise in VR, AI, and immersive event solutions.</p>
+</div>
+
+
+
+                        <div class="portfolio-item">
+                            <h3>Project Alpha: VR Training Simulation</h3>
+                            <a href="6C5CE7/FFFFFF?text=VR+Training" class="image" aria-label="VR Training Simulation Image">
+                                <img src="../images/event 3.jpg" alt="VR Training Simulation">
+                            </a>
+                            <p>An immersive VR environment designed for high-fidelity professional training.</p>
+                        </div>
+
+                        <div class="portfolio-item">
+                            <h3>AI-Powered Chatbot Integration</h3>
+                            <a href="" class="image" aria-label="AI Chatbot Integration Image">
+                                <img src="https://placehold.co/600x400/00BCD4/FFFFFF?text=AI+Chatbot" alt="AI-Powered Chatbot Integration">
+                            </a>
+                            <p>Seamless AI chatbot solutions enhancing customer service and user experience.</p>
+                        </div>
+
+                        <div class="portfolio-item">
+                            <h3>Virtual Event Platform: NexusCon</h3>
+                            <a href="https://placehold.co/1200x800/6C5CE7/FFFFFF?text=Virtual+Event" class="image" aria-label="Virtual Event Platform Image">
+                                <img src="https://placehold.co/600x400/6C5CE7/FFFFFF?text=Virtual+Event" alt="Virtual Event Platform: NexusCon">
+                            </a>
+                            <p>A fully customizable virtual event platform for conferences and exhibitions.</p>
+                        </div>
+
+                        <div class="portfolio-item">
+                            <h3>Interactive Product Visualization</h3>
+                            <a href="https://placehold.co/1200x800/00BCD4/FFFFFF?text=Product+Viz" class="image" aria-label="Interactive Product Visualization Image">
+                                <img src="https://placehold.co/600x400/00BCD4/FFFFFF?text=Product+Viz" alt="Interactive Product Visualization">
+                            </a>
+                            <p>Bringing products to life with 3D interactive VR models for enhanced engagement.</p>
+                        </div>
+
+                        <div class="portfolio-item">
+                            <h3>AI-Driven Data Analytics Dashboard</h3>
+                            <a href="https://placehold.co/1200x800/6C5CE7/FFFFFF?text=AI+Analytics" class="image" aria-label="AI-Driven Data Analytics Dashboard Image">
+                                <img src="https://placehold.co/600x400/6C5CE7/FFFFFF?text=AI+Analytics" alt="AI-Driven Data Analytics Dashboard">
+                            </a>
+                            <p>Transforming raw data into actionable insights with intelligent analytics.</p>
+                        </div>
+
+                        <div class="portfolio-item">
+                            <h3>Hybrid Event Management System</h3>
+                            <a href="https://placehold.co/1200x800/00BCD4/FFFFFF?text=Hybrid+Event" class="image" aria-label="Hybrid Event Management System Image">
+                                <img src="https://placehold.co/600x400/00BCD4/FFFFFF?text=Hybrid+Event" alt="Hybrid Event Management System">
+                            </a>
+                            <p>Seamlessly blending physical and virtual event experiences for maximum reach.</p>
+                        </div>
+
+                        <div class="portfolio-item">
+                            <h3>Educational VR Experiences for Schools</h3>
+                            <a href="https://placehold.co/1200x800/6C5CE7/FFFFFF?text=Edu+VR" class="image" aria-label="Educational VR Experiences Image">
+                                <img src="https://placehold.co/600x400/6C5CE7/FFFFFF?text=Edu+VR" alt="Educational VR Experiences for Schools">
+                            </a>
+                            <p>Engaging virtual field trips and interactive learning modules for students.</p>
+                        </div>
+
+                        <div class="portfolio-item">
+                            <h3>Smart Home Automation Interface</h3>
+                            <a href="https://placehold.co/1200x800/00BCD4/FFFFFF?text=Smart+Home" class="image" aria-label="Smart Home Automation Interface Image">
+                                <img src="https://placehold.co/600x400/00BCD4/FFFFFF?text=Smart+Home" alt="Smart Home Automation Interface">
+                            </a>
+                            <p>Intuitive AI-powered interfaces for controlling smart home devices.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="follow-section">
+                <div class="container">
+                    <h1>Connect with the Virtuquest World</h1>
+                    <p>Follow us for the latest in immersive experiences, VR gaming, hardware reviews, and futuristic tech.</p>
+                    
+                    <div class="follow-social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                    
+                    <div class="white-rectangle"></div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container footer-content">
+                <div class="footer-col">
+                    <div class="logo footer-logo">Virtuquest</div>
+                    <p>Pushing the boundaries of immersive technology to create meaningful impact.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-heading">Connect</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i> LinkedIn</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Virtuquest. All rights reserved. <span>Shaping tomorrow's reality today.</span></p>
+                <div class="legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                </div>
+            </div>
+        </footer>
     </div>
-    
-    <div class="white-rectangle"></div>
-</section>
 
-<section class="section-footer">
-    <p>Step into new dimensions. Our platform is your gateway to free VR content, guides, and community-driven discovery.</p>
-</section>
-</main>
-
-<footer>
-    <p>VirtualRealityHub  built with 💡 using modern web tools and open-source creativity by welt tallis.</p>
-</footer>
-
-			</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.poptrox.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
+  
+ <script src="../scripts/portfolio.js"></script>
+</body>
 </html>

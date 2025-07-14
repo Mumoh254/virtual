@@ -122,7 +122,7 @@
             padding: 3rem; /* Consistent padding with main page */
             position: relative;
             z-index: 1;
-            background: var(--container-bg);
+            background: var(--background);
             border: 1px solid rgba(var(--primary-accent), 0.2);
             border-radius: 16px;
             transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -332,7 +332,7 @@
         }
 
         .services-hero .container {
-            background: var(--container-bg);
+            background: var(--background);
             border-radius: 16px;
             box-shadow: 0 10px 30px var(--shadow-medium), 0 0 40px var(--accent-glow-light);
             border: 1px solid rgba(var(--primary-accent), 0.4);
@@ -365,7 +365,7 @@
 
         /* Services Section */
         .services-section {
-            padding: 6rem 0;
+            padding: 3rem 0;
             background-color: var(--background);
         }
 
@@ -381,12 +381,12 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjusted minmax for better card sizing */
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Adjusted minmax for better card sizing */
             gap: 3rem; /* Increased gap */
         }
 
         .service-card {
-            background: var(--container-bg);
+            background: var(--background);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border-radius: 16px;
@@ -395,7 +395,7 @@
             transition: all 0.4s ease;
             box-shadow: 0 8px 25px var(--shadow-light);
             display: flex;
-            flex-direction: column; /* Ensure content stacks vertically */
+            flex-direction: column; 
         }
 
         .service-card:hover {
@@ -406,7 +406,7 @@
 
         .service-image {
             width: 100%;
-            height: 220px; /* Consistent height for images */
+            height: 220px; 
             overflow: hidden;
             position: relative;
         }
@@ -416,17 +416,15 @@
             height: 100%;
             object-fit: cover;
             object-position: center;
-            filter: brightness(0.7); /* Darken image */
+          
             transition: filter 0.4s ease;
         }
 
-        .service-card:hover .service-image img {
-            filter: brightness(1); /* Full brightness on hover */
-        }
+   
 
         .service-details {
-            padding: 2rem; /* Consistent padding */
-            flex-grow: 1; /* Allow details section to grow */
+            padding: 1rem; 
+            flex-grow: 1; 
             display: flex;
             flex-direction: column;
         }
@@ -441,31 +439,31 @@
         .service-details p {
             font-size: 1.05rem;
             margin-bottom: 1.5rem;
-            flex-grow: 1; /* Allow paragraph to grow */
+            flex-grow: 1; 
         }
 
         .service-features {
             list-style: none;
             padding-left: 0;
-            margin-top: 1rem; /* Space from paragraph */
+            margin-top: 1rem; 
         }
 
         .service-features li {
             position: relative;
-            padding-left: 1.8rem; /* Space for icon */
+            padding-left: 1.8rem; 
             margin-bottom: 0.8rem;
             font-size: 0.95rem;
             color: var(--text-main);
         }
 
         .service-features li::before {
-            content: "\f00c"; /* FontAwesome checkmark icon */
+            content: "\f00c"; 
             font-family: "Font Awesome 5 Free";
             font-weight: 900;
             position: absolute;
             left: 0;
             top: 0.1rem;
-            color: var(--secondary-accent); /* Accent color for checkmark */
+            color: var(--secondary-accent); 
             font-size: 1.1rem;
         }
 
