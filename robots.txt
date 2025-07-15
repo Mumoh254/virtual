@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://virtuquestvr.com/sitemap.xml

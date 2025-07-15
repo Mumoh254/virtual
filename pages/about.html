@@ -13,11 +13,12 @@
 
      <link rel="stylesheet" href="./styles/index.css">
      <link rel="stylesheet" href="../styles/footer.css">
+     <link rel="stylesheet" href="../styles/index.css">
     <style>
         :root {
-            /* New Color Palette: Modern Dark & Gradient (from main index.html) */
-            --background: #0A0D14; /* Very dark blue-black */
-            --header-bg: rgba(10, 13, 20, 0.98); /* Almost opaque header */
+         
+            --background: #0A0D14; 
+            --header-bg: rgba(10, 13, 20, 0.98); 
             --container-bg: rgba(25, 30, 40, 0.6); /* Slightly lighter, transparent dark blue-gray for cards/containers */
             --text-main: #E0E6F0; /* Soft white for body text */
             --text-heading: #F8FAFC; /* Pure white for main headings */
@@ -26,10 +27,8 @@
             /* Accent Colors - Sleeker, sophisticated */
             --primary-accent: #6C5CE7; /* Deep, rich violet */
             --secondary-accent: #00BCD4; /* Vibrant, modern cyan */
-            --cta-gradient-start: #FF6B6B; /* Soft red for CTA */
-            --cta-gradient-end: #FF9A8B; /* Lighter red for CTA */
-
-            /* Shadows & Glows - Subtler, more elegant */
+            --cta-gradient-start: #FF6B6B; 
+            --cta-gradient-end: #FF9A8B; 
             --shadow-light: rgba(0, 0, 0, 0.2);
             --shadow-medium: rgba(0, 0, 0, 0.4);
             --shadow-strong: rgba(0, 0, 0, 0.6);
@@ -53,7 +52,7 @@
             color: var(--text-main);
             line-height: 1.8;
             overflow-x: hidden;
-            padding-top: 80px; /* Space for fixed header */
+            padding-top: 80px; 
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
@@ -78,11 +77,11 @@
             font-weight: 700;
             color: var(--text-heading);
             margin-bottom: 1.5rem;
-            text-shadow: 0 0 3px var(--accent-glow-light); /* Softer glow */
+            text-shadow: 0 0 3px var(--accent-glow-light); 
         }
 
         h1 {
-            font-size: 3.8rem; /* Larger, more impactful title */
+            font-size: 3.8rem; 
             background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
             -webkit-background-clip: text;
             background-clip: text;
@@ -92,8 +91,8 @@
         }
 
         h2 {
-            font-size: 3.2rem; /* Consistent with main page section titles */
-            margin-bottom: 4rem; /* Consistent spacing */
+            font-size: 3.2rem; 
+            margin-bottom: 4rem; 
             position: relative;
             display: inline-block;
             background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
@@ -106,10 +105,10 @@
         h2::after {
             content: '';
             position: absolute;
-            bottom: -10px; /* Adjusted position */
+            bottom: -10px; 
             left: 0;
             width: 100%;
-            height: 3px; /* Thicker underline */
+            height: 3px; 
             background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
             box-shadow: 0 0 10px var(--primary-accent);
         }
@@ -135,10 +134,10 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 3rem; /* Consistent padding with main page */
+            padding: 3rem; 
             position: relative;
             z-index: 1;
-            background: var(--container-bg);
+            background: var(--background);
             border: 1px solid rgba(var(--primary-accent), 0.2);
             border-radius: 16px;
             transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -170,14 +169,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 2.5rem; /* Consistent padding with main page */
+            padding: 0 2.5rem; 
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .logo {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem; /* Consistent with main page */
+            font-size: 2.5rem; 
             font-weight: 700;
             background: linear-gradient(90deg, var(--primary-accent) 0%, var(--secondary-accent) 100%);
             -webkit-background-clip: text;
@@ -188,7 +187,7 @@
             position: relative;
         }
 
-        .logo::before { /* Underline effect for logo */
+        .logo::before { 
             content: "";
             position: absolute;
             bottom: -10px;
@@ -209,16 +208,16 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 3rem; /* Consistent gap */
+            gap: 3rem; /*  gap */
         }
 
         nav ul li a {
-            font-family: 'Inter', sans-serif; /* Changed to Inter for nav links */
+            font-family: 'Inter', sans-serif; 
             font-weight: 600;
             font-size: 1rem;
             position: relative;
-            padding: 0.8rem 0; /* Consistent padding */
-            color: var(--text-main); /* Consistent color */
+            padding: 0.8rem 0; /*  padding */
+            color: var(--text-main); /* color */
             text-transform: uppercase;
             letter-spacing: 0.8px;
         }
@@ -226,11 +225,11 @@
         nav ul li a::after {
             content: '';
             position: absolute;
-            bottom: -8px; /* Consistent position */
+            bottom: -8px; /*  position */
             left: 50%;
             transform: translateX(-50%);
             width: 0;
-            height: 3px; /* Consistent thickness */
+            height: 3px; /*  thickness */
             background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
             transition: width 0.3s ease;
         }
@@ -252,8 +251,8 @@
             display: none;
             background: none;
             border: none;
-            color: var(--primary-accent); /* Consistent color */
-            font-size: 2.5rem; /* Consistent size */
+            color: var(--primary-accent); 
+            font-size: 2.5rem; 
             cursor: pointer;
             transition: color 0.3s ease;
         }
@@ -264,11 +263,11 @@
         @media (max-width: 992px) {
             nav ul {
                 position: fixed;
-                top: 80px; /* Adjust for header height */
+                top: 80px; 
                 right: -100%;
-                width: 280px; /* Slightly wider mobile menu */
+                width: 280px; 
                 height: calc(100vh - 80px);
-                background-color: var(--header-bg); /* Use header background */
+                background-color: var(--header-bg); 
                 backdrop-filter: blur(10px);
                 flex-direction: column;
                 align-items: center;
@@ -300,7 +299,7 @@
                 font-size: 1.8rem;
             }
             nav ul {
-                top: 70px; /* Adjust for smaller header height */
+                top: 70px; 
                 height: calc(100vh - 70px);
             }
         }
@@ -315,8 +314,8 @@
                 font-size: 1.5rem;
             }
             nav ul {
-                top: 60px; /* Adjust for smaller header height */
-                width: 100%; /* Full width mobile menu */
+                top: 60px; 
+                width: 100%; 
                 height: calc(100vh - 60px);
             }
         }
@@ -326,8 +325,8 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding-top: 80px; /* Adjust for fixed header */
-            background: var(--background); /* Use main background */
+            padding-top: 80px; 
+            background: var(--background); 
             position: relative;
             overflow: hidden;
         }
@@ -349,12 +348,12 @@
         .hero-container {
             display: flex;
             align-items: stretch;
-            min-height: calc(100vh - 80px); /* Adjust for header */
-            background: var(--container-bg); /* Use container background */
-            border-radius: 16px; /* Consistent border radius */
+            min-height: calc(100vh - 80px); 
+            background: var(--background); 
+            border-radius: 16px; 
             overflow: hidden;
-            box-shadow: 0 10px 30px var(--shadow-medium), 0 0 40px var(--accent-glow-light); /* Consistent shadow */
-            border: 1px solid rgba(var(--primary-accent), 0.4); /* Consistent border */
+            box-shadow: 0 10px 30px var(--shadow-medium), 0 0 40px var(--accent-glow-light); 
+            border: 1px solid rgba(var(--primary-accent), 0.4); 
             gap: 0;
         }
 
@@ -366,7 +365,7 @@
             background: linear-gradient(
                 90deg, 
                 var(--container-bg) 0%, 
-                rgba(25, 30, 40, 0.4) 70%, /* Softer gradient fade */
+                rgba(25, 30, 40, 0.4) 70%, 
                 transparent 100%
             );
             backdrop-filter: blur(8px);
@@ -422,7 +421,7 @@
             object-fit: cover;
             object-position: center;
             transition: transform 0.5s ease;
-            filter: brightness(0.7); /* Darken image to fit theme */
+         
         }
 
         .image-overlay {
@@ -441,11 +440,11 @@
 
         .hero-image:hover img {
             transform: scale(1.05);
-            filter: brightness(1); /* Full brightness on hover */
+          
         }
 
         .hero h1 {
-            font-size: 4.2rem; /* Adjusted for hero section */
+            font-size: 4.2rem; 
             margin-bottom: 2rem;
             line-height: 1.2;
             background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
@@ -458,7 +457,7 @@
         }
 
         .hero p {
-            font-size: 1.3rem; /* Adjusted for hero section */
+            font-size: 1.3rem; 
             margin-bottom: 2.5rem;
             max-width: 600px;
             color: var(--text-main);
@@ -466,13 +465,13 @@
 
         /* About Sections */
         .section {
-            padding: 6rem 0; /* Consistent padding */
+            padding: 6rem 0; 
             position: relative;
             background-color: var(--background);
         }
 
         .section:nth-child(even) {
-            background-color: rgba(var(--primary-accent), 0.03); /* Subtle accent background for even sections */
+            background-color: rgba(var(--primary-accent), 0.03); 
         }
 
         .section::before {
@@ -482,49 +481,49 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: none; /* Removed the old overlay */
+            background: none; 
             pointer-events: none;
         }
 
         /* Who We Are */
         .who-we-are {
-            max-width: 900px; /* Increased max-width */
+            max-width: 900px; 
             margin: 0 auto;
             text-align: center;
         }
 
         .who-we-are p {
-            font-size: 1.15rem; /* Slightly larger text */
+            font-size: 1.15rem; 
             line-height: 1.8;
         }
 
         /* Mission & Vision */
         .mission-vision {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Adjusted minmax */
-            gap: 3rem; /* Increased gap */
-            margin-top: 4rem; /* More space */
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 3rem; 
+            margin-top: 4rem; 
         }
 
         .card {
-            background: var(--container-bg);
+            background: var(--background);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border-radius: 16px; /* More rounded */
-            padding: 3rem; /* More padding */
+            border-radius: 16px; 
+            padding: 3rem;
             border: 1px solid rgba(var(--primary-accent), 0.15);
             transition: all 0.4s ease;
-            box-shadow: 0 10px 30px var(--shadow-light); /* Softer shadow */
+            box-shadow: 0 10px 30px var(--shadow-light); 
         }
 
         .card:hover {
-            transform: translateY(-8px); /* More pronounced lift */
+            transform: translateY(-8px); 
             box-shadow: 0 15px 40px var(--shadow-medium), 0 0 30px var(--accent-glow-light);
             border-color: var(--primary-accent);
         }
 
         .card h3 {
-            font-size: 2rem; /* Larger heading */
+            font-size: 2rem; 
             margin-bottom: 1.5rem;
             color: var(--primary-accent);
             text-shadow: 0 0 12px var(--accent-glow-light);
@@ -533,18 +532,18 @@
         /* Core Values */
         .core-values {
             display: grid;
-            /* Increased minmax for better sizing on larger screens */
+          
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 3rem; /* Increased gap for better spacing */
+            gap: 3rem; 
             margin-top: 4rem;
         }
 
         .value-item {
-            background: var(--container-bg);
+            background: var(--background);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border-radius: 12px;
-            padding: 2.5rem; /* More padding */
+     
             text-align: center;
             border: 1px solid rgba(var(--primary-accent), 0.1);
             transition: all 0.4s ease;
@@ -558,9 +557,9 @@
         }
 
         .value-icon {
-            font-size: 3.5rem; /* Larger icons */
+            font-size: 3.5rem; 
             margin-bottom: 1.5rem;
-            color: var(--secondary-accent); /* Use secondary accent */
+            color: var(--secondary-accent); 
             transition: all 0.4s ease;
             filter: drop-shadow(0 0 15px var(--accent-glow-medium));
         }
@@ -572,7 +571,7 @@
         }
 
         .value-item h4 {
-            font-size: 1.4rem; /* Larger heading */
+            font-size: 1.4rem; 
             margin-bottom: 1rem;
             color: var(--text-heading);
         }
@@ -580,8 +579,8 @@
         /* Team Section */
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Adjusted minmax */
-            gap: 3rem; /* Increased gap */
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); 
+            gap: 3rem; 
             margin-top: 4rem;
         }
 
@@ -589,7 +588,7 @@
             background: var(--container-bg);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border-radius: 16px; /* More rounded */
+            border-radius: 16px;
             overflow: hidden;
             border: 1px solid rgba(var(--primary-accent), 0.15);
             transition: all 0.4s ease;
@@ -605,8 +604,8 @@
 
         .member-photo {
             width: 100%;
-            height: 280px; /* Taller photo area */
-            background-color: var(--background); /* Use main background for placeholder */
+            height: 280px; 
+            background-color: var(--background); 
             display: flex;
             align-items: center;
             justify-content: center;
@@ -614,14 +613,14 @@
             font-size: 1.2rem;
             position: relative;
             overflow: hidden;
-            background-size: cover; /* Ensure background image covers */
+            background-size: cover; 
             background-position: center;
-            filter: brightness(0.7); /* Darken image */
+            filter: brightness(0.7); 
             transition: filter 0.4s ease;
         }
 
         .team-member:hover .member-photo {
-            filter: brightness(1); /* Full brightness on hover */
+            filter: brightness(1); 
         }
 
         .photo-overlay {
@@ -630,30 +629,30 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 50%); /* Darker overlay */
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 50%);
             display: flex;
             align-items: flex-end;
             padding: 20px;
             color: var(--white);
             font-size: 1rem;
         }
-        /* Removed old ::after and ::before for member-photo as per previous instruction */
+      
         .member-photo::after, .member-photo::before {
             display: none;
         }
 
         .member-info {
-            padding: 2rem; /* More padding */
+            padding: 2rem; 
         }
 
         .member-info h3 {
-            font-size: 1.6rem; /* Larger heading */
+            font-size: 1.6rem; 
             margin-bottom: 0.5rem;
             color: var(--text-heading);
         }
 
         .member-info p {
-            color: var(--primary-accent); /* Accent color for role */
+            color: var(--primary-accent);
             font-size: 1rem;
             margin-bottom: 1.5rem;
         }
@@ -661,12 +660,12 @@
         /* Image Frame */
         .image-frame {
             width: 100%;
-            height: 450px; /* Taller frame */
-            margin: 6rem 0; /* Consistent margin */
+            height: 450px; 
+            margin: 6rem 0; 
             position: relative;
-            border-radius: 16px; /* Consistent border radius */
+            border-radius: 16px; 
             overflow: hidden;
-            box-shadow: 0 0 40px var(--accent-glow-light); /* Softer glow */
+            box-shadow: 0 0 40px var(--accent-glow-light); 
         }
 
         .image-frame::before {
@@ -676,8 +675,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://placehold.co/1200x600/6C5CE7/FFFFFF?text=Virtuquest+Image') center/cover no-repeat; /* Placeholder image */
-            filter: brightness(0.6); /* Darken image */
+            background: url('../images/background.jpg') center/cover no-repeat; 
+           
             transition: filter 0.4s ease;
         }
         .image-frame:hover::before {
@@ -693,8 +692,8 @@
             bottom: -5px;
             background: linear-gradient(45deg, var(--primary-accent), var(--secondary-accent), var(--primary-accent));
             z-index: -1;
-            border-radius: 20px; /* Slightly larger radius for glow */
-            animation: borderGlow 3s linear infinite alternate; /* Added alternate */
+            border-radius: 20px; 
+            animation: borderGlow 3s linear infinite alternate; 
             opacity: 0.7;
         }
 
@@ -707,7 +706,7 @@
         /* Futuristic Slideshow styles */
         .futuristic-slideshow {
             position: relative;
-            margin: 6rem 0; /* Consistent margin */
+            margin: 6rem 0; 
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 0 40px var(--accent-glow-light);
@@ -717,7 +716,7 @@
         .slideshow-container {
             position: relative;
             width: 100%;
-            height: 550px; /* Taller slideshow */
+            height: 550px; 
             perspective: 1000px;
         }
 
@@ -743,7 +742,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, transparent 100%); /* Darker overlay */
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, transparent 100%);
         }
 
         .slide.active {
@@ -766,7 +765,7 @@
 
         .slideshow-controls {
             position: absolute;
-            bottom: 30px; /* More space from bottom */
+            bottom: 30px; 
             left: 0;
             width: 100%;
             display: flex;
@@ -777,9 +776,9 @@
         }
 
         .prev-btn, .next-btn {
-            background: var(--container-bg); /* Use container background */
+            background: var(--container-bg); 
             backdrop-filter: blur(5px);
-            border: 1px solid var(--primary-accent); /* Use primary accent */
+            border: 1px solid var(--primary-accent); 
             color: var(--primary-accent);
             width: 45px; /* Larger buttons */
             height: 45px;
@@ -794,7 +793,7 @@
 
         .prev-btn:hover, .next-btn:hover {
             background: var(--primary-accent);
-            color: var(--background); /* Dark text on accent hover */
+            color: var(--background);
             box-shadow: 0 0 20px var(--primary-accent);
         }
 
@@ -807,7 +806,7 @@
             width: 14px; /* Larger dots */
             height: 14px;
             border-radius: 50%;
-            background: var(--text-main); /* Use text color for dots */
+            background: var(--text-main); 
             opacity: 0.5;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -821,20 +820,20 @@
 
         /* Footer */
         footer {
-            background-color: var(--header-bg); /* Consistent with header */
-            padding: 5rem 0 3rem; /* Consistent padding */
+            background-color: var(--header-bg); 
+            padding: 5rem 0 3rem; 
             position: relative;
             border-top: 3px solid;
-            border-image: var(--border-gradient) 1; /* Gradient border */
-            box-shadow: 0 0 25px var(--shadow-medium); /* Consistent shadow */
+            border-image: var(--border-gradient) 1; 
+            box-shadow: 0 0 25px var(--shadow-medium); 
             color: var(--text-main);
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax */
-            gap: 3.5rem; /* Increased gap */
-            margin-bottom: 3rem; /* Consistent margin */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 3.5rem; 
+            margin-bottom: 3rem; 
             max-width: 1200px;
             margin-left: auto;
             margin-right: auto;
@@ -842,31 +841,30 @@
         }
 
         .footer-brand {
-            max-width: 350px; /* Slightly wider */
+            max-width: 350px; 
         }
 
         .footer-logo {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2.2rem; /* Consistent with main page footer */
+            font-size: 2.2rem; 
             font-weight: 700;
             background: linear-gradient(90deg, var(--primary-accent) 0%, var(--secondary-accent) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             text-shadow: 0 0 15px var(--accent-glow-medium);
-            margin-bottom: 1.5rem; /* Consistent margin */
-            display: inline-block;
+            margin-bottom: 1.5rem; 
         }
 
         .footer-brand p {
-            font-size: 0.95rem; /* Slightly larger */
+            font-size: 0.95rem; 
             line-height: 1.7;
             color: var(--text-main);
         }
 
         .footer-links h3 {
-            font-size: 1.8rem; /* Consistent with main page footer */
-            margin-bottom: 1.8rem; /* Consistent margin */
+            font-size: 1.8rem; 
+            margin-bottom: 1.8rem; 
             color: var(--primary-accent);
             position: relative;
             text-shadow: 0 0 12px var(--accent-glow-light);
@@ -887,51 +885,50 @@
         }
 
         .footer-links ul li {
-            margin-bottom: 1rem; /* Consistent margin */
+            margin-bottom: 1rem;
         }
 
         .footer-links ul li a {
-            font-size: 1rem; /* Slightly larger */
+            font-size: 1rem; 
             color: var(--text-main);
             transition: all 0.3s ease;
         }
 
         .footer-links ul li a:hover {
             color: var(--secondary-accent);
-            padding-left: 8px; /* Slightly more prominent hover effect */
+            padding-left: 8px; 
             text-shadow: 0 0 8px var(--secondary-accent);
         }
 
         .social-links {
             display: flex;
-            gap: 1.8rem; /* Consistent gap */
-            margin-top: 2rem; /* Consistent margin */
-        }
+            gap: 1.8rem; 
+            margin-top: 2rem; 
 
         .social-links a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 48px; /* Larger icons */
+            width: 48px; 
             height: 48px;
             border-radius: 50%;
-            background-color: rgba(var(--primary-accent), 0.1); /* Subtle background */
-            color: var(--secondary-accent); /* Accent color for icons */
+            background-color: rgba(var(--primary-accent), 0.1); 
+            color: var(--secondary-accent); 
             transition: all 0.3s ease;
-            font-size: 1.8rem; /* Larger icon size */
+            font-size: 1.8rem; 
             box-shadow: 0 0 10px var(--accent-glow-light);
         }
 
         .social-links a:hover {
             background-color: var(--primary-accent);
-            color: var(--background); /* Dark text on accent hover */
-            transform: translateY(-5px) scale(1.1); /* More pronounced hover */
+            color: var(--background); 
+            transform: translateY(-5px) scale(1.1); 
             box-shadow: 0 0 20px var(--primary-accent);
         }
 
         .footer-bottom {
             text-align: center;
-            padding-top: 2.5rem; /* Consistent padding */
+            padding-top: 2.5rem;
             border-top: 1px solid rgba(255,255,255,0.1);
             font-size: 0.9rem;
             color: var(--text-main);
@@ -970,7 +967,7 @@
                 font-size: 1.3rem;
             }
             .team-member {
-                padding: 1.5rem;
+                padding: 0rem;
             }
             .member-photo {
                 height: 250px;
@@ -980,7 +977,7 @@
             }
             .image-frame {
                 height: 350px;
-                margin: 5rem 0;
+                margin: 2rem 0;
             }
             .slideshow-container {
                 height: 450px;
@@ -1003,7 +1000,7 @@
 
         @media (max-width: 768px) {
             .container {
-                padding: 2rem 1.5rem;
+                padding: 2rem 0rem;
             }
             h1 {
                 font-size: 2.5rem;
@@ -1225,15 +1222,15 @@
         <div class="container hero-container">
             <div class="hero-content-container">
                 <div class="hero-content">
-                    <h1>About Virtuquest</h1>
-                    <p>Discover the vision, mission, and values that drive our innovative approach to technology and creativity. At Virtuquest, we don’t just build solutions—we craft meaningful, immersive experiences that connect people, empower communities, and shape a smarter, more inclusive future. Our commitment to innovation, integrity, and impact fuels everything we do, from cutting-edge VR and AI applications to socially conscious event design.</p>
+                   <h1>About Virtuquest</h1>
+    <p>At Virtuquest, we're more than a tech company we’re storytellers, problem-solvers, and community-builders. Our mission is to create immersive, meaningful experiences that connect people and spark positive change. From next-gen VR and smart AI to purpose driven event design, we blend innovation with heart to help shape a more inclusive, thoughtful future. Discover the values and vision that power everything we do.</p>
                     <div class="hero-accent-line"></div>
                 </div>
             </div>
             <div class="hero-image">
                 <div class="image-overlay"></div>
-                <!-- Placeholder image, replace with actual image later -->
-                <img src="https://placehold.co/800x600/6C5CE7/FFFFFF?text=About+Us+Hero" alt="Virtuquest Team">
+               
+                <img src="../images/background.jpg" alt="Virtuquest Team">
             </div>
         </div>
     </section>
@@ -1241,9 +1238,10 @@
     <!-- Who We Are -->
     <section class="section">
         <div class="container">
-            <div class="card"> <!-- Replaced neon-card with standard card for consistency -->
-                <h2 class="text-center">Who We Are</h2> <!-- Centered for this section -->
-                <p class="text-center">We are a passionate, impact-driven team blending technology, creativity, and compassion to shape experiences that matter. At Virtuquest, our strength lies in the synergy between human-centered design and cutting-edge innovation. Whether it's building immersive VR environments, designing AI solutions that understand and serve real needs, or organizing meaningful tech-driven events, we are guided by a shared purpose: to create experiences that leave a lasting, positive impact. Every project we undertake reflects our dedication to not just pushing boundaries—but doing so with empathy, inclusivity, and social responsibility at the core</p>
+            <div class="card"> 
+               <h2 class="text-center">Who We Are</h2>
+<p class="text-center">We’re a team of creators, technologists, and changemakers on a mission to build experiences that truly matter. At Virtuquest, we combine human centered design with the latest in innovation to bring ideas to life—whether it’s immersive VR environments, intelligent AI solutions, or purpose-driven tech events. What drives us? Impact, empathy, and a deep belief that technology should make the world more inclusive, connected, and kind. Every project we take on reflects that commitment.</p>
+
             </div>
         </div>
     </section>
@@ -1254,12 +1252,13 @@
             <h2 class="text-center">Our Mission & Vision</h2>
             <div class="mission-vision">
                 <div class="card">
-                    <h3>Our Mission</h3>
-                    <p>To empower businesses and individuals through innovative digital solutions that bridge the gap between technology and human experience, fostering growth, learning, and connection.</p>
+                   <h3>Our Mission</h3>
+        <p>Our mission is to empower people and businesses with innovative digital experiences that connect technology to real human needs. We’re here to spark growth, inspire learning, and build meaningful connections through every solution we create.</p>
                 </div>
                 <div class="card">
-                    <h3>Our Vision</h3>
-                    <p>To lead the global transformation towards a more interconnected and equitable future, where immersive technologies serve as catalysts for positive social and economic change.</p>
+                 <h3>Our Vision</h3>
+<p>We envision a more connected, inclusive world—where immersive technologies like VR and AI spark real social and economic change. At Virtuquest, we aim to lead this global shift by using innovation to create a future that’s not just smarter, but fairer for everyone.</p>
+
                 </div>
             </div>
         </div>
@@ -1305,64 +1304,59 @@
             <h2 class="text-center">Meet Our Team</h2>
             <div class="team-grid">
                 <div class="team-member">
-                    <div class="member-photo" style="background-image: url('https://placehold.co/400x400/00BCD4/FFFFFF?text=Team+Member+1');">
-                        <div class="photo-overlay">John Doe, CEO</div>
+                    <div class="member-photo" style="background-image: url('../images/officials.jpg');">
+                        <div class="photo-overlay"> CEO</div>
                     </div>
                     <div class="member-info">
-                        <h3>John Doe</h3>
+                        <h3>...</h3>
                         <p>Chief Executive Officer</p>
                     </div>
                 </div>
                 <div class="team-member">
-                    <div class="member-photo" style="background-image: url('https://placehold.co/400x400/6C5CE7/FFFFFF?text=Team+Member+2');">
-                        <div class="photo-overlay">Jane Smith, CTO</div>
+                    <div class="member-photo" style="background-image: url('../images/officials.jpg');">
+                        <div class="photo-overlay"> creative  director</div>
                     </div>
                     <div class="member-info">
-                        <h3>Jane Smith</h3>
-                        <p>Chief Technology Officer</p>
+                        <h3>..</h3>
+                        <p>Creative  director</p>
                     </div>
                 </div>
                 <div class="team-member">
-                    <div class="member-photo" style="background-image: url('https://placehold.co/400x400/00BCD4/FFFFFF?text=Team+Member+3');">
-                        <div class="photo-overlay">Alice Johnson, Lead Designer</div>
+                    <div class="member-photo" style="background-image: url('../images/officials.jpg');">
+                        <div class="photo-overlay"> 
+
+                        </div>
                     </div>
                     <div class="member-info">
-                        <h3>Alice Johnson</h3>
+                        <h3> Lead UX / UI   Designer</h3>
                         <p>Lead UX/UI Designer</p>
                     </div>
                 </div>
-                <div class="team-member">
-                    <div class="member-photo" style="background-image: url('https://placehold.co/400x400/6C5CE7/FFFFFF?text=Team+Member+4');">
-                        <div class="photo-overlay">Robert Brown, AI Specialist</div>
-                    </div>
-                    <div class="member-info">
-                        <h3>Robert Brown</h3>
-                        <p>AI & Machine Learning Specialist</p>
-                    </div>
+              
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Image Frame (Example of a featured image section) -->
+    <!-- Image Frame -->
     <section class="section">
         <div class="container">
             <h2 class="text-center">Our Innovative Workspace</h2>
             <div class="image-frame">
-                <!-- Image is set via ::before pseudo-element in CSS -->
+              
             </div>
         </div>
     </section>
 
-    <!-- Futuristic Slideshow (Example of a dynamic content section) -->
+    <!-- Futuristic Slideshow  -->
     <section class="section">
         <div class="container">
             <h2 class="text-center">Our Journey Milestones</h2>
             <div class="futuristic-slideshow">
                 <div class="slideshow-container">
-                    <div class="slide active" style="background-image: url('https://placehold.co/1200x600/6C5CE7/FFFFFF?text=Milestone+1');"></div>
-                    <div class="slide next" style="background-image: url('https://placehold.co/1200x600/00BCD4/FFFFFF?text=Milestone+2');"></div>
-                    <div class="slide prev" style="background-image: url('https://placehold.co/1200x600/6C5CE7/FFFFFF?text=Milestone+3');"></div>
+                    <div class="slide active" style="background-image: url('../images/kidvr.jpg');"></div>
+                    <div class="slide next" style="background-image: url('../images/star.jpg');"></div>
+                    <div class="slide prev" style="background-image: url('../images/eventorg.jpg');"></div>
                 </div>
                 <div class="slideshow-controls">
                     <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
