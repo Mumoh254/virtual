@@ -10,30 +10,31 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../styles/index.css">
     <link rel="stylesheet" href="../styles/portfolio.min.css">
+    <link rel=stylesheet href=../styles/footer.min.css>
 </head>
 <body>
     <!-- Wrapper -->
     <div id="wrapper">
-        <header>
-            <div class="container header-container">
-                <a href="index.html" class="logo" aria-label="Virtuquest Home">
-                    <span>Virtuquest</span>
-                </a>
-                <nav class="navbar" id="mainNavbar">
-                    <ul id="navMenu">
-                        <li><a href="../index.html" class="nav-link">Home</a></li>
-                        <li><a href="./about.html" class="nav-link">About Us</a></li>
-                        <li><a href="./services.html" class="nav-link">Services</a></li>
-                        <li><a href="./portfolio.html" class="nav-link active">Portfolio</a></li>
-                        <li><a href="./contact.html" class="nav-link">Contact Us</a></li>
-                    </ul>
-                </nav>
-                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </header>
-
+     
+<header>
+<div class="container header-container">
+<a href=index.html class=logo aria-label="Virtuquest Home">
+<span>Virtuquest</span>
+</a>
+<nav class=navbar id=mainNavbar>
+<ul id=navMenu>
+<li><a href=../index.html class="nav-link active">Home</a></li>
+<li><a href=./about.html class=nav-link>About Us</a></li>
+<li><a href=./services.html class=nav-link>Services</a></li>
+<li><a href=./portfolio.html class=nav-link>Portfolio</a></li>
+<li><a href=./contact.html class=nav-link>Contact Us</a></li>
+</ul>
+</nav>
+<button class=mobile-menu-btn id=mobileMenuBtn aria-label="Toggle navigation menu">
+<i class="fas fa-bars"></i>
+</button>
+</div>
+</header>
 
 
         
@@ -287,51 +288,6 @@
         </footer>
     </div>
 
-    <script>
-        // Mobile Navigation
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const navMenu = document.getElementById('navMenu');
-            
-            mobileMenuBtn.addEventListener('click', function() {
-                navMenu.classList.toggle('active');
-                const icon = navMenu.classList.contains('active') ? 'times' : 'bars';
-                this.innerHTML = `<i class="fas fa-${icon}"></i>`;
-            });
-            
-            // Close menu when clicking on links
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.addEventListener('click', function() {
-                    if (navMenu.classList.contains('active')) {
-                        navMenu.classList.remove('active');
-                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                    }
-                });
-            });
-            
-            // Highlight current page
-            const path = location.pathname.split('/').pop();
-            document.querySelectorAll('.nav-link').forEach(link => {
-                const linkPath = link.getAttribute('href').split('/').pop();
-                if (linkPath === path) {
-                    link.classList.add('active');
-                } else {
-                    link.classList.remove('active');
-                }
-            });
-            
-            // Header scroll effect
-            window.addEventListener('scroll', () => {
-                const header = document.querySelector('header');
-                if (window.scrollY > 50) {
-                    header.style.boxShadow = '0 5px 20px var(--shadow-medium)';
-                    header.style.backgroundColor = 'rgba(10, 13, 20, 0.98)';
-                } else {
-                    header.style.boxShadow = 'none';
-                    header.style.backgroundColor = 'rgba(10, 13, 20, 0.98)';
-                }
-            });
-        });
-    </script>
+ <script  src="../scripts/index.min.js"></script>
 </body>
 </html>
