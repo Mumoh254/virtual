@@ -600,113 +600,7 @@
             box-shadow: 0 0 10px var(--primary-accent);
         }
 
-        /* Footer */
-        footer {
-            background-color: var(--header-bg); /* Consistent with header */
-            padding: 5rem 0 3rem; /* Consistent padding */
-            position: relative;
-            border-top: 3px solid;
-            border-image: var(--border-gradient) 1; /* Gradient border */
-            box-shadow: 0 0 25px var(--shadow-medium); /* Consistent shadow */
-            color: var(--text-main);
-        }
-
-        .footer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax */
-            gap: 3.5rem; /* Increased gap */
-            margin-bottom: 3rem; /* Consistent margin */
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 0 2.5rem;
-        }
-
-        .footer-column {
-            text-align: left; /* Default to left align */
-        }
-
-        .footer-column h3 {
-            font-size: 1.8rem; /* Consistent with main page footer */
-            margin-bottom: 1.8rem; /* Consistent margin */
-            color: var(--primary-accent);
-            position: relative;
-            text-shadow: 0 0 12px var(--accent-glow-light);
-        }
-        .footer-column h3::after {
-            content: "";
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: var(--primary-accent);
-            box-shadow: 0 0 8px var(--primary-accent);
-        }
-
-        .footer-links {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer-links li {
-            margin-bottom: 1rem; /* Consistent margin */
-        }
-
-        .footer-links li a {
-            font-size: 1rem; /* Slightly larger */
-            color: var(--text-main);
-            transition: all 0.3s ease;
-            display: flex; /* For icon alignment */
-            align-items: center;
-        }
-
-        .footer-links li a .fas {
-            margin-right: 0.75rem; /* Space for icon */
-            color: var(--secondary-accent);
-        }
-
-        .footer-links li a:hover {
-            color: var(--secondary-accent);
-            padding-left: 8px; /* Slightly more prominent hover effect */
-            text-shadow: 0 0 8px var(--secondary-accent);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1.8rem; /* Consistent gap */
-            margin-top: 2rem; /* Consistent margin */
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 48px; /* Larger icons */
-            height: 48px;
-            border-radius: 50%;
-            background-color: rgba(var(--primary-accent), 0.1); /* Subtle background */
-            color: var(--secondary-accent); /* Accent color for icons */
-            transition: all 0.3s ease;
-            font-size: 1.8rem; /* Larger icon size */
-            box-shadow: 0 0 10px var(--accent-glow-light);
-        }
-
-        .social-links a:hover {
-            background-color: var(--primary-accent);
-            color: var(--background); /* Dark text on accent hover */
-            transform: translateY(-5px) scale(1.1); /* More pronounced hover */
-            box-shadow: 0 0 20px var(--primary-accent);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 2.5rem; /* Consistent padding */
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.9rem;
-            color: var(--text-main);
-        }
-
+      
         /* Responsive Adjustments */
         @media (max-width: 992px) {
             .services-hero h1 {
@@ -744,16 +638,7 @@
                 bottom: 2rem;
                 padding: 0.6rem 1.2rem;
             }
-            .footer-column {
-                text-align: center; /* Center align footer columns on smaller screens */
-            }
-            .footer-column h3::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            .social-links {
-                justify-content: center;
-            }
+           
         }
 
         @media (max-width: 768px) {
