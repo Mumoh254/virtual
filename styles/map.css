@@ -1,0 +1,31 @@
+.map-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+   
+    height: 400px;
+    margin: 50px auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.048), 0 0 0 5px rgba(108, 92, 231, 0.048);
+    overflow: hidden; 
+}
+
+#map-embed {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+.map-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); 
+   
+    pointer-events: none; 
+    border-radius: 15px; 
+    z-index: 1; 
+}
