@@ -143,7 +143,7 @@
             flex-direction: column;
             align-items: center;
             margin-bottom: 6rem; /* Consistent margin */
-            padding: 0 2.5rem; /* Inner padding */
+            padding: 3rem 2.5rem; 
         }
 
         .contact-info-container {
