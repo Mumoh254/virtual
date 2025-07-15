@@ -8,909 +8,330 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-	<link rel="stylesheet" href="../styles/index.css">
-    <style>
-        :root {
-            --background: #0A0D14; /* Very dark blue-black */
-            --header-bg: rgba(10, 13, 20, 0.98); /* Almost opaque header */
-            --container-bg: rgba(25, 30, 40, 0.6); 
-            --text-main: #E0E6F0; /* Soft white for body text */
-            --text-heading: #F8FAFC; /* Pure white for main headings */
-            --white: #FFFFFF;
-
-            /* Accent Colors - Sleeker, sophisticated */
-            --primary-accent: #6C5CE7; /* Deep, rich violet */
-            --secondary-accent: #00BCD4; /* Vibrant, modern cyan */
-            --cta-gradient-start: #FF6B6B; /* Soft red for CTA */
-            --cta-gradient-end: #FF9A8B; /* Lighter red for CTA */
-
-            /* Shadows & Glows - Subtler, more elegant */
-            --shadow-light: rgba(0, 0, 0, 0.2);
-            --shadow-medium: rgba(0, 0, 0, 0.4);
-            --shadow-strong: rgba(0, 0, 0, 0.6);
-            --accent-glow-light: rgba(108, 92, 231, 0.3); /* Violet glow */
-            --accent-glow-medium: rgba(108, 92, 231, 0.5);
-            --accent-glow-strong: rgba(108, 92, 231, 0.7);
-            --border-gradient: linear-gradient(90deg, transparent, var(--primary-accent) 20%, var(--secondary-accent) 80%, transparent);
-            --cta-shadow-color: rgba(255, 107, 107, 0.5);
-        }
-
-        /* Base Styles (Consistent across pages) */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--background);
-            color: var(--text-main);
-            line-height: 1.8;
-            overflow-x: hidden;
-            padding-top: 80px; /* Space for fixed header */
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image:
-                linear-gradient(rgba(var(--primary-accent),0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(var(--primary-accent),0.02) 1px, transparent 1px);
-            background-size: 30px 30px;
-            opacity: 0.05;
-            z-index: -1;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            color: var(--text-heading);
-            margin-bottom: 1.5rem;
-            text-shadow: 0 0 3px var(--accent-glow-light); /* Softer glow */
-        }
-
-        h1 {
-            font-size: 3.8rem; /* Larger, more impactful title */
-            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 25px var(--accent-glow-medium), 0 0 50px var(--accent-glow-strong);
-            margin-bottom: 2rem;
-        }
-
-        h2.section-title { /* Specific for section titles */
-            font-size: 3.2rem; /* Consistent with main page section titles */
-            margin-bottom: 4rem; /* Consistent spacing */
-            position: relative;
-            display: inline-block;
-            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 20px var(--accent-glow-medium), 0 0 40px var(--accent-glow-strong);
-            width: 100%; /* Ensure it takes full width for centering */
-            text-align: center; /* Center the title */
-        }
-
-        h2.section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px; /* Adjusted position */
-            left: 50%; /* Center the underline */
-            transform: translateX(-50%);
-            width: 80%; /* Shorter underline */
-            max-width: 400px; /* Max width for underline */
-            height: 3px; /* Thicker underline */
-            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
-            box-shadow: 0 0 10px var(--primary-accent);
-        }
-
-        p {
-            margin-bottom: 1.2rem;
-            font-weight: 300;
-            color: var(--text-main);
-        }
-
-        a {
-            color: var(--secondary-accent);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        a:hover {
-            color: var(--primary-accent);
-            text-shadow: 0 0 10px var(--secondary-accent);
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0rem; /* Consistent padding with main page */
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Header & Navigation (Consistent across pages) */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            background-color: var(--header-bg);
-            border-bottom: 1px solid rgba(var(--primary-accent), 0.1);
-            box-shadow: 0 5px 20px var(--shadow-medium);
-            padding: 1rem 0;
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2.5rem; /* Consistent padding with main page */
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem; /* Consistent with main page */
-            font-weight: 700;
-            background: linear-gradient(90deg, var(--primary-accent) 0%, var(--secondary-accent) 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 15px var(--accent-glow-medium);
-            letter-spacing: 1.5px;
-            position: relative;
-        }
-
-        .logo::before { /* Underline effect for logo */
-            content: "";
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
-            box-shadow: 0 0 10px var(--primary-accent);
-            transform-origin: left;
-            transform: scaleX(0);
-            transition: transform 0.4s ease-out;
-        }
-
-        .logo:hover::before {
-            transform: scaleX(1);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 3rem; /* Consistent gap */
-        }
-
-        nav ul li a {
-            font-family: 'Inter', sans-serif; /* Changed to Inter for nav links */
-            font-weight: 600;
-            font-size: 1rem;
-            position: relative;
-            padding: 0.8rem 0; /* Consistent padding */
-            color: var(--text-main); /* Consistent color */
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-        }
-
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: -8px; /* Consistent position */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 3px; /* Consistent thickness */
-            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
-            transition: width 0.3s ease;
-        }
-
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-
-        nav ul li a.active {
-            color: var(--primary-accent);
-            text-shadow: 0 0 8px var(--primary-accent);
-        }
-        nav ul li a.active::after {
-            width: 100%;
-            background: var(--primary-accent);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--primary-accent); /* Consistent color */
-            font-size: 2.5rem; /* Consistent size */
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-        .mobile-menu-btn:hover {
-            color: var(--secondary-accent);
-        }
-
-        @media (max-width: 992px) {
-            nav ul {
-                position: fixed;
-                top: 80px; /* Adjust for header height */
-                right: -100%;
-                width: 280px; /* Slightly wider mobile menu */
-                height: calc(100vh - 80px);
-                background-color: var(--header-bg); /* Use header background */
-                backdrop-filter: blur(10px);
-                flex-direction: column;
-                align-items: center;
-                padding-top: 30px;
-                transition: right 0.3s ease;
-                z-index: 1000;
-                border-left: 1px solid rgba(var(--primary-accent), 0.1);
-                box-shadow: -5px 0 20px var(--shadow-medium);
-            }
-
-            nav ul.active {
-                right: 0;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-                z-index: 1001;
-            }
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding-top: 70px;
-            }
-            .header-container {
-                padding: 0 1.5rem;
-            }
-            .logo {
-                font-size: 1.8rem;
-            }
-            nav ul {
-                top: 70px; /* Adjust for smaller header height */
-                height: calc(100vh - 70px);
-            }
-        }
-        @media (max-width: 480px) {
-            body {
-                padding-top: 60px;
-            }
-            .header-container {
-                padding: 0 1rem;
-            }
-            .logo {
-                font-size: 1.5rem;
-            }
-            nav ul {
-                top: 60px; /* Adjust for smaller header height */
-                width: 100%; /* Full width mobile menu */
-                height: calc(100vh - 60px);
-            }
-        }
-
-        /* Main Content Wrapper */
-        .main-content-wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 3rem 0; /* Consistent padding with sections */
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Portfolio Section */
-        .portfolio-section {
-            padding: 6rem 0; /* Consistent padding */
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid for images */
-            gap: 2.5rem; /* Consistent gap */
-            margin-top: 4rem; /* Consistent margin */
-            padding: 0 0rem; /* Inner padding */
-        }
-
-        .portfolio-item {
-            background: var(--container-bg);
-            border-radius: 16px; /* Consistent border-radius */
-            /* Enhanced shadow for depth */
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2), 0 0 15px rgba(108, 92, 231, 0.1);
-            padding: 1.5rem; /* Padding inside the card */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            transition: all 0.3s ease; /* Consistent transition */
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(var(--primary-accent), 0.15); /* Consistent border */
-        }
-
-        .portfolio-item:hover {
-            transform: translateY(-8px);
-            /* More pronounced shadow and glow on hover */
-            box-shadow: 0 15px 40px var(--shadow-medium), 0 0 30px var(--accent-glow-medium);
-            border-color: var(--primary-accent);
-        }
-
-        .portfolio-item .image {
-            display: block;
-            width: 100%;
-            height: 250px; /* Fixed height for consistent image display */
-            overflow: hidden;
-            border-radius: 10px;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(var(--secondary-accent), 0.3);
-            background-color: #333; /* Placeholder background */
-            position: relative; /* For overlay */
-        }
-
-        .portfolio-item .image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .portfolio-item:hover .image img {
-            transform: scale(1.05);
-        }
-
-        /* Image Overlay on Hover */
-        .portfolio-item .image::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to top, rgba(108, 92, 231, 0.4), rgba(0, 188, 212, 0.2));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .portfolio-item:hover .image::after {
-            opacity: 1;
-        }
-
-        .portfolio-item h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.8rem; /* Consistent with service card headings */
-            margin-bottom: 0.8rem;
-            color: var(--primary-accent);
-            text-shadow: 0 0 12px var(--accent-glow-light);
-        }
-
-        .portfolio-item p {
-            font-size: 0.95rem;
-            color: var(--text-main);
-            margin-bottom: 0; /* Remove bottom margin for last element in card */
-        }
-
-        /* Intro Item Specific Styling */
-        .intro-item {
-            grid-column: span 2; /* Make it span two columns in the grid */
-            background: linear-gradient(135deg, var(--primary-accent) 0%, var(--secondary-accent) 100%);
-            color: var(--white);
-            padding: 3rem;
-            border-radius: 16px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            box-shadow: 0 10px 30px var(--shadow-medium);
-            text-shadow: 0 0 15px rgba(0,0,0,0.5);
-            margin-bottom: 2.5rem; /* Add margin below intro item */
-        }
-
-        .intro-item h1 {
-            font-size: 3.5rem;
-            color: var(--white);
-            text-shadow: 0 0 20px rgba(255,255,255,0.7);
-            background: none; /* Override gradient from global h1 */
-            -webkit-background-clip: unset;
-            background-clip: unset;
-        }
-
-        .intro-item p {
-            font-size: 1.2rem;
-            font-weight: 400;
-            color: var(--white);
-            max-width: 600px;
-            margin-top: 1rem;
-        }
-
-        /* Follow Section (Consistent across pages) */
-        .follow-section {
-            padding: 6rem 0;
-            text-align: center;
-            background: var(--container-bg);
-            border-radius: 16px;
-            margin-top: 6rem; /* Space from portfolio grid */
-            margin-bottom: 6rem; /* Space from footer */
-            padding: 3rem 2.5rem; /* Consistent padding */
-            border: 1px solid rgba(var(--primary-accent), 0.15);
-            box-shadow: 0 8px 25px var(--shadow-light), 0 0 20px var(--accent-glow-light);
-        }
-
-        .follow-section h1 {
-            font-size: 2.8rem; /* Adjusted size for this section */
-            margin-bottom: 1.5rem;
-            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 15px var(--accent-glow-medium);
-        }
-
-        .follow-section p {
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto 2.5rem auto;
-        }
-
-        .follow-social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .follow-social-links a {
-            width: 55px; /* Slightly larger social icons */
-            height: 55px;
-            border-radius: 50%;
-            background: rgba(var(--primary-accent), 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-accent);
-            font-size: 1.8rem;
-            transition: all 0.3s ease;
-            border: 1px solid var(--primary-accent);
-            box-shadow: 0 0 15px rgba(var(--primary-accent), 0.3);
-        }
-
-        .follow-social-links a:hover {
-            background: var(--secondary-accent);
-            color: var(--background);
-            transform: translateY(-8px) scale(1.05);
-            box-shadow: 0 0 25px var(--accent-glow-medium), 0 0 40px var(--accent-glow-strong);
-        }
-
-        .white-rectangle {
-            width: 100%;
-            min-width: 150px;
-            height: 4px;
-            background: linear-gradient(90deg, transparent, var(--secondary-accent), transparent);
-            margin: 0 auto;
-            border-radius: 2px;
-            box-shadow: 0 0 10px var(--secondary-accent);
-        }
-
-        /* Footer (Consistent across pages) */
-        footer {
-            background-color: var(--header-bg); /* Consistent with header */
-            padding: 3rem 0 2rem; /* Adjusted padding */
-            position: relative;
-            border-top: 3px solid;
-            border-image: var(--border-gradient) 1; /* Gradient border */
-            box-shadow: 0 0 25px var(--shadow-medium); /* Consistent shadow */
-            color: var(--text-main);
-            text-align: center;
-            margin-top: 6rem; /* Add margin to separate from content */
-        }
-
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            justify-content: center;
-            align-items: flex-start;
-            margin-bottom: 18px;
-        }
-        .footer-col {
-            min-width: 180px;
-            text-align: left; /* Align text within columns */
-        }
-        .footer-col h4.footer-heading {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--primary-accent);
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-            text-shadow: 0 0 5px rgba(108, 92, 231, 0.3);
-        }
-        .footer-col ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .footer-col li {
-            margin-bottom: 6px;
-        }
-        .footer-col a {
-            color: var(--text-main);
-            text-decoration: none;
-            transition: color 0.2s, text-shadow 0.2s;
-            display: flex; /* For icon alignment */
-            align-items: center;
-        }
-        .footer-col a:hover {
-            color: var(--secondary-accent);
-            text-shadow: 0 0 8px rgba(0, 188, 212, 0.5);
-        }
-        .footer-col a i {
-            margin-right: 8px; /* Space between icon and text */
-            color: var(--secondary-accent); /* Icon color */
-        }
-        .copyright {
-            text-align: center;
-            color: rgba(var(--text-main), 0.6);
-            font-size: 0.95rem;
-            margin-top: 12px;
-        }
-        .copyright span {
-            color: var(--primary-accent);
-            text-shadow: 0 0 8px rgba(108, 92, 231, 0.5);
-        }
-
-        .legal-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 15px;
-        }
-
-        .legal-links a {
-            color: rgba(var(--text-main), 0.6); /* Softer color */
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .legal-links a:hover {
-            color: var(--secondary-accent);
-            text-shadow: 0 0 8px var(--secondary-accent);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .intro-item {
-                grid-column: span 1; /* Single column on medium screens */
-                padding: 0rem;
-            }
-            .intro-item h1 {
-                font-size: 2.8rem;
-            }
-            .intro-item p {
-                font-size: 1rem;
-            }
-            .portfolio-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                padding: 0 1.5rem;
-            }
-            .portfolio-item {
-                padding: 1.2rem;
-            }
-            .portfolio-item .image {
-                height: 200px;
-            }
-            .portfolio-item h3 {
-                font-size: 1.6rem;
-            }
-            .follow-section {
-                padding: 2.5rem 1.5rem;
-                margin-top: 4rem;
-                margin-bottom: 4rem;
-            }
-            .follow-section h1 {
-                font-size: 2.2rem;
-            }
-            .follow-section p {
-                font-size: 1rem;
-            }
-            .follow-social-links a {
-                width: 50px;
-                height: 50px;
-                font-size: 1.5rem;
-            }
-            .footer-content {
-                flex-direction: column;
-                align-items: center;
-                gap: 20px;
-            }
-            .footer-col {
-                text-align: center;
-            }
-            .footer-col ul {
-                align-items: center;
-            }
-            .footer-col a {
-                justify-content: center;
-            }
-        }
-        @media (max-width: 768px) {
-            body {
-                padding-top: 70px;
-            }
-            .header-container {
-                padding: 0  0rem;
-            }
-            .logo {
-                font-size: 1.8rem;
-            }
-            nav ul {
-                top: 70px;
-                height: calc(100vh - 70px);
-            }
-            .intro-item h1 {
-                font-size: 2.2rem;
-            }
-            .intro-item p {
-                font-size: 0.9rem;
-            }
-            .portfolio-grid {
-                gap: 2rem;
-            }
-            .portfolio-item .image {
-                height: 180px;
-            }
-            .portfolio-item h3 {
-                font-size: 1.4rem;
-            }
-            .follow-section h1 {
-                font-size: 1.8rem;
-            }
-            .follow-social-links a {
-                width: 45px;
-                height: 45px;
-                font-size: 1.3rem;
-            }
-            footer {
-                padding: 2.5rem 0 1.5rem;
-            }
-        }
-        @media (max-width: 576px) {
-            body {
-                padding-top: 60px;
-            }
-            .header-container {
-                padding: 0 1rem;
-            }
-            .logo {
-                font-size: 1.5rem;
-            }
-            nav ul {
-                top: 60px;
-                width: 100%;
-                height: calc(100vh - 60px);
-            }
-            .main-content-wrapper {
-                padding: 2rem 0;
-            }
-            .intro-item {
-                padding: 2rem;
-            }
-            .intro-item h1 {
-                font-size: 1.8rem;
-            }
-            .portfolio-grid {
-                padding: 0 1rem;
-                gap: 1.5rem;
-            }
-            .portfolio-item {
-                padding: 1rem;
-            }
-            .portfolio-item .image {
-                height: 150px;
-            }
-            .portfolio-item h3 {
-                font-size: 1.2rem;
-            }
-            .follow-section {
-                padding: 2rem 1rem;
-                margin-top: 3rem;
-                margin-bottom: 3rem;
-            }
-            .follow-section h1 {
-                font-size: 1.5rem;
-            }
-            .follow-social-links a {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-            .legal-links {
-                flex-direction: column;
-                gap: 5px;
-            }
-        }
-
-	.portfolio-item.intro-item {
-  position: relative;
-  min-height: 80vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 60px 20px;
-  color: white;
-
-  /* 🔥 Background styling */
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed; /* optional parallax-like effect */
-  background-color: #000;
-
-  transition: background-image 1s ease-in-out;
-  z-index: 1;
-}
-
-.portfolio-item.intro-item h1,
-.portfolio-item.intro-item p {
-  z-index: 2;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
-}
-
-    </style>
+    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="../styles/portfolio.css">
 </head>
 <body>
     <!-- Wrapper -->
     <div id="wrapper">
-      <header>
-        <div class="container header-container">
-            <a href="index.html" class="logo" aria-label="Virtuquest Home">
-                <span>Virtuquest</span>
-            </a>
-            <nav class="navbar" id="mainNavbar">
-                <ul id="navMenu">
-                    <li><a href="../index.html" class="nav-link active">Home</a></li>
-                    <li><a href="./about.html" class="nav-link">About Us</a></li>
-                    <li><a href="./services.html" class="nav-link">Services</a></li>
-                    <li><a href="./portfolio.html" class="nav-link">Portfolio</a></li>
-                    <li><a href="./contact.html" class="nav-link">Contact Us</a></li>
-                </ul>
-            </nav>
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </header>
+        <header>
+            <div class="container header-container">
+                <a href="index.html" class="logo" aria-label="Virtuquest Home">
+                    <span>Virtuquest</span>
+                </a>
+                <nav class="navbar" id="mainNavbar">
+                    <ul id="navMenu">
+                        <li><a href="../index.html" class="nav-link">Home</a></li>
+                        <li><a href="./about.html" class="nav-link">About Us</a></li>
+                        <li><a href="./services.html" class="nav-link">Services</a></li>
+                        <li><a href="./portfolio.html" class="nav-link active">Portfolio</a></li>
+                        <li><a href="./contact.html" class="nav-link">Contact Us</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </header>
+
+
+
+        
 
         <!-- Main Content -->
         <main class="main-content-wrapper">
             <section class="portfolio-section">
                 <div class="container">
+                    <!-- Portfolio Hero -->
+                    <div class="portfolio-hero">
+                        <div class="portfolio-hero-content">
+                            <h1>Our Vision in Pixels</h1>
+                            <p>Explore a curated collection of our most impactful projects, showcasing our expertise in VR, AI, and immersive event solutions.</p>
+                        </div>
+                    </div>
+
                     <h2 class="section-title">Our Portfolio</h2>
+
+                    <!-- VR Projects -->
+                    <h3 class="category-title">VR Projects</h3>
                     <div class="portfolio-grid">
-<div class="portfolio-item intro-item">
-    <h1>Our Vision in Pixels</h1>
-    <p>Explore a curated collection of our most impactful projects, showcasing our expertise in VR, AI, and immersive event solutions.</p>
-</div>
-
-
-
                         <div class="portfolio-item">
                             <h3>Project Alpha: VR Training Simulation</h3>
-                            <a href="6C5CE7/FFFFFF?text=VR+Training" class="image" aria-label="VR Training Simulation Image">
+                            <a href="#" class="image" aria-label="VR Training Simulation Image">
                                 <img src="../images/event 3.jpg" alt="VR Training Simulation">
                             </a>
                             <p>An immersive VR environment designed for high-fidelity professional training.</p>
+                            <div class="project-meta">
+                                <div class="project-tools">
+                                    <span class="tool-tag">Unity</span>
+                                    <span class="tool-tag">Oculus</span>
+                                    <span class="tool-tag">3D Modeling</span>
+                                </div>
+                                <div class="project-outcome">95% engagement</div>
+                            </div>
                         </div>
 
                         <div class="portfolio-item">
-                            <h3>AI-Powered Chatbot Integration</h3>
-                            <a href="" class="image" aria-label="AI Chatbot Integration Image">
-                                <img src="https://placehold.co/600x400/00BCD4/FFFFFF?text=AI+Chatbot" alt="AI-Powered Chatbot Integration">
+                            <h3>VR Property Tours</h3>
+                            <a href="#" class="image" aria-label="VR Property Tours">
+                                <img src="../images/background.jpg" alt="VR Property Tours">
                             </a>
-                            <p>Seamless AI chatbot solutions enhancing customer service and user experience.</p>
+                            <p>Immersive property tours that allow potential buyers to explore homes remotely.</p>
+                            <div class="project-meta">
+                                <div class="project-tools">
+                                    <span class="tool-tag">Unreal Engine</span>
+                                    <span class="tool-tag">HTC Vive</span>
+                                </div>
+                                <div class="project-outcome">30% sales increase</div>
+                            </div>
                         </div>
 
                         <div class="portfolio-item">
-                            <h3>Virtual Event Platform: NexusCon</h3>
-                            <a href="https://placehold.co/1200x800/6C5CE7/FFFFFF?text=Virtual+Event" class="image" aria-label="Virtual Event Platform Image">
-                                <img src="https://placehold.co/600x400/6C5CE7/FFFFFF?text=Virtual+Event" alt="Virtual Event Platform: NexusCon">
+                            <h3>Educational VR Experiences</h3>
+                            <a href="#" class="image" aria-label="Educational VR Experiences">
+                                <img src="../images/kidvr.jpg" alt="Educational VR Experiences">
                             </a>
-                            <p>A fully customizable virtual event platform for conferences and exhibitions.</p>
+                            <p>Interactive learning modules for schools to enhance STEM education.</p>
+                            <div class="project-meta">
+                                <div class="project-tools">
+                                    <span class="tool-tag">WebXR</span>
+                                    <span class="tool-tag">Google Cardboard</span>
+                                </div>
+                                <div class="project-outcome">Used in 50+ schools</div>
+                            </div>
                         </div>
+                    </div>
 
+                    <!-- AI Projects -->
+                    <h3 class="category-title">AI Projects</h3>
+                    <div class="portfolio-grid">
                         <div class="portfolio-item">
-                            <h3>Interactive Product Visualization</h3>
-                            <a href="https://placehold.co/1200x800/00BCD4/FFFFFF?text=Product+Viz" class="image" aria-label="Interactive Product Visualization Image">
-                                <img src="https://placehold.co/600x400/00BCD4/FFFFFF?text=Product+Viz" alt="Interactive Product Visualization">
+                            <h3>Smart Attendee Matcher</h3>
+                            <a href="#" class="image" aria-label="AI Network Visualization">
+                                <img src="../images/star.jpg" alt="AI Network Visualization">
                             </a>
-                            <p>Bringing products to life with 3D interactive VR models for enhanced engagement.</p>
+                            <p>AI-powered networking tool that connects conference attendees based on interests and goals.</p>
+                            <div class="project-meta">
+                                <div class="project-tools">
+                                    <span class="tool-tag">Python</span>
+                                    <span class="tool-tag">TensorFlow</span>
+                                    <span class="tool-tag">NLP</span>
+                                </div>
+                                <div class="project-outcome">Used at 5 major conferences</div>
+                            </div>
                         </div>
-
+                        
                         <div class="portfolio-item">
-                            <h3>AI-Driven Data Analytics Dashboard</h3>
-                            <a href="https://placehold.co/1200x800/6C5CE7/FFFFFF?text=AI+Analytics" class="image" aria-label="AI-Driven Data Analytics Dashboard Image">
-                                <img src="https://placehold.co/600x400/6C5CE7/FFFFFF?text=AI+Analytics" alt="AI-Driven Data Analytics Dashboard">
+                            <h3>AI Tutor for Client</h3>
+                            <a href="#" class="image" aria-label="AI Tutor Interface">
+                                <img src="../images/eventorg.jpg" alt="AI Tutor Interface">
                             </a>
-                            <p>Transforming raw data into actionable insights with intelligent analytics.</p>
+                            <p>Personalized learning assistant that adapts to student performance and learning style.</p>
+                            <div class="project-meta">
+                                <div class="project-tools">
+                                    <span class="tool-tag">PyTorch</span>
+                                    <span class="tool-tag">React</span>
+                                    <span class="tool-tag">Adaptive Learning</span>
+                                </div>
+                                <div class="project-outcome">Improved test scores</div>
+                            </div>
                         </div>
+                    </div>
 
+                    <!-- Events -->
+                    <h3 class="category-title">Events</h3>
+                    <div class="portfolio-grid">
                         <div class="portfolio-item">
-                            <h3>Hybrid Event Management System</h3>
-                            <a href="https://placehold.co/1200x800/00BCD4/FFFFFF?text=Hybrid+Event" class="image" aria-label="Hybrid Event Management System Image">
-                                <img src="https://placehold.co/600x400/00BCD4/FFFFFF?text=Hybrid+Event" alt="Hybrid Event Management System">
+                            <h3>VirtuFest 2024</h3>
+                            <a href="#" class="image" aria-label="VirtuFest 2024">
+                                <img src="../images/event 3.jpg" alt="VirtuFest 2024">
                             </a>
-                            <p>Seamlessly blending physical and virtual event experiences for maximum reach.</p>
+                            <p>Our annual immersive tech festival showcasing the latest in VR, AR, and AI innovations.</p>
+                            <div class="project-meta">
+                                <div class="project-tools">
+                                    <span class="tool-tag">Event Management</span>
+                                    <span class="tool-tag">Live Streaming</span>
+                                    <span class="tool-tag">VR Demos</span>
+                                </div>
+                                <div class="project-outcome">5000+ attendees</div>
+                            </div>
                         </div>
-
+                        
                         <div class="portfolio-item">
-                            <h3>Educational VR Experiences for Schools</h3>
-                            <a href="https://placehold.co/1200x800/6C5CE7/FFFFFF?text=Edu+VR" class="image" aria-label="Educational VR Experiences Image">
-                                <img src="https://placehold.co/600x400/6C5CE7/FFFFFF?text=Edu+VR" alt="Educational VR Experiences for Schools">
+                            <h3>Tech Summit X</h3>
+                            <a href="#" class="image" aria-label="Tech Summit X">
+                                <img src="../images/star.jpg" alt="Tech Summit X">
                             </a>
-                            <p>Engaging virtual field trips and interactive learning modules for students.</p>
+                            <p>Premier technology conference featuring keynote speakers and cutting-edge workshops.</p>
+                            <div class="project-meta">
+                                <div class="project-tools">
+                                    <span class="tool-tag">Stage Design</span>
+                                    <span class="tool-tag">AR Integration</span>
+                                    <span class="tool-tag">Networking</span>
+                                </div>
+                                <div class="project-outcome">3000+ participants</div>
+                            </div>
                         </div>
-
+                        
                         <div class="portfolio-item">
-                            <h3>Smart Home Automation Interface</h3>
-                            <a href="https://placehold.co/1200x800/00BCD4/FFFFFF?text=Smart+Home" class="image" aria-label="Smart Home Automation Interface Image">
-                                <img src="https://placehold.co/600x400/00BCD4/FFFFFF?text=Smart+Home" alt="Smart Home Automation Interface">
+                            <h3>XR Developer Day</h3>
+                            <a href="#" class="image" aria-label="XR Developer Day">
+                                <img src="../images/eventorg.jpg" alt="XR Developer Day">
                             </a>
-                            <p>Intuitive AI-powered interfaces for controlling smart home devices.</p>
+                            <p>Hands-on workshop day for developers to explore mixed reality tools and collaborative XR experiences.</p>
+                            <div class="project-meta">
+                                <div class="project-tools">
+                                    <span class="tool-tag">Workshops</span>
+                                    <span class="tool-tag">Unity Training</span>
+                                    <span class="tool-tag">Device Testing</span>
+                                </div>
+                                <div class="project-outcome">500+ developers trained</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Charity -->
+                    <h3 class="category-title">Charity</h3>
+                    <div class="portfolio-grid">
+                        <div class="portfolio-item">
+                            <h3>Tech4Teens Bootcamp</h3>
+                            <a href="#" class="image" aria-label="Tech4Teens Bootcamp">
+                                <img src="../images/event 3.jpg" alt="Tech4Teens Bootcamp">
+                            </a>
+                            <p>Free technology bootcamp introducing underprivileged teens to coding and VR development.</p>
+                            <div class="project-meta">
+                                <div class="project-tools">
+                                    <span class="tool-tag">Education</span>
+                                    <span class="tool-tag">Community Outreach</span>
+                                    <span class="tool-tag">Mentorship</span>
+                                </div>
+                                <div class="project-outcome">Reached 1000+ learners</div>
+                            </div>
+                        </div>
+                        
+                        <div class="portfolio-item">
+                            <h3>VR Learning Hubs Initiative</h3>
+                            <a href="#" class="image" aria-label="VR Learning Hub">
+                                <img src="../images/star.jpg" alt="VR Learning Hub">
+                            </a>
+                            <p>Establishing VR learning centers in underserved communities across Africa.</p>
+                            <div class="project-meta">
+                                <div class="project-tools">
+                                    <span class="tool-tag">Non-profit</span>
+                                    <span class="tool-tag">Education</span>
+                                    <span class="tool-tag">VR Hardware</span>
+                                </div>
+                                <div class="project-outcome">5 hubs established</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonials Section -->
+                    <h2 class="section-title">What Our Clients Say</h2>
+                    <div class="testimonials-grid">
+                        <div class="testimonial-card">
+                            <p class="testimonial-quote">"Virtuquest transformed our medical training program with their VR solution. The engagement and retention rates have been phenomenal."</p>
+                            <div class="client-info">
+                                <div class="client-avatar">JD</div>
+                                <div class="client-details">
+                                    <div class="client-name">Dr. James Daudi</div>
+                                    <div class="client-role">Medical Director, Kenya Health Initiative</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-card">
+                            <p class="testimonial-quote">"The AI matching system Virtuquest developed for our conference created meaningful connections that lasted well beyond the event."</p>
+                            <div class="client-info">
+                                <div class="client-avatar">SM</div>
+                                <div class="client-details">
+                                    <div class="client-name">Sarah Mwangi</div>
+                                    <div class="client-role">CEO, TechConnect Africa</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-card">
+                            <p class="testimonial-quote">"Their VR property tours helped us close deals during lockdowns when physical viewings weren't possible. Game-changing technology."</p>
+                            <div class="client-info">
+                                <div class="client-avatar">TK</div>
+                                <div class="client-details">
+                                    <div class="client-name">Thomas Kariuki</div>
+                                    <div class="client-role">Sales Director, SmartVille Properties</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
-
         </main>
 
-      
+        <!-- Follow Section -->
+        <section class="follow-section">
+            <h1>Connect with the Virtuquest World</h1>
+            <p>Follow us for the latest updates on immersive VR experiences, gaming, hardware reviews, and cutting-edge technology.</p>
+            
+            <div class="follow-social-links">
+                <a href="https://www.facebook.com/yourpage" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/yourprofile" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/yourcompany" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.pinterest.com/yourprofile" target="_blank" rel="noopener" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+            </div>
+            
+            <div class="white-rectangle"></div>
+        </section>
 
-<section class="section follow-section">
-    <h1>Connect with the Virtuquest World</h1>
-    <p>Follow us for the latest updates on immersive VR experiences, gaming, hardware reviews, and cutting-edge technology.</p>
-    
-    <div class="follow-social-links">
-        <a href="https://www.facebook.com/yourpage" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.instagram.com/yourprofile" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/company/yourcompany" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://www.pinterest.com/yourprofile" target="_blank" rel="noopener" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
-    </div>
-    
-    <div class="white-rectangle"></div>
-</section>
-
-<section class="section-footer">
-    <p>Step into new dimensions with Virtuquest your gateway to free VR content, expert guides, and a vibrant community.</p>
-</section>
-
-<footer>
-    <p>Virtuquest built with 💡 using modern web tools and open-source creativity .</p>
-</footer>
-
+        <footer>
+            <p>Virtuquest built with 💡 using modern web tools and open-source creativity.</p>
+        </footer>
     </div>
 
-  
- <script src="../scripts/portfolio.js"></script>
+    <script>
+        // Mobile Navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navMenu = document.getElementById('navMenu');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                const icon = navMenu.classList.contains('active') ? 'times' : 'bars';
+                this.innerHTML = `<i class="fas fa-${icon}"></i>`;
+            });
+            
+            // Close menu when clicking on links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                });
+            });
+            
+            // Highlight current page
+            const path = location.pathname.split('/').pop();
+            document.querySelectorAll('.nav-link').forEach(link => {
+                const linkPath = link.getAttribute('href').split('/').pop();
+                if (linkPath === path) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+            
+            // Header scroll effect
+            window.addEventListener('scroll', () => {
+                const header = document.querySelector('header');
+                if (window.scrollY > 50) {
+                    header.style.boxShadow = '0 5px 20px var(--shadow-medium)';
+                    header.style.backgroundColor = 'rgba(10, 13, 20, 0.98)';
+                } else {
+                    header.style.boxShadow = 'none';
+                    header.style.backgroundColor = 'rgba(10, 13, 20, 0.98)';
+                }
+            });
+        });
+    </script>
 </body>
 </html>

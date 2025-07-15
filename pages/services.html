@@ -1,197 +1,177 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang=en>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Services | Virtuquest</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Bootstrap CSS - Added for consistent grid/utility classes -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../styles/services.css">
-    <link rel="stylesheet" href="../styles/footer.css">
+<meta charset=UTF-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Our Services | Virtuquest</title>
+<link rel=preconnect href=https://fonts.googleapis.com>
+<link rel=preconnect href=https://fonts.gstatic.com crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel=stylesheet>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css>
+<link href=https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css rel=stylesheet>
+<link rel=stylesheet href=../styles/services.css>
+<link rel=stylesheet href=../styles/footer.css>
 </head>
 <body>
-   <header>
-        <div class="container header-container">
-            <a href="index.html" class="logo" aria-label="Virtuquest Home">
-                <span>Virtuquest</span>
-            </a>
-            <nav class="navbar" id="mainNavbar">
-                <ul id="navMenu">
-                    <li><a href="../index.html" class="nav-link active">Home</a></li>
-                    <li><a href="./about.html" class="nav-link">About Us</a></li>
-                    <li><a href="./services.html" class="nav-link">Services</a></li>
-                    <li><a href="./portfolio.html" class="nav-link">Portfolio</a></li>
-                    <li><a href="./contact.html" class="nav-link">Contact Us</a></li>
-                </ul>
-            </nav>
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </header>
-
-    <main>
-        <section class="services-hero">
-            <div class="container">
-                <h1>Our Services</h1>
-                <p>Explore the comprehensive range of cutting-edge technology solutions and immersive experiences we offer to transform your business and engage your audience.</p>
-            </div>
-        </section>
-
-        <section class="services-section">
-            <div class="container">
-                <h2>What We Offer</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-content">
-                            <div class="service-image">
-                                <img src="../images/virtualreality.jpg" alt="Virtual Reality headset in a futuristic setting">
-                            </div>
-                            <div class="service-details">
-                                <h3>Virtual Reality</h3>
-                                <p>Immersive solutions for training, tours, and engagement.</p>
-                                <ul class="service-features">
-                                    <li>Custom VR Applications</li>
-                                    <li>360° Tours</li>
-                                    <li>Simulations for Training & Education</li>
-                                    <li>VR Product Demos</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="service-card">
-                        <div class="service-content">
-                            <div class="service-image">
-                                <img src="../images/aichatbots.jpg" alt="Artificial Intelligence network">
-                            </div>
-                            <div class="service-details">
-                                <h3>Artificial Intelligence</h3>
-                                <p>Smart AI tools to optimize experiences and automate workflows.</p>
-                                <ul class="service-features">
-                                    <li>Custom Chatbots & NLP</li>
-                                    <li>Automation for Business Processes</li>
-                                    <li>AI Analytics & Forecasting</li>
-                                    <li>Personalized AI Assistants</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="service-card">
-                        <div class="service-content">
-                            <div class="service-image">
-                                <img src="../images/eventorg.jpg" alt="Organized tech event with glowing lights">
-                            </div>
-                            <div class="service-details">
-                                <h3>Event Organization</h3>
-                                <p>Blending tech and logistics for unforgettable event experiences.</p>
-                                <ul class="service-features">
-                                    <li>Virtual & Hybrid Event Planning</li>
-                                    <li>Live Streaming & VR Booth Integration</li>
-                                    <li>Full-Scale Event Logistics</li>
-                                    <li>Tech-Enhanced Audience Engagement</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="service-card">
-                        <div class="service-content">
-                            <div class="service-image">
-                                <img src="../images/charity.jpeg" alt="Hands holding a glowing globe, symbolizing community">
-                            </div>
-                            <div class="service-details">
-                                <h3>Charity & Community Work</h3>
-                                <p>Tech for social good through inclusive learning and outreach.</p>
-                                <ul class="service-features">
-                                    <li>Free Tech Bootcamps</li>
-                                    <li>"Tech4Teens" Program</li>
-                                    <li>VR for Public Awareness Campaigns</li>
-                                    <li>NGO & CSR Partnerships</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="carousel-section">
-            <div class="carousel-container">
-                <div class="carousel">
-                    <div class="carousel-track">
-                        <div class="carousel-slide" style="background-image: url('../images/kidvr.jpg');"></div>
-                        <div class="carousel-slide" style="background-image: url('../images/event\ organization.jpg');"></div>
-                        <div class="carousel-slide" style="background-image: url('../images/aichatbots.jpg');"></div>
-                        <div class="carousel-slide" style="background-image: url('../images/eventorg.jpg');"></div>
-                    </div>
-                    
-                    <button class="carousel-prev" aria-label="Previous slide">
-                        <svg viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg>
-                    </button>
-                    <button class="carousel-next" aria-label="Next slide">
-                        <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
-                    </button>
-                    
-                    <div class="carousel-dots">
-                        <button class="dot active" aria-label="Go to slide 1"></button>
-                        <button class="dot" aria-label="Go to slide 2"></button>
-                        <button class="dot" aria-label="Go to slide 3"></button>
-                        <button class="dot" aria-label="Go to slide 4"></button>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-      <section class="section follow-section">
-    <h1>Connect with the Virtuquest World</h1>
-    <p>Follow us for the latest in immersive experiences, VR gaming, hardware reviews, and futuristic tech.</p>
-    
-    <div class="follow-social-links">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#"><i class="fab fa-pinterest"></i></a>
-    </div>
-    
-    <div class="white-rectangle"></div>
+<header>
+<div class="container header-container">
+<a href=index.html class=logo aria-label="Virtuquest Home">
+<span>Virtuquest</span>
+</a>
+<nav class=navbar id=mainNavbar>
+<ul id=navMenu>
+<li><a href=../index.html class="nav-link active">Home</a></li>
+<li><a href=./about.html class=nav-link>About Us</a></li>
+<li><a href=./services.html class=nav-link>Services</a></li>
+<li><a href=./portfolio.html class=nav-link>Portfolio</a></li>
+<li><a href=./contact.html class=nav-link>Contact Us</a></li>
+</ul>
+</nav>
+<button class=mobile-menu-btn id=mobileMenuBtn aria-label="Toggle navigation menu">
+<i class="fas fa-bars"></i>
+</button>
+</div>
+</header>
+<main>
+<section class=services-hero>
+<div class=container>
+<h1>Our Services</h1>
+<p>Explore the comprehensive range of cutting-edge technology solutions and immersive experiences we offer to transform your business and engage your audience.</p>
+</div>
 </section>
-
-
+<section class=services-section>
+<div class=container>
+<h2>What We Offer</h2>
+<div class=services-grid>
+<div class=service-card>
+<div class=service-content>
+<div class=service-image>
+<img src=../images/virtualreality.jpg alt="Virtual Reality headset in a futuristic setting">
+</div>
+<div class=service-details>
+<h3>Virtual Reality</h3>
+<p>Immersive solutions for training, tours, and engagement.</p>
+<ul class=service-features>
+<li>Custom VR Applications</li>
+<li>360° Tours</li>
+<li>Simulations for Training & Education</li>
+<li>VR Product Demos</li>
+</ul>
+</div>
+</div>
+</div>
+<div class=service-card>
+<div class=service-content>
+<div class=service-image>
+<img src=../images/aichatbots.jpg alt="Artificial Intelligence network">
+</div>
+<div class=service-details>
+<h3>Artificial Intelligence</h3>
+<p>Smart AI tools to optimize experiences and automate workflows.</p>
+<ul class=service-features>
+<li>Custom Chatbots & NLP</li>
+<li>Automation for Business Processes</li>
+<li>AI Analytics & Forecasting</li>
+<li>Personalized AI Assistants</li>
+</ul>
+</div>
+</div>
+</div>
+<div class=service-card>
+<div class=service-content>
+<div class=service-image>
+<img src=../images/eventorg.jpg alt="Organized tech event with glowing lights">
+</div>
+<div class=service-details>
+<h3>Event Organization</h3>
+<p>Blending tech and logistics for unforgettable event experiences.</p>
+<ul class=service-features>
+<li>Virtual & Hybrid Event Planning</li>
+<li>Live Streaming & VR Booth Integration</li>
+<li>Full-Scale Event Logistics</li>
+<li>Tech-Enhanced Audience Engagement</li>
+</ul>
+</div>
+</div>
+</div>
+<div class=service-card>
+<div class=service-content>
+<div class=service-image>
+<img src=../images/charity.jpeg alt="Hands holding a glowing globe, symbolizing community">
+</div>
+<div class=service-details>
+<h3>Charity & Community Work</h3>
+<p>Tech for social good through inclusive learning and outreach.</p>
+<ul class=service-features>
+<li>Free Tech Bootcamps</li>
+<li>"Tech4Teens" Program</li>
+<li>VR for Public Awareness Campaigns</li>
+<li>NGO & CSR Partnerships</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class=carousel-section>
+<div class=carousel-container>
+<div class=carousel>
+<div class=carousel-track>
+<div class=carousel-slide style="background-image:url('../images/kidvr.jpg')"></div>
+<div class=carousel-slide style="background-image:url('../images/event\ organization.jpg')"></div>
+<div class=carousel-slide style="background-image:url('../images/aichatbots.jpg')"></div>
+<div class=carousel-slide style="background-image:url('../images/eventorg.jpg')"></div>
+</div>
+<button class=carousel-prev aria-label="Previous slide">
+<svg viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg>
+</button>
+<button class=carousel-next aria-label="Next slide">
+<svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+</button>
+<div class=carousel-dots>
+<button class="dot active" aria-label="Go to slide 1"></button>
+<button class=dot aria-label="Go to slide 2"></button>
+<button class=dot aria-label="Go to slide 3"></button>
+<button class=dot aria-label="Go to slide 4"></button>
+</div>
+</div>
+</div>
+</section>
+</main>
 <section class="section follow-section">
-    <h1>Connect with the Virtuquest World</h1>
-    <p>Follow us for the latest updates on immersive VR experiences, gaming, hardware reviews, and cutting-edge technology.</p>
-    
-    <div class="follow-social-links">
-        <a href="https://www.facebook.com/yourpage" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.instagram.com/yourprofile" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/company/yourcompany" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://www.pinterest.com/yourprofile" target="_blank" rel="noopener" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
-    </div>
-    
-    <div class="white-rectangle"></div>
+<h1>Connect with the Virtuquest World</h1>
+<p>Follow us for the latest in immersive experiences, VR gaming, hardware reviews, and futuristic tech.</p>
+<div class=follow-social-links>
+<a href=#><i class="fab fa-facebook-f"></i></a>
+<a href=#><i class="fab fa-twitter"></i></a>
+<a href=#><i class="fab fa-instagram"></i></a>
+<a href=#><i class="fab fa-linkedin-in"></i></a>
+<a href=#><i class="fab fa-pinterest"></i></a>
+</div>
+<div class=white-rectangle></div>
 </section>
-
-<section class="section-footer">
-    <p>Step into new dimensions with Virtuquest your gateway to free VR content, expert guides, and a vibrant community.</p>
+<section class="section follow-section">
+<h1>Connect with the Virtuquest World</h1>
+<p>Follow us for the latest updates on immersive VR experiences, gaming, hardware reviews, and cutting-edge technology.</p>
+<div class=follow-social-links>
+<a href=https://www.facebook.com/yourpage target=_blank rel=noopener aria-label=Facebook><i class="fab fa-facebook-f"></i></a>
+<a href=https://twitter.com/yourprofile target=_blank rel=noopener aria-label=Twitter><i class="fab fa-twitter"></i></a>
+<a href=https://www.instagram.com/yourprofile target=_blank rel=noopener aria-label=Instagram><i class="fab fa-instagram"></i></a>
+<a href=https://www.linkedin.com/company/yourcompany target=_blank rel=noopener aria-label=LinkedIn><i class="fab fa-linkedin-in"></i></a>
+<a href=https://www.pinterest.com/yourprofile target=_blank rel=noopener aria-label=Pinterest><i class="fab fa-pinterest"></i></a>
+</div>
+<div class=white-rectangle></div>
 </section>
-
+<section class=section-footer>
+<p>Step into new dimensions with Virtuquest your gateway to free VR content, expert guides, and a vibrant community.</p>
+</section>
 <footer>
-    <p>Virtuquest built with 💡 using modern web tools and open-source creativity .</p>
+<p>Virtuquest built with 💡 using modern web tools and open-source creativity .</p>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+<script src="../scripts/index.js" defer></script>
+<script src="../scripts/servicesCarausel.js" defer></script>
 
-    <!-- Bootstrap JS Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script  src="../scripts/index.js"></script>
-    <script src="../scripts/servicesCarausel.js"></script>
-     
 </body>
 </html>
