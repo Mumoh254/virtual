@@ -22,9 +22,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel=stylesheet>
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css>
 <link rel=stylesheet href=../styles/index.min.css>
+<link rel="stylesheet" href="../styles/loadingSpinner.min.css">
 </head>
 <body>
 
+<div class="loading-spinner-overlay" id="loadingSpinner">
+    <div class="loading-spinner"></div>
+</div>
 <header>
 <div class="container header-container">
 <a href=index.html class=logo aria-label="Virtuquest Home">
@@ -152,6 +156,23 @@
 <footer>
 <p>Virtuquest built with 💡 using modern web tools and open-source creativity .</p>
 </footer>
+
+<div class="call-icon-container">
+    <a href="tel:+1234567890" class="call-icon" aria-label="Call Us">
+        <i class="fas fa-phone-alt"></i>
+    </a>
+</div>
+<script>
+
+    window.addEventListener('load', function() {
+        const loadingSpinner = document.getElementById('loadingSpinner');
+        loadingSpinner.style.opacity = '0';
+        loadingSpinner.style.visibility = 'hidden';
+        setTimeout(() => {
+            loadingSpinner.style.display = 'none';
+        }, 500); 
+    });
+</script>
 <script src=../scripts/index.js></script>
 </main></body>
 </html>
