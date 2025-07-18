@@ -7,7 +7,7 @@
             if (mobileMenuBtn && navMenu) {
                 mobileMenuBtn.addEventListener('click', function() {
                     navMenu.classList.toggle('active');
-                    // Update button icon
+                    
                     const icon = navMenu.classList.contains('active') ? 'times' : 'bars';
                     this.innerHTML = `<i class="fas fa-${icon}"></i>`;
                 });
@@ -27,7 +27,7 @@
                 });
             });
             
-            // Highlight current page in navigation
+            // Highlight current page in nav
             const path = location.pathname.split('/').pop();
             document.querySelectorAll('.nav-link').forEach(link => {
                 const linkPath = link.getAttribute('href').split('/').pop();
@@ -39,7 +39,7 @@
             });
         });
 
-        // Add scroll effect to header
+        //  scroll effect 
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if (header) {

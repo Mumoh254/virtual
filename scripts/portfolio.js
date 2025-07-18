@@ -29,7 +29,7 @@
             const path = location.pathname.split('/').pop();
             document.querySelectorAll('.nav-link').forEach(link => {
                 const linkPath = link.getAttribute('href').split('/').pop();
-                // Adjust for relative paths in portfolio.html
+               
                 let actualLinkPath = linkPath;
                 if (linkPath.startsWith('./pages/')) {
                     actualLinkPath = linkPath.replace('./pages/', '');
@@ -42,7 +42,7 @@
                 }
             });
 
-            // Add scroll effect to header
+            //  scroll effect 
             window.addEventListener('scroll', () => {
                 const header = document.querySelector('header');
                 if (header) {

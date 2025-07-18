@@ -192,22 +192,22 @@
         }
 
         .contact-details a:hover {
-            color: var(--secondary-accent); /* Use secondary accent on hover */
+            color: var(--secondary-accent); 
             text-shadow: 0 0 8px var(--secondary-accent);
         }
 
         .social-contact {
             grid-column: span 2;
             text-align: center;
-            padding-top: 2.5rem; /* Increased padding */
-            border-top: 1px solid rgba(var(--primary-accent), 0.3); /* Consistent border */
-            margin-top: 1.5rem; /* Add margin to separate from items */
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(var(--primary-accent), 0.3); 
+            margin-top: 1.5rem; 
         }
 
         .social-contact h3 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.8rem; /* Larger heading */
-            margin-bottom: 2rem; /* Increased margin */
+            font-size: 1.8rem; 
+            margin-bottom: 2rem; 
             color: var(--primary-accent);
             letter-spacing: 0.8px;
             text-shadow: 0 0 10px var(--accent-glow-light);
@@ -216,43 +216,42 @@
         .social-contact-links {
             display: flex;
             justify-content: center;
-            gap: 2rem; /* Increased gap */
+            gap: 2rem; 
         }
 
         .social-contact-link {
-            width: 60px; /* Larger size */
-            height: 60px; /* Larger size */
+            width: 60px; 
+            height: 60px; 
             border-radius: 50%;
-            background: rgba(var(--primary-accent), 0.1); /* Lighter background */
+            background: rgba(var(--primary-accent), 0.1); 
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--primary-accent); /* Primary accent color */
-            font-size: 1.8rem; /* Larger icon size */
+            color: var(--primary-accent); 
+            font-size: 1.8rem; 
             transition: all 0.3s ease;
-            border: 1px solid var(--primary-accent); /* Primary accent border */
+            border: 1px solid var(--primary-accent);
             box-shadow: 0 0 15px rgba(var(--primary-accent), 0.3);
         }
 
         .social-contact-link:hover {
-            background: var(--secondary-accent); /* Secondary accent on hover */
-            color: var(--background); /* Dark background on hover */
-            transform: translateY(-8px) scale(1.05); /* More pronounced hover effect */
+            background: var(--secondary-accent);
+            color: var(--background); 
+            transform: translateY(-8px) scale(1.05); 
             box-shadow: 0 0 25px var(--accent-glow-medium), 0 0 40px var(--accent-glow-strong);
         }
 
-        /* Newsletter Section - Updated Alignment */
         .newsletter-section {
             background: var(--container-bg);
             backdrop-filter: blur(12px);
             border-radius: 16px;
-            padding: 4rem 3rem; /* Increased top/bottom padding */
+            padding: 4rem 3rem; 
             margin-bottom: 6rem;
             border: 1px solid rgba(var(--primary-accent), 0.15);
             box-shadow: 0 8px 25px var(--shadow-light), 0 0 20px var(--accent-glow-light);
             text-align: center;
             max-width: 800px;
-            margin: 0 auto; /* Center the section */
+            margin: 0 auto; 
         }
 
         .newsletter-container {
@@ -372,7 +371,7 @@
             margin-top: 0.5rem;
         }
 
-        /* Footer (Matching Services Page) */
+        /* Footer  */
         footer {
             background-color: var(--header-bg);
             padding: 3rem 0 2rem;

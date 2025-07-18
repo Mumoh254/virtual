@@ -1,19 +1,19 @@
   :root {
-            /* New Color Palette: Modern Dark & Gradient (from main index.html) */
+            
             --background: #0A0D14; /* Very dark blue-black */
             --header-bg: rgba(10, 13, 20, 0.98); /* Almost opaque header */
-            --container-bg: rgba(25, 30, 40, 0.6); /* Slightly lighter, transparent dark blue-gray for cards/containers */
-            --text-main: #E0E6F0; /* Soft white for body text */
+            --container-bg: rgba(25, 30, 40, 0.6); 
+            --text-main: #E0E6F0; 
             --text-heading: #F8FAFC; /* Pure white for main headings */
             --white: #FFFFFF;
 
-            /* Accent Colors - Sleeker, sophisticated */
+          
             --primary-accent: #6C5CE7; /* Deep, rich violet */
             --secondary-accent: #00BCD4; /* Vibrant, modern cyan */
             --cta-gradient-start: #FF6B6B; /* Soft red for CTA */
             --cta-gradient-end: #FF9A8B; /* Lighter red for CTA */
 
-            /* Shadows & Glows - Subtler, more elegant */
+  
             --shadow-light: rgba(0, 0, 0, 0.2);
             --shadow-medium: rgba(0, 0, 0, 0.4);
             --shadow-strong: rgba(0, 0, 0, 0.6);
@@ -37,7 +37,7 @@
             color: var(--text-main);
             line-height: 1.8;
             overflow-x: hidden;
-            padding-top: 80px; /* Space for fixed header */
+            padding-top: 80px; 
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
@@ -62,11 +62,11 @@
             font-weight: 700;
             color: var(--text-heading);
             margin-bottom: 1.5rem;
-            text-shadow: 0 0 3px var(--accent-glow-light); /* Softer glow */
+            text-shadow: 0 0 3px var(--accent-glow-light);
         }
 
         h1 {
-            font-size: 3.8rem; /* Larger, more impactful title */
+            font-size: 3.8rem; 
             background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
             -webkit-background-clip: text;
             background-clip: text;
@@ -76,8 +76,8 @@
         }
 
         h2 {
-            font-size: 3.2rem; /* Consistent with main page section titles */
-            margin-bottom: 4rem; /* Consistent spacing */
+            font-size: 3.2rem;
+            margin-bottom: 4rem; 
             position: relative;
             display: inline-block;
             background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
@@ -90,10 +90,10 @@
         h2::after {
             content: '';
             position: absolute;
-            bottom: -10px; /* Adjusted position */
+            bottom: -10px; 
             left: 0;
             width: 100%;
-            height: 3px; /* Thicker underline */
+            height: 3px; 
             background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
             box-shadow: 0 0 10px var(--primary-accent);
         }
@@ -119,7 +119,7 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 3rem; /* Consistent padding with main page */
+            padding: 3rem; 
             position: relative;
             z-index: 1;
             background: var(--background);
@@ -154,14 +154,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 2.5rem; /* Consistent padding with main page */
+            padding: 0 2.5rem; 
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .logo {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem; /* Consistent with main page */
+            font-size: 2.5rem; 
             font-weight: 700;
             background: linear-gradient(90deg, var(--primary-accent) 0%, var(--secondary-accent) 100%);
             -webkit-background-clip: text;
@@ -172,7 +172,7 @@
             position: relative;
         }
 
-        .logo::before { /* Underline effect for logo */
+        .logo::before { 
             content: "";
             position: absolute;
             bottom: -10px;
@@ -193,16 +193,16 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 3rem; /* Consistent gap */
+            gap: 3rem; 
         }
 
         nav ul li a {
-            font-family: 'Inter', sans-serif; /* Changed to Inter for nav links */
+            font-family: 'Inter', sans-serif; 
             font-weight: 600;
             font-size: 1rem;
             position: relative;
-            padding: 0.8rem 0; /* Consistent padding */
-            color: var(--text-main); /* Consistent color */
+            padding: 0.8rem 0; 
+            color: var(--text-main); 
             text-transform: uppercase;
             letter-spacing: 0.8px;
         }
@@ -210,11 +210,11 @@
         nav ul li a::after {
             content: '';
             position: absolute;
-            bottom: -8px; /* Consistent position */
+            bottom: -8px; 
             left: 50%;
             transform: translateX(-50%);
             width: 0;
-            height: 3px; /* Consistent thickness */
+            height: 3px; 
             background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
             transition: width 0.3s ease;
         }
@@ -236,8 +236,8 @@
             display: none;
             background: none;
             border: none;
-            color: var(--primary-accent); /* Consistent color */
-            font-size: 2.5rem; /* Consistent size */
+            color: var(--primary-accent); 
+            font-size: 2.5rem;
             cursor: pointer;
             transition: color 0.3s ease;
         }
@@ -248,11 +248,11 @@
         @media (max-width: 992px) {
             nav ul {
                 position: fixed;
-                top: 80px; /* Adjust for header height */
+                top: 80px; 
                 right: -100%;
-                width: 280px; /* Slightly wider mobile menu */
+                width: 280px; 
                 height: calc(100vh - 80px);
-                background-color: var(--header-bg); /* Use header background */
+                background-color: var(--header-bg);
                 backdrop-filter: blur(10px);
                 flex-direction: column;
                 align-items: center;
@@ -284,7 +284,7 @@
                 font-size: 1.8rem;
             }
             nav ul {
-                top: 70px; /* Adjust for smaller header height */
+                top: 70px; 
                 height: calc(100vh - 70px);
             }
         }
@@ -577,7 +577,7 @@
             display: flex;
             gap: 12px;
             z-index: 100;
-            background: rgba(25, 30, 40, 0.8); /* Background for dots container */
+            background: rgba(25, 30, 40, 0.8);
             padding: 0.75rem 1.5rem;
             border-radius: 20px;
             border: 1px solid rgba(var(--primary-accent), 0.2);
