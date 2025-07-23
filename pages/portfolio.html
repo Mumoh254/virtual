@@ -8,47 +8,900 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../styles/index.min.css">
-    <link rel="stylesheet" href="../styles/portfolio.min.css">
-    <link rel=stylesheet href=../styles/footer.min.css>
+    <!-- Removed local CSS links to embed all styles directly for completeness -->
 
     <style>
-  .logo img {
-    height: 70px;
-    width: auto;
-    display: block;
-    max-width: 100%;
-  }
-</style>
+        /* Define CSS variables for consistent theming */
+        :root {
+            --background: #0a0d14;
+            --header-bg: rgba(10, 13, 20, 0.98);
+            --container-bg: rgba(25, 30, 40, 0.6);
+            --text-main: #e0e6f0;
+            --text-heading: #f8fafc;
+            --white: #ffffff;
+            --primary-accent: #6c5ce7; /* A vibrant purple */
+            --secondary-accent: #00bcd4; /* A bright cyan */
+            --cta-gradient-start: #ff6b6b;
+            --cta-gradient-end: #ff9a8b;
+            --shadow-light: rgba(0, 0, 0, 0.2);
+            --shadow-medium: rgba(0, 0, 0, 0.4);
+            --shadow-strong: rgba(0, 0, 0, 0.6);
+            --accent-glow-light: rgba(108, 92, 231, 0.3);
+            --accent-glow-medium: rgba(108, 92, 231, 0.5);
+            --accent-glow-strong: rgba(108, 92, 231, 0.7);
+            --border-gradient: linear-gradient(90deg, transparent, var(--primary-accent) 20%, var(--secondary-accent) 80%, transparent);
+            --cta-shadow-color: rgba(255, 107, 107, 0.5);
+        }
 
+        /* Universal Box Sizing */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styles */
+        body {
+            font-family: 'Inter', sans-serif; /* Prioritize Inter as specified in general instructions */
+            background-color: var(--background);
+            color: var(--text-main);
+            line-height: 1.8;
+            overflow-x: hidden; /* Prevents horizontal scroll */
+            padding-top: 80px; /* Space for fixed header */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Background Grid Effect for Body */
+        body::before {
+            content: "";
+            position: fixed; /* Fixed to viewport */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: linear-gradient(rgba(var(--primary-accent), 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(var(--primary-accent), 0.02) 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        /* Headings Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Orbitron', sans-serif; /* Sci-fi/tech font */
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 3px var(--accent-glow-light);
+            position: relative; /* For underlines */
+        }
+
+        /* Gradient Headings */
+        h1 {
+            font-size: 3.8rem;
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent; /* Makes text transparent to show background gradient */
+            text-shadow: 0 0 25px var(--accent-glow-medium), 0 0 50px var(--accent-glow-strong);
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 3.2rem;
+            margin-bottom: 4rem;
+            display: inline-block; /* Allows text-align center on parent to center it */
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent; /* Makes text transparent to show background gradient */
+            text-shadow: 0 0 20px var(--accent-glow-medium), 0 0 40px var(--accent-glow-strong);
+        }
+
+        /* Underline for H2 */
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent)); /* Gradient underline */
+            box-shadow: 0 0 10px var(--primary-accent);
+        }
+
+        /* Paragraphs */
+        p {
+            color: var(--text-main);
+            margin-bottom: 1.2rem;
+            font-weight: 300;
+        }
+
+        /* Global Link Styles */
+        a {
+            color: var(--secondary-accent);
+            text-decoration: none;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-accent);
+            text-shadow: 0 0 10px var(--secondary-accent); /* Enhanced hover shadow */
+        }
+
+        /* General Container Styling */
+        .container {
+            width: 100%; /* Occupy full width within its parent */
+            max-width: 1200px; /* Max width for content */
+            margin: 0 auto; /* Center the container */
+            padding: 1rem 2.5rem; /* Padding for content inside container */
+            z-index: 1;
+            background: var(--background);
+            border: 1px solid rgba(var(--primary-accent), 0.2);
+            border-radius: 16px;
+            transition: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 8px 25px var(--shadow-medium);
+        }
+
+        .container:hover {
+            transform: translateY(-8px) scale(1.005);
+            box-shadow: 0 15px 40px var(--shadow-strong), 0 0 30px var(--accent-glow-medium);
+            border-color: var(--primary-accent);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--header-bg);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(var(--primary-accent), 0.1);
+            box-shadow: 0 5px 20px var(--shadow-medium);
+            padding: 1rem 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2.5rem;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        /* Logo Styling */
+        .logo {
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, var(--primary-accent) 0, var(--secondary-accent) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px var(--accent-glow-medium);
+            letter-spacing: 1.5px;
+            position: relative;
+            display: flex; /* To align image and text if present */
+            align-items: center;
+        }
+
+        .logo img {
+            height: 70px;
+            width: auto;
+            display: block;
+            max-width: 100%;
+            margin-right: 10px; /* Space between logo image and text if any */
+        }
+
+        .logo::before {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            box-shadow: 0 0 10px var(--primary-accent);
+            transform-origin: left;
+            transform: scaleX(0);
+            transition: transform 0.4s ease-out;
+        }
+
+        .logo:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* Navigation Menu */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        nav ul li a {
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 0.8rem 0;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            position: relative;
+            color: var(--text-main); /* Ensure nav links use main text color */
+        }
+
+        nav ul li a::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        nav ul li a.active {
+            color: var(--primary-accent);
+            text-shadow: 0 0 8px var(--primary-accent);
+        }
+
+        nav ul li a.active::after {
+            width: 100%;
+            background: var(--primary-accent);
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-accent);
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .mobile-menu-btn:hover {
+            color: var(--secondary-accent);
+        }
+
+        /* Portfolio Hero Section */
+        .portfolio-hero {
+            position: relative;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+            color: #fff;
+            background-image: url("../images/background.jpg"); /* Ensure this path is correct */
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 4rem;
+            box-shadow: 0 10px 30px var(--shadow-medium); /* Add shadow to hero section */
+        }
+        .portfolio-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), /* Dark overlay */
+                        radial-gradient(circle at 20% 50%, rgba(108, 92, 231, 0.15) 0, transparent 50%), /* Subtle accent glow */
+                        radial-gradient(circle at 80% 50%, rgba(0, 188, 212, 0.15) 0, transparent 50%);
+            z-index: 1;
+            mix-blend-mode: normal; /* Changed from screen to normal for better overlay visibility */
+        }
+
+        .portfolio-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+            border-radius: 16px;
+            background: rgba(10, 13, 20, 0.6); /* Slightly darker background for content */
+            border: 1px solid rgba(var(--primary-accent), 0.3);
+            box-shadow: 0 0 30px var(--accent-glow-medium);
+            max-width: 800px; /* Constrain width for readability */
+            width: 100%;
+        }
+        .portfolio-hero h1 {
+            margin-bottom: 1.5rem;
+            font-size: 4.2rem; /* Larger hero heading */
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 25px var(--accent-glow-medium), 0 0 50px var(--accent-glow-strong);
+        }
+        .portfolio-hero p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            color: var(--text-main); /* Ensure text color is consistent */
+        }
+
+        /* Category Title */
+        .category-title {
+            font-size: 2.2rem;
+            margin: 4rem 0 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(var(--primary-accent), 0.3);
+            color: var(--text-heading);
+            text-shadow: 0 0 10px var(--accent-glow-light);
+            position: relative;
+            text-align: center; /* Center the category title */
+            display: block; /* Ensure it takes full width for centering */
+        }
+        .category-title::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 50%; /* Center the underline */
+            transform: translateX(-50%); /* Center the underline */
+            width: 100px; /* Fixed width for the underline */
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent)); /* Gradient underline */
+            box-shadow: 0 0 10px var(--primary-accent); /* Shadow for the underline */
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
+            gap: 2.5rem;
+            margin-top: 1rem;
+            padding: 0 1rem; /* Padding for the grid itself */
+        }
+
+        /* Portfolio Item Card */
+        .portfolio-item {
+            background: var(--container-bg);
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2), 0 0 15px rgba(108, 92, 231, 0.1);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            transition: 0.3s ease-in-out; /* Smooth transition for hover */
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(var(--primary-accent), 0.15);
+        }
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px var(--shadow-medium), 0 0 30px var(--accent-glow-medium);
+            border-color: var(--primary-accent);
+        }
+
+        /* Project Image */
+        .portfolio-item .image {
+            display: block;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        .portfolio-item .image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .portfolio-item:hover .image img {
+            transform: scale(1.05); /* Zoom effect on image hover */
+        }
+        .portfolio-item .image::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(108, 92, 231, 0), rgba(0, 188, 212, 0.2));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .portfolio-item:hover .image::after {
+            opacity: 1; /* Fade in gradient overlay */
+        }
+
+        /* Project Details */
+        .portfolio-item h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+            text-shadow: 0 0 12px var(--accent-glow-light);
+            color: var(--text-heading); /* Ensure heading color is consistent */
+        }
+        .portfolio-item p {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            margin-bottom: 1.2rem;
+            flex-grow: 1; /* Allows paragraph to take available space */
+        }
+        .portfolio-item .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end; /* Align meta items to bottom */
+            margin-top: auto; /* Pushes meta to the bottom of the card */
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+            gap: 0.5rem; /* Space between meta elements */
+        }
+        .project-tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .tool-tag {
+            background: rgba(var(--primary-accent), 0.1);
+            border-radius: 20px;
+            border: 1px solid rgba(var(--secondary-accent), 0.3);
+            color: var(--secondary-accent);
+            padding: 0.3rem 0.8rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            white-space: nowrap; /* Prevent tags from breaking */
+        }
+        .project-outcome {
+            background: rgba(var(--secondary-accent), 0.1);
+            border-radius: 20px;
+            border: 1px solid rgba(var(--secondary-accent), 0.3);
+            color: var(--secondary-accent);
+            padding: 0.3rem 0.8rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        /* Testimonials Section */
+        .section-title { /* Reusing h2 style for section titles */
+            text-align: center;
+            font-size: 3.2rem;
+            margin-top: 6rem; /* Space above testimonials */
+            margin-bottom: 4rem;
+            display: inline-block;
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px var(--accent-glow-medium), 0 0 40px var(--accent-glow-strong);
+        }
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 300px; /* A bit narrower underline for section titles */
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            box-shadow: 0 0 10px var(--primary-accent);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            padding: 0 1rem; /* Padding for the grid */
+        }
+        .testimonial-card {
+            background: var(--container-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(var(--primary-accent), 0.2);
+            box-shadow: 0 8px 25px var(--shadow-light);
+            transition: 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px var(--shadow-medium), 0 0 20px var(--accent-glow-light);
+        }
+        .testimonial-quote {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+            color: var(--text-main);
+            flex-grow: 1; /* Allow quote to take available space */
+        }
+        .testimonial-quote::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -10px;
+            font-size: 3rem;
+            opacity: 0.5;
+            color: var(--secondary-accent); /* Quote icon color */
+        }
+        .client-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: auto; /* Pushes client info to the bottom */
+        }
+        .client-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary-accent), var(--secondary-accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.2rem;
+            flex-shrink: 0; /* Prevent shrinking */
+        }
+        .client-details {
+            display: flex;
+            flex-direction: column;
+            text-align: left; /* Ensure text aligns left */
+        }
+        .client-name {
+            font-weight: 600;
+            color: var(--text-heading);
+        }
+        .client-role {
+            font-size: 0.9rem;
+            color: var(--secondary-accent);
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--header-bg);
+            padding: 3rem 1rem;
+            position: relative;
+            border-top: 3px solid;
+            border-image: var(--border-gradient) 1;
+            box-shadow: 0 0 25px var(--shadow-medium);
+            color: var(--text-main);
+            text-align: center;
+            margin-top: 6rem; /* Space above footer */
+        }
+
+        .footer-content-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Center content when quick links are removed */
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 2.5rem;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 280px; /* Adjusted min-width for better spacing */
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .footer-section h2 {
+            font-size: 1.5rem;
+            color: var(--text-heading);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            background: none; /* Override global h2 gradient for footer section titles */
+            -webkit-background-clip: unset;
+            background-clip: unset;
+            color: var(--text-heading); /* Ensure color is set directly */
+            text-shadow: none; /* Remove text shadow */
+        }
+
+        .footer-section h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px; /* Enhanced width */
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            border-radius: 2px;
+            box-shadow: 0 0 8px var(--primary-accent); /* Added shadow */
+        }
+
+        /* Social Links in Footer */
+        .follow-social-links {
+            display: flex;
+            justify-content: flex-start;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .follow-social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(var(--primary-accent), 0.1);
+            color: var(--secondary-accent);
+            font-size: 2rem;
+            transition: 0.3s ease-in-out;
+            box-shadow: 0 0 10px var(--accent-glow-light);
+            border: 1px solid rgba(var(--primary-accent), 0.3);
+            text-decoration: none;
+        }
+
+        .follow-social-links a:hover {
+            background-color: var(--primary-accent);
+            color: var(--background);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 0 20px var(--primary-accent);
+        }
+
+        /* Brand Info and Copyright in Footer */
+        .footer-info {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            min-width: 280px; /* Adjusted min-width */
+            padding: 1rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: var(--text-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .footer-logo svg {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            color: var(--secondary-accent);
+            filter: drop-shadow(0 0 5px var(--accent-glow-light));
+        }
+
+        .copyright-text {
+            font-size: 0.9rem;
+            color: rgba(var(--text-main), 0.6);
+            margin: 0;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .header-container {
+                padding: 0 1.5rem;
+            }
+            nav ul {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                width: 280px;
+                height: calc(100vh - 80px);
+                background-color: var(--header-bg);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 30px;
+                transition: right 0.3s;
+                z-index: 1000;
+                border-left: 1px solid rgba(var(--primary-accent), 0.1);
+                box-shadow: -5px 0 20px var(--shadow-medium);
+            }
+            nav ul.active {
+                right: 0;
+            }
+            .mobile-menu-btn {
+                display: block;
+                z-index: 1001;
+            }
+
+            .portfolio-hero h1 {
+                font-size: 3.2rem;
+            }
+            .portfolio-hero p {
+                font-size: 1.1rem;
+            }
+            .category-title {
+                font-size: 2rem;
+            }
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjusted min-width for better mobile fit */
+                gap: 2rem;
+            }
+            .portfolio-item h3 {
+                font-size: 1.6rem;
+            }
+            .section-title {
+                font-size: 2.8rem;
+            }
+            .testimonials-grid {
+                grid-template-columns: 1fr; /* Stack testimonials on smaller screens */
+                padding: 0 1.5rem;
+            }
+
+            /* Footer specific responsive adjustments */
+            .footer-content-wrapper {
+                flex-direction: column;
+                align-items: center;
+            }
+            .footer-section {
+                width: 100%;
+                text-align: center;
+                padding: 1.5rem 0;
+            }
+            .footer-section h2::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .follow-social-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+            .header-container {
+                padding: 0 1.5rem;
+            }
+            .logo {
+                font-size: 1.8rem;
+            }
+            nav ul {
+                top: 70px;
+                height: calc(100vh - 70px);
+            }
+
+            .portfolio-hero h1 {
+                font-size: 2.5rem;
+            }
+            .portfolio-hero p {
+                font-size: 1rem;
+            }
+            .category-title {
+                font-size: 1.8rem;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr; /* Single column on very small screens */
+                gap: 1.5rem;
+                padding: 0 1rem;
+            }
+            .portfolio-item {
+                max-width: 400px; /* Constrain width for single column items */
+                margin: 0 auto; /* Center single column items */
+            }
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            body {
+                padding-top: 60px;
+            }
+            .header-container {
+                padding: 0 1rem;
+            }
+            .logo {
+                font-size: 1.5rem; /* Reduced logo font size for very small devices */
+            }
+            .logo img {
+                height: 50px; /* Reduced logo image height */
+            }
+            nav ul {
+                top: 60px;
+                width: 100%;
+                height: calc(100vh - 60px);
+            }
+
+            .portfolio-hero .portfolio-hero-content {
+                padding: 1.5rem;
+            }
+            .portfolio-hero h1 {
+                font-size: 2rem;
+            }
+            .portfolio-hero p {
+                font-size: 0.9rem;
+            }
+            .category-title {
+                font-size: 1.5rem;
+                margin: 3rem 0 1.5rem;
+            }
+            .portfolio-item h3 {
+                font-size: 1.4rem;
+            }
+            .portfolio-item p {
+                font-size: 0.85rem;
+            }
+            .tool-tag, .project-outcome {
+                font-size: 0.75rem;
+                padding: 0.2rem 0.6rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .testimonial-card {
+                padding: 1.5rem;
+            }
+            .testimonial-quote {
+                font-size: 0.9rem;
+            }
+            .client-avatar {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            .client-name, .client-role {
+                font-size: 0.85rem;
+            }
+
+            /* Footer specific adjustments for very small devices */
+            .footer-section h2 {
+                font-size: 1.3rem;
+            }
+            .follow-social-links a {
+                width: 45px;
+                height: 45px;
+                font-size: 1.8rem;
+            }
+            .footer-logo {
+                font-size: 1.2rem;
+            }
+            .footer-logo svg {
+                width: 30px;
+                height: 30px;
+                margin-right: 8px;
+            }
+            .copyright-text {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Wrapper -->
     <div id="wrapper">
-        
-  <header>
-  <div class="container header-container">
-    <a href="index.html" class="logo" aria-label="Virtuquest Home">
-      <img src="../images/vrLogo.png" alt="Virtuquest Logo" />
-    </a>
-    <nav class="navbar" id="mainNavbar">
-      <ul id="navMenu">
-        <li><a href="../index.html" class="nav-link active">Home</a></li>
-        <li><a href="./about.html" class="nav-link">About Us</a></li>
-        <li><a href="./services.html" class="nav-link">Services</a></li>
-        <li><a href="./portfolio.html" class="nav-link">Portfolio</a></li>
-        <li><a href="./contact.html" class="nav-link">Contact Us</a></li>
-      </ul>
-    </nav>
-    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
-      <i class="fas fa-bars"></i>
-    </button>
-  </div>
-</header>
 
-
-
-        
+        <header>
+            <div class="container header-container">
+                <a href="index.html" class="logo" aria-label="Virtuquest Home">
+                    <img src="../images/vrLogo.png" alt="Virtuquest Logo" />
+                </a>
+                <nav class="navbar" id="mainNavbar">
+                    <ul id="navMenu">
+                        <li><a href="../index.html" class="nav-link active">Home</a></li>
+                        <li><a href="./about.html" class="nav-link">About Us</a></li>
+                        <li><a href="./services.html" class="nav-link">Services</a></li>
+                        <li><a href="./portfolio.html" class="nav-link">Portfolio</a></li>
+                        <li><a href="./contact.html" class="nav-link">Contact Us</a></li>
+                        <li><a href="./images.html" class="nav-link">Images</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </header>
 
         <!-- Main Content -->
         <main class="main-content-wrapper">
@@ -62,10 +915,8 @@
                         </div>
                     </div>
 
-                    <h2 class="section-title">Our Portfolio</h2>
-
                     <!-- VR Projects -->
-                    <h3 class="category-title">VR Projects</h3>
+                    <h3 class="category-title">VR Portfolio</h3>
                     <div class="portfolio-grid">
                         <div class="portfolio-item">
                             <h3>Project Alpha: VR Training Simulation</h3>
@@ -242,34 +1093,38 @@
                     <h2 class="section-title">What Our Clients Say</h2>
                     <div class="testimonials-grid">
                         <div class="testimonial-card">
-                            <p class="testimonial-quote">"Virtuquest transformed our medical training program with their VR solution. The engagement and retention rates have been phenomenal."</p>
+                            <p class="testimonial-quote">
+                                Working with arcade 1999 is nothing short of convenient. They are fully equipped with well maintained gear. They are also great with kids they are patient with them. Lastly, their timing is exceptional. I highly recommend them for all your events.
+                            </p>
                             <div class="client-info">
-                                <div class="client-avatar">JD</div>
+                                <div class="client-avatar">LSC</div>
                                 <div class="client-details">
-                                    <div class="client-name">Dr. James Daudi</div>
-                                    <div class="client-role">Medical Director, Kenya Health Initiative</div>
+                                    <div class="client-role">~ Laceup sports center</div>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="testimonial-card">
-                            <p class="testimonial-quote">"The AI matching system Virtuquest developed for our conference created meaningful connections that lasted well beyond the event."</p>
+                            <p class="testimonial-quote">
+                                In the middle of the vibrant mix of food, music and culture, their VR setup offered a playful and immersive escape that drew interest from curious attendees. The team was professional and it was a pleasure having them as part of our vendor lineup.
+                            </p>
                             <div class="client-info">
-                                <div class="client-avatar">SM</div>
+                                <div class="client-avatar">T</div>
                                 <div class="client-details">
-                                    <div class="client-name">Sarah Mwangi</div>
-                                    <div class="client-role">CEO, TechConnect Africa</div>
+                                    <div class="client-name">Tracey </div>
+                                    <div class="client-role">~ Nairobi Street Food</div>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="testimonial-card">
-                            <p class="testimonial-quote">"Their VR property tours helped us close deals during lockdowns when physical viewings weren't possible. Game-changing technology."</p>
+                            <p class="testimonial-quote">
+                                Working with Arcade 1999 has been an absolute pleasure! From STEM Africa Fest to our science camp partnerships, their team has brought incredible energy and innovation to every collaboration. Their VR experiences have added a whole new dimension to our science camps — making learning more immersive, exciting, and fun for the kids. Thanks to Arcade 1999, our camps are cooler, smarter, and more unforgettable than ever. We can’t wait to do even more together!
+                            </p>
                             <div class="client-info">
-                                <div class="client-avatar">TK</div>
+                                <div class="client-avatar">FS</div>
                                 <div class="client-details">
-                                    <div class="client-name">Thomas Kariuki</div>
-                                    <div class="client-role">Sales Director, SmartVille Properties</div>
+                                    <div class="client-role">~ CEO, FunKe Science </div>
                                 </div>
                             </div>
                         </div>
@@ -278,27 +1133,64 @@
             </section>
         </main>
 
-        <!-- Follow Section -->
-        <section class="follow-section">
-            <h1>Connect with the Virtuquest World</h1>
-            <p>Follow us for the latest updates on immersive VR experiences, gaming, hardware reviews, and cutting-edge technology.</p>
-            
-            <div class="follow-social-links">
-                <a href="https://www.facebook.com/yourpage" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.instagram.com/yourprofile" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/company/yourcompany" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.pinterest.com/yourprofile" target="_blank" rel="noopener" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
-            </div>
-            
-            <div class="white-rectangle"></div>
-        </section>
-
+        <!-- Footer Section -->
         <footer>
-            <p>Virtuquest built with 💡 using modern web tools and open-source creativity.</p>
-        </footer>
-    </div>
+            <div class="footer-content-wrapper">
+                <div class="footer-section footer-social">
+                    <h2>Follow VirtualQuest VR</h2>
+                    <div class="follow-social-links">
+                        <a href="https://www.tiktok.com/@virtualquestvr" target="_blank" rel="noopener" aria-label="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://whatsapp.com/channel/0029Vb3jrHUFSAt21mcLdR0O" target="_blank" rel="noopener" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
 
- <script  src="../scripts/index.min.js"></script>
+                <div class="footer-section footer-info">
+                    <div class="footer-logo">
+                        <!-- VirtualQuest VR Logo (SVG Placeholder) -->
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-vr">
+                            <path d="M2 12s3-9 10-9 10 9 10 9-3 9-10 9-10-9-10-9Z"/>
+                            <path d="M7.5 10.5v1a1.5 1.5 0 0 0 3 0v-1"/>
+                            <path d="M13.5 10.5v1a1.5 1.5 0 0 1-3 0v-1"/>
+                            <path d="M16.5 10.5v1a1.5 1.5 0 0 0-3 0v-1"/>
+                            <path d="M12 17.5v-6"/>
+                        </svg>
+                        <span>VirtualQuest VR</span>
+                    </div>
+                    <p class="copyright-text">© <span id="currentYear"></span> VirtualQuest VR. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            // Set the current year dynamically
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+            // Mobile menu toggle functionality
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navMenu = document.getElementById('navMenu');
+
+            if (mobileMenuBtn && navMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                    mobileMenuBtn.querySelector('i').classList.toggle('fa-bars');
+                    mobileMenuBtn.querySelector('i').classList.toggle('fa-times');
+                });
+
+                // Close menu when a link is clicked
+                navMenu.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navMenu.classList.remove('active');
+                        mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                        mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                    });
+                });
+            }
+        </script>
+    </div>
+    <!-- Removed external JS links to embed directly for completeness -->
 </body>
 </html>

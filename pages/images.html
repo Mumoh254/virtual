@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | Virtuquest</title>
+    <title>VirtuQuest Gallery</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Removed local CSS links to embed all styles directly for completeness and consistency -->
 
     <style>
         /* Define CSS variables for consistent theming */
@@ -76,7 +75,7 @@
             position: relative; /* For underlines */
         }
 
-        /* Gradient Headings (general h1 and h2) */
+        /* Gradient Headings */
         h1 {
             font-size: 3.8rem;
             background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
@@ -271,133 +270,305 @@
             color: var(--secondary-accent);
         }
 
-        /* Contact Section */
-        .contact-section {
-            padding: 6rem 0;
-            background-color: var(--background);
+        /* Gallery Section Specific Styles */
+        .gallery-section {
+            padding: 100px 0;
+            background: linear-gradient(180deg, var(--background) 0%, rgba(25, 30, 40, 0.4) 100%);
             text-align: center;
+            overflow: hidden;
         }
 
-        .contact-section .section-title {
-            text-align: center;
-            font-size: 3.2rem;
-            margin-bottom: 4rem;
+        .gallery-section h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.8em;
+            margin-bottom: 25px;
+            color: var(--text-heading);
             position: relative;
             display: inline-block;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 20px var(--accent-glow-medium), 0 0 40px var(--accent-glow-strong);
-            width: 100%; /* Ensure underline spans full width of text */
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px var(--accent-glow-medium);
+            animation: fadeInTop 1s ease-out forwards;
+            opacity: 0;
         }
 
-        .contact-section .section-title::after {
-            content: "";
+        .gallery-section h2::after {
+            content: '';
             position: absolute;
-            bottom: -10px;
             left: 50%;
+            bottom: -15px;
             transform: translateX(-50%);
-            width: 80%; /* Adjusted width for section title underline */
-            max-width: 400px;
-            height: 3px;
+            width: 120px;
+            height: 5px;
             background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
-            box-shadow: 0 0 10px var(--primary-accent);
+            border-radius: 3px;
+            box-shadow: 0 0 10px var(--accent-glow-light);
         }
 
-        /* Main content wrapper for contact info - now centers a single card */
-        .contact-main-content {
-            display: flex; /* Changed from grid to flex */
-            justify-content: center; /* Center the single card horizontally */
-            align-items: flex-start; /* Align items to the top */
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
+        .gallery-section p {
+            font-size: 1.2em;
+            color: var(--text-main);
+            margin-bottom: 70px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+            animation: fadeIn 1.2s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.2s;
         }
 
-        /* New single contact card styling */
-        .contact-info-single-card {
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            padding: 20px 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
             background: var(--container-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 16px;
-            box-shadow: 0 8px 25px var(--shadow-light);
-            padding: 2.5rem; /* Increased padding for the larger card */
-            display: flex;
-            flex-direction: column; /* Stack details vertically */
-            align-items: flex-start; /* Align content to start within the card */
-            text-align: left; /* Align text left within the card */
-            border: 1px solid rgba(var(--primary-accent), 0.15);
-            transition: 0.3s ease-in-out;
-            max-width: 600px; /* Limit width of the single card */
-            width: 100%; /* Ensure it takes available width */
+            box-shadow: 0 15px 30px var(--shadow-medium), 0 0 20px var(--accent-glow-light) inset;
+            transition: transform 0.4s cubic-bezier(.25, .46, .45, .94), box-shadow 0.4s ease-in-out;
+            cursor: pointer;
+            border: 1px solid rgba(108, 92, 231, 0.3);
+            perspective: 1000px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out, box-shadow 0.4s ease-in-out;
         }
 
-        .contact-info-single-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px var(--shadow-medium), 0 0 30px var(--accent-glow-light);
+        .gallery-item.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 25px 45px var(--shadow-strong), 0 0 30px var(--accent-glow-medium) inset;
             border-color: var(--primary-accent);
         }
 
-        /* Styling for each detail group within the single card */
-        .contact-detail-group {
+        .gallery-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+            border-radius: 15px 15px 0 0;
+            filter: brightness(.8) grayscale(.2);
+            transition: transform 0.6s cubic-bezier(.25, .46, .45, .94), filter 0.4s ease-in-out;
+            transform-origin: center center;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+            filter: brightness(1) grayscale(0);
+        }
+
+        .gallery-content {
+            padding: 20px;
+            text-align: left;
+            background: rgba(10, 13, 20, 0.7);
+            border-top: 1px solid rgba(108, 92, 231, 0.1);
+            border-radius: 0 0 15px 15px;
+        }
+
+        .gallery-content h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.6em;
+            color: var(--text-heading);
+            margin-bottom: 8px;
+            text-shadow: 0 0 8px var(--accent-glow-light);
+        }
+
+        .gallery-content p {
+            font-size: .95em;
+            color: var(--text-main);
+            margin-bottom: 0;
+            line-height: 1.5;
+            opacity: .8;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(108, 92, 231, 0.85), rgba(0, 188, 212, 0.85));
+            color: var(--white);
             display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem; /* Space between each detail group */
-            width: 100%; /* Take full width of parent */
-            flex-wrap: nowrap; /* Prevent icon and text from wrapping */
-        }
-
-        .contact-detail-group:last-child {
-            margin-bottom: 0; /* No margin after the last one */
-        }
-
-        /* Adjust existing .contact-icon and .contact-details for use within .contact-detail-group */
-        .contact-detail-group .contact-icon {
-            width: 60px; /* Slightly smaller icon for inline use */
-            height: 60px;
-            font-size: 2rem;
-            margin-bottom: 0; /* Override previous margin-bottom */
-            flex-shrink: 0; /* Prevent icon from shrinking */
-        }
-
-        .contact-detail-group .contact-details h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem; /* Keep a small margin for heading under icon */
-        }
-
-        .contact-detail-group .contact-details p,
-        .contact-detail-group .contact-details a {
-            font-size: 0.95rem;
-            margin-bottom: 0; /* Ensure no extra margin for paragraphs/links */
-        }
-
-        /* Removed all .newsletter-section related styles */
-        /* Removed all .social-contact related styles */
-        /* Removed all .contact-form-container related styles */
-
-        /* Map Section */
-        .map-wrapper {
-            padding: 6rem 0;
-            background-color: var(--background);
-            display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            backface-visibility: hidden;
         }
 
-        .map-wrapper iframe {
-            width: 90%;
-            max-width: 1000px;
-            height: 500px;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px var(--shadow-medium), 0 0 40px var(--accent-glow-light);
-            border: 1px solid rgba(var(--primary-accent), 0.4);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
         }
 
-        .map-wrapper iframe:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px var(--shadow-strong), 0 0 50px var(--accent-glow-strong);
+        .gallery-overlay h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2em;
+            margin-bottom: 15px;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: transform 0.4s cubic-bezier(.175, .885, .32, 1.275), opacity 0.4s ease-in-out;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+
+        .gallery-item:hover .gallery-overlay h3 {
+            transform: translateY(0);
+            opacity: 1;
+            transition-delay: 0.1s;
+        }
+
+        .gallery-overlay p {
+            font-size: 1.1em;
+            margin: 0;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: transform 0.4s cubic-bezier(.175, .885, .32, 1.275), opacity 0.4s ease-in-out;
+            max-width: 90%;
+        }
+
+        .gallery-item:hover .gallery-overlay p {
+            transform: translateY(0);
+            opacity: 1;
+            transition-delay: 0.2s;
+        }
+
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease-out;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 95%;
+            max-height: 95%;
+            border-radius: 10px;
+            box-shadow: 0 0 40px var(--shadow-strong), 0 0 30px var(--accent-glow-strong);
+            animation: popIn 0.4s cubic-bezier(.68, -.55, .265, 1.55) forwards;
+            background: var(--container-bg);
+            padding: 15px;
+            border: 2px solid var(--primary-accent);
+        }
+
+        .lightbox-content img {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 75vh;
+            display: block;
+            border-radius: 6px;
+            object-fit: contain;
+        }
+
+        .lightbox-caption {
+            color: var(--text-heading);
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.1em;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 10px;
+        }
+
+        .lightbox-caption h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8em;
+            margin-bottom: 5px;
+            color: var(--primary-accent);
+            text-shadow: 0 0 10px var(--accent-glow-light);
+        }
+
+        .lightbox-caption p {
+            font-size: .9em;
+            color: var(--text-main);
+            opacity: .9;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: var(--white);
+            font-size: 45px;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+            text-shadow: 0 0 10px var(--shadow-medium);
+        }
+
+        .lightbox-close:hover {
+            transform: rotate(180deg) scale(1.1);
+            color: var(--cta-gradient-start);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--white);
+            font-size: 60px;
+            cursor: pointer;
+            padding: 15px;
+            user-select: none;
+            text-shadow: 0 0 15px var(--shadow-strong);
+            transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        .lightbox-nav:hover {
+            color: var(--secondary-accent);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInTop {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(.7); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         /* Footer Styles (reused from previous pages) */
@@ -481,7 +652,7 @@
 
         .follow-social-links a:hover {
             background-color: var(--primary-accent);
-            color: var(--white);
+            color: var(--background);
             transform: translateY(-3px) scale(1.05);
             box-shadow: 0 0 20px var(--primary-accent);
         }
@@ -523,7 +694,28 @@
         }
 
         /* Responsive Adjustments */
-        @media (max-width: 992px) {
+        @media (max-width: 1024px) {
+            .gallery-section h2 {
+                font-size: 3.2em;
+            }
+            .gallery-section p {
+                font-size: 1.1em;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 25px;
+            }
+            .gallery-item img {
+                height: 250px;
+            }
+            .lightbox-caption h3 {
+                font-size: 1.6em;
+            }
+            .lightbox-nav {
+                font-size: 50px;
+            }
+
+            /* Header/Footer responsive adjustments */
             .header-container {
                 padding: 0 1.5rem;
             }
@@ -550,32 +742,6 @@
                 display: block;
                 z-index: 1001;
             }
-
-            /* Contact section adjustments */
-            .contact-section .section-title {
-                font-size: 2.8rem;
-            }
-            .contact-main-content {
-                grid-template-columns: 1fr; /* Stack on smaller screens */
-            }
-            .contact-info-single-card {
-                padding: 1.5rem;
-            }
-            .contact-detail-group .contact-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 2rem;
-            }
-            .contact-detail-group .contact-details h3 {
-                font-size: 1.5rem;
-            }
-
-            /* Map section adjustments */
-            .map-wrapper iframe {
-                height: 400px;
-            }
-
-            /* Footer responsive adjustments */
             .footer-content-wrapper {
                 flex-direction: column;
                 align-items: center;
@@ -595,6 +761,42 @@
         }
 
         @media (max-width: 768px) {
+            .gallery-section {
+                padding: 80px 0;
+            }
+            .gallery-section h2 {
+                font-size: 2.8em;
+            }
+            .gallery-section p {
+                font-size: 1em;
+                margin-bottom: 50px;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
+            .gallery-item img {
+                height: 220px;
+            }
+            .gallery-content h3 {
+                font-size: 1.4em;
+            }
+            .gallery-overlay h3 {
+                font-size: 1.8em;
+            }
+            .gallery-overlay p {
+                font-size: 1em;
+            }
+            .lightbox-close {
+                font-size: 35px;
+                top: 15px;
+                right: 20px;
+            }
+            .lightbox-nav {
+                font-size: 40px;
+            }
+
+            /* Header/Footer responsive adjustments */
             body {
                 padding-top: 70px;
             }
@@ -608,39 +810,70 @@
                 top: 70px;
                 height: calc(100vh - 70px);
             }
-
-            /* Contact section adjustments */
-            .contact-section .section-title {
-                font-size: 2.2rem;
-            }
-            .contact-main-content {
-                grid-template-columns: 1fr; /* Ensure stacking on smaller screens */
-                gap: 1.5rem;
-            }
-            .contact-info-single-card {
-                max-width: 400px; /* Constrain width for single column */
-                margin: 0 auto;
-            }
-            .contact-detail-group .contact-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 1.8rem;
-            }
-            .contact-detail-group .contact-details h3 {
-                font-size: 1.3rem;
-            }
-            .contact-detail-group .contact-details p,
-            .contact-detail-group .contact-details a {
-                font-size: 0.9rem;
-            }
-
-            /* Map section adjustments */
-            .map-wrapper iframe {
-                height: 300px;
-            }
         }
 
         @media (max-width: 576px) {
+            .gallery-section {
+                padding: 60px 0;
+            }
+            .gallery-section h2 {
+                font-size: 2.2em;
+                margin-bottom: 20px;
+            }
+            .gallery-section h2::after {
+                width: 80px;
+                height: 4px;
+                bottom: -10px;
+            }
+            .gallery-section p {
+                font-size: .9em;
+                margin-bottom: 40px;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            .gallery-item img {
+                height: 180px;
+            }
+            .gallery-content {
+                padding: 15px;
+            }
+            .gallery-content h3 {
+                font-size: 1.2em;
+            }
+            .gallery-content p {
+                font-size: .85em;
+            }
+            .gallery-overlay h3 {
+                font-size: 1.5em;
+            }
+            .gallery-overlay p {
+                font-size: .9em;
+            }
+            .lightbox-close {
+                font-size: 30px;
+                top: 10px;
+                right: 15px;
+            }
+            .lightbox-nav {
+                font-size: 35px;
+                padding: 8px;
+            }
+            .lightbox-prev {
+                left: 10px;
+            }
+            .lightbox-next {
+                right: 10px;
+            }
+            .lightbox-caption h3 {
+                font-size: 1.4em;
+            }
+            .lightbox-caption p {
+                font-size: .8em;
+            }
+
+            /* Header/Footer responsive adjustments */
             body {
                 padding-top: 60px;
             }
@@ -655,34 +888,6 @@
                 width: 100%;
                 height: calc(100vh - 60px);
             }
-
-            /* Contact section adjustments */
-            .contact-section .section-title {
-                font-size: 1.8rem;
-                margin-bottom: 2.5rem;
-            }
-            .contact-info-single-card {
-                padding: 1rem;
-            }
-            .contact-detail-group .contact-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 1.5rem;
-            }
-            .contact-detail-group .contact-details h3 {
-                font-size: 1.1rem;
-            }
-            .contact-detail-group .contact-details p,
-            .contact-detail-group .contact-details a {
-                font-size: 0.85rem;
-            }
-
-            /* Map section adjustments */
-            .map-wrapper iframe {
-                height: 250px;
-            }
-
-            /* Footer responsive adjustments */
             .footer-section h2 {
                 font-size: 1.3rem;
             }
@@ -706,7 +911,6 @@
     </style>
 </head>
 <body>
-    <!-- Header/Navigation -->
     <header>
         <div class="container header-container">
             <a href="index.html" class="logo" aria-label="Virtuquest Home">
@@ -718,8 +922,8 @@
                     <li><a href="./about.html" class="nav-link">About Us</a></li>
                     <li><a href="./services.html" class="nav-link">Services</a></li>
                     <li><a href="./portfolio.html" class="nav-link">Portfolio</a></li>
-                    <li><a href="./contact.html" class="nav-link active">Contact Us</a></li>
-                    <li><a href="./images.html" class="nav-link">Images</a></li>
+                    <li><a href="./contact.html" class="nav-link">Contact Us</a></li>
+                    <li><a href="./images.html" class="nav-link active">Images</a></li>
                 </ul>
             </nav>
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
@@ -729,58 +933,101 @@
     </header>
 
     <main>
-        <!-- Contact Information Section -->
-        <section class="contact-section">
-            <h2 class="section-title">Contact Virtuquest</h2>
-            <div class="contact-main-content">
-                <div class="contact-info-single-card"> <!-- Consolidated contact details into a single card -->
-                    <div class="contact-detail-group">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
+        <section class="gallery-section">
+            <div class="container">
+                <h2>Immersive Virtual Reality Experiences</h2>
+                <p>Discover Kenya like never before through powerful VR stories. Walk through history, feel the rhythm of the cities, and experience the wild in fully immersive virtual reality journeys.</p>
+                
+                <div class="gallery-grid">
+                    <!-- Heroes of Freedom -->
+                    <div class="gallery-item">
+                        <img src="../images/event 1.jpg" alt="Mau Mau VR History Experience">
+                        <div class="gallery-content">
+                            <h3>Heroes of Freedom</h3>
+                            <p>Step into the struggles and bravery of the Mau Mau fighters who fought for Kenya’s independence.</p>
                         </div>
-                        <div class="contact-details">
-                            <h3>Email Address</h3>
-                            <a href="mailto:virtuquestvr@gmail.com">virtuquestvr@gmail.com</a>
-                        </div>
-                    </div>
-                    <div class="contact-detail-group">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Phone Number</h3>
-                            <a href="tel:+254111955641">+254 111 955 641</a>
-                            <br>
-                            <a href="tel:+254111316742">+254 111 316742</a>
+                        <div class="gallery-overlay">
+                            <h3>Mau Mau Rebellion in VR</h3>
+                            <p>Walk through the forests of Mt. Kenya and witness secret meetings, colonial resistance, and the fight for liberation.</p>
                         </div>
                     </div>
-                    <div class="contact-detail-group">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
+
+                    <!-- Nairobi Nights -->
+                    <div class="gallery-item">
+                        <img src="../images/event 2.jpg" alt="Nairobi Virtual City Tour">
+                        <div class="gallery-content">
+                            <h3>Nairobi Nights</h3>
+                            <p>Experience the energy of Nairobi's streets, from matatu rides to buzzing night markets.</p>
                         </div>
-                        <div class="contact-details">
-                            <h3>Headquarters</h3>
-                            <p>Exit 12, 13 Thika Super Highway, Near Spurmall, Ruiru</p>
+                        <div class="gallery-overlay">
+                            <h3>Nairobi in Virtual Reality</h3>
+                            <p>Explore Kenya’s capital in full 360° VR — the music, street food, local art, and digital culture that define the heartbeat of the city.</p>
                         </div>
                     </div>
-                    <div class="contact-detail-group">
-                        <div class="contact-icon">
-                            <i class="fas fa-clock"></i>
+
+                    <!-- Forgotten Kingdoms -->
+                    <div class="gallery-item">
+                        <img src="../images/event 3.jpg" alt="Ancient African Civilization VR Tour">
+                        <div class="gallery-content">
+                            <h3>Forgotten Kingdoms</h3>
+                            <p>Explore ancient East African civilizations and their hidden architectural wonders.</p>
                         </div>
-                        <div class="contact-details">
-                            <h3>Business Hours</h3>
-                            <p>Monday - Friday<br>9:00 AM - 6:00 PM PST</p>
+                        <div class="gallery-overlay">
+                            <h3>East Africa’s Past in VR</h3>
+                            <p>Travel back to pre-colonial Kenya and discover the rich culture, trade, and spiritual life of ancient coastal and inland communities.</p>
+                        </div>
+                    </div>
+
+                    <!-- Safari Legacy -->
+                    <div class="gallery-item">
+                        <img src="../images/event 4.jpg" alt="Virtual Safari Experience in Kenya">
+                        <div class="gallery-content">
+                            <h3>Safari Legacy</h3>
+                            <p>Get up close with the Big Five and learn about conservation through immersive storytelling.</p>
+                        </div>
+                        <div class="gallery-overlay">
+                            <h3>Wildlife VR Safari</h3>
+                            <p>Join a ranger-led VR safari across the Maasai Mara and Tsavo, hearing real conservation stories from the field.</p>
+                        </div>
+                    </div>
+
+                    <!-- Young Innovators -->
+                    <div class="gallery-item">
+                        <img src="../images/event 5.jpg" alt="Youth Innovation VR in Kenya">
+                        <div class="gallery-content">
+                            <h3>Young Innovators</h3>
+                            <p>Follow the journeys of Kenyan youth building solutions in tech, agriculture, and climate.</p>
+                        </div>
+                        <div class="gallery-overlay">
+                            <h3>Future Makers VR</h3>
+                            <p>Step inside makerspaces and rural labs to meet real Kenyan teens shaping tomorrow with innovation and resilience.</p>
+                        </div>
+                    </div>
+
+                    <!-- Rift Valley Trek -->
+                    <div class="gallery-item">
+                        <img src="../images/event 6.jpg" alt="Rift Valley Volcano VR Adventure">
+                        <div class="gallery-content">
+                            <h3>Rift Valley Trek</h3>
+                            <p>Take a breathtaking journey across Kenya’s Rift Valley escarpments and volcanic ranges.</p>
+                        </div>
+                        <div class="gallery-overlay">
+                            <h3>Rift Valley VR Adventure</h3>
+                            <p>Soar over Lake Turkana, climb Mt. Longonot, and witness geothermal activity — all from a VR perspective grounded in natural science and local lore.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Removed Newsletter Section -->
-        <!-- Removed the entire <section class="newsletter-section"> block -->
-
-        <div class="map-wrapper">
-           <iframe id="map-embed" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.033593456004!2d36.96765887382406!3d-1.1363901354782642!2m3!1f0!2f0!3f0!3m3!1m2!1s0x182f3fc955678a67%3A0xb42cac64d8e16dea!2sSpur%20Mall!5e0!3m2!1sen!2ske!4v1752574666844!5m2!1sen!2ske" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="lightbox">
+            <span class="lightbox-close">&times;</span>
+            <div class="lightbox-content">
+                <img src="" alt="Lightbox Image" id="lightbox-img">
+                <div class="lightbox-caption" id="lightbox-caption"></div>
+            </div>
+            <span class="lightbox-nav lightbox-prev">&#10094;</span>
+            <span class="lightbox-nav lightbox-next">&#10095;</span>
         </div>
     </main>
 
@@ -840,7 +1087,81 @@
             });
         }
 
-        // Removed Newsletter form submission JavaScript as the form is removed from HTML
+        // Lightbox functionality
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const lightbox = document.querySelector('.lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const lightboxClose = document.querySelector('.lightbox-close');
+        const lightboxPrev = document.querySelector('.lightbox-prev');
+        const lightboxNext = document.querySelector('.lightbox-next');
+
+        let currentImageIndex = 0;
+        let images = [];
+
+        galleryItems.forEach((item, index) => {
+            const img = item.querySelector('img');
+            const title = item.querySelector('.gallery-overlay h3').textContent;
+            const description = item.querySelector('.gallery-overlay p').textContent;
+
+            images.push({
+                src: img.src,
+                title: title,
+                description: description
+            });
+
+            item.addEventListener('click', () => {
+                currentImageIndex = index;
+                showLightbox(currentImageIndex);
+            });
+
+            // Intersection Observer for fade-in effect
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 }); // Trigger when 10% of item is visible
+
+            observer.observe(item);
+        });
+
+        function showLightbox(index) {
+            if (images.length === 0) return;
+
+            lightboxImg.src = images[index].src;
+            lightboxCaption.innerHTML = `<h3>${images[index].title}</h3><p>${images[index].description}</p>`;
+            lightbox.classList.add('active');
+        }
+
+        function hideLightbox() {
+            lightbox.classList.remove('active');
+        }
+
+        function navigateLightbox(direction) {
+            currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
+            showLightbox(currentImageIndex);
+        }
+
+        lightboxClose.addEventListener('click', hideLightbox);
+        lightboxPrev.addEventListener('click', () => navigateLightbox(-1));
+        lightboxNext.addEventListener('click', () => navigateLightbox(1));
+
+        // Close lightbox on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                hideLightbox();
+            }
+        });
+
+        // Close lightbox when clicking outside the content
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                hideLightbox();
+            }
+        });
     </script>
 </body>
 </html>

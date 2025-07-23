@@ -1,185 +1,1175 @@
-<!doctype html>
-<html lang=en>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset=UTF-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<title>Our Services | Virtuquest</title>
-<link rel=preconnect href=https://fonts.googleapis.com>
-<link rel=preconnect href=https://fonts.gstatic.com crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel=stylesheet>
-<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css>
-<link href=https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css rel=stylesheet>
-<link rel=stylesheet href=../styles/services.min.css>
-<link rel=stylesheet href=../styles/footer.min.css>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | Virtuquest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Removed local CSS links and Bootstrap CSS to embed all styles directly for completeness and consistency -->
 
     <style>
-  .logo img {
-    height: 70px;
-    width: auto;
-    display: block;
-    max-width: 100%;
-  } 
-</style>
+        /* Define CSS variables for consistent theming */
+        :root {
+            --background: #0a0d14;
+            --header-bg: rgba(10, 13, 20, 0.98);
+            --container-bg: rgba(25, 30, 40, 0.6);
+            --text-main: #e0e6f0;
+            --text-heading: #f8fafc;
+            --white: #ffffff;
+            --primary-accent: #6c5ce7; /* A vibrant purple */
+            --secondary-accent: #00bcd4; /* A bright cyan */
+            --cta-gradient-start: #ff6b6b;
+            --cta-gradient-end: #ff9a8b;
+            --shadow-light: rgba(0, 0, 0, 0.2);
+            --shadow-medium: rgba(0, 0, 0, 0.4);
+            --shadow-strong: rgba(0, 0, 0, 0.6);
+            --accent-glow-light: rgba(108, 92, 231, 0.3);
+            --accent-glow-medium: rgba(108, 92, 231, 0.5);
+            --accent-glow-strong: rgba(108, 92, 231, 0.7);
+            --border-gradient: linear-gradient(90deg, transparent, var(--primary-accent) 20%, var(--secondary-accent) 80%, transparent);
+            --cta-shadow-color: rgba(255, 107, 107, 0.5);
+        }
 
+        /* Universal Box Sizing */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styles */
+        body {
+            font-family: 'Inter', sans-serif; /* Prioritize Inter as specified in general instructions */
+            background-color: var(--background);
+            color: var(--text-main);
+            line-height: 1.8;
+            overflow-x: hidden; /* Prevents horizontal scroll */
+            padding-top: 80px; /* Space for fixed header */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Background Grid Effect for Body */
+        body::before {
+            content: "";
+            position: fixed; /* Fixed to viewport */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: linear-gradient(rgba(var(--primary-accent), 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(var(--primary-accent), 0.02) 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        /* Headings Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Orbitron', sans-serif; /* Sci-fi/tech font */
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 3px var(--accent-glow-light);
+            position: relative; /* For underlines */
+        }
+
+        /* Gradient Headings */
+        h1 {
+            font-size: 3.8rem;
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent; /* Makes text transparent to show background gradient */
+            text-shadow: 0 0 25px var(--accent-glow-medium), 0 0 50px var(--accent-glow-strong);
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 3.2rem;
+            margin-bottom: 4rem;
+            display: inline-block; /* Allows text-align center on parent to center it */
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent; /* Makes text transparent to show background gradient */
+            text-shadow: 0 0 20px var(--accent-glow-medium), 0 0 40px var(--accent-glow-strong);
+        }
+
+        /* Underline for H2 */
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent)); /* Gradient underline */
+            box-shadow: 0 0 10px var(--primary-accent);
+        }
+
+        /* Paragraphs */
+        p {
+            color: var(--text-main);
+            margin-bottom: 1.2rem;
+            font-weight: 300;
+        }
+
+        /* Global Link Styles */
+        a {
+            color: var(--secondary-accent);
+            text-decoration: none;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-accent);
+            text-shadow: 0 0 10px var(--secondary-accent); /* Enhanced hover shadow */
+        }
+
+        /* General Container Styling */
+        .container {
+            width: 100%; /* Occupy full width within its parent */
+            max-width: 1200px; /* Max width for content */
+            margin: 0 auto; /* Center the container */
+            padding: 1rem 2.5rem; /* Padding for content inside container */
+            z-index: 1;
+            background: var(--background);
+            border: 1px solid rgba(var(--primary-accent), 0.2);
+            border-radius: 16px;
+            transition: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 8px 25px var(--shadow-medium);
+        }
+
+        .container:hover {
+            transform: translateY(-8px) scale(1.005);
+            box-shadow: 0 15px 40px var(--shadow-strong), 0 0 30px var(--accent-glow-medium);
+            border-color: var(--primary-accent);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--header-bg);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(var(--primary-accent), 0.1);
+            box-shadow: 0 5px 20px var(--shadow-medium);
+            padding: 1rem 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2.5rem;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        /* Logo Styling */
+        .logo {
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, var(--primary-accent) 0, var(--secondary-accent) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px var(--accent-glow-medium);
+            letter-spacing: 1.5px;
+            position: relative;
+            display: flex; /* To align image and text if present */
+            align-items: center;
+        }
+
+        .logo img {
+            height: 70px;
+            width: auto;
+            display: block;
+            max-width: 100%;
+            margin-right: 10px; /* Space between logo image and text if any */
+        }
+
+        .logo::before {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            box-shadow: 0 0 10px var(--primary-accent);
+            transform-origin: left;
+            transform: scaleX(0);
+            transition: transform 0.4s ease-out;
+        }
+
+        .logo:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* Navigation Menu */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        nav ul li a {
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 0.8rem 0;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            position: relative;
+            color: var(--text-main); /* Ensure nav links use main text color */
+        }
+
+        nav ul li a::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        nav ul li a.active {
+            color: var(--primary-accent);
+            text-shadow: 0 0 8px var(--primary-accent);
+        }
+
+        nav ul li a.active::after {
+            width: 100%;
+            background: var(--primary-accent);
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-accent);
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .mobile-menu-btn:hover {
+            color: var(--secondary-accent);
+        }
+
+        /* Services Hero Section */
+        .services-hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Center content horizontally */
+            overflow: hidden;
+            text-align: center;
+            position: relative;
+            padding: 20px; /* Add some padding */
+        }
+
+        .services-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(108, 92, 231, 0.08) 0, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(0, 188, 212, 0.08) 0, transparent 50%);
+            z-index: 0;
+            mix-blend-mode: screen;
+        }
+
+        .services-hero .background-section { /* Renamed from .container to avoid conflict with global .container */
+            background: var(--background);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px var(--shadow-medium), 0 0 40px var(--accent-glow-light);
+            border: 1px solid rgba(var(--primary-accent), 0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 50vh;
+            padding: 2rem; /* Added padding */
+            max-width: 900px; /* Constrain width */
+            width: 100%;
+            position: relative; /* Ensure it's above the ::before pseudo-element */
+            z-index: 1;
+        }
+
+        .services-hero h1 {
+            font-size: 4.2rem;
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px var(--accent-glow-medium), 0 0 25px var(--accent-glow-strong);
+            margin-bottom: 1.5rem; /* Adjusted margin */
+        }
+
+        .services-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin-bottom: 0;
+            color: var(--text-main); /* Ensure consistency with main text color */
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 6rem 0; /* Increased padding for sections */
+            background-color: var(--background);
+        }
+
+        .services-section:nth-child(2n) {
+            background-color: rgba(var(--primary-accent), 0.03);
+        }
+
+        .services-section h2 {
+            text-align: center;
+            font-size: 3.2rem;
+            margin-bottom: 4rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Adjusted minmax for better responsiveness */
+            gap: 2.5rem; /* Adjusted gap */
+            padding: 0 1rem; /* Padding for the grid itself */
+        }
+
+        .service-card {
+            background: var(--container-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            overflow: hidden;
+            border: 1px solid rgba(var(--primary-accent), 0.15);
+            transition: 0.4s ease-in-out;
+            box-shadow: 0 8px 25px var(--shadow-light);
+            display: flex;
+            flex-direction: column;
+            border-radius: 16px;
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px var(--shadow-medium), 0 0 30px var(--accent-glow-light);
+            border-color: var(--primary-accent);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .service-image img {
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            width: 100%;
+            transition: filter 0.4s ease, transform 0.4s ease;
+        }
+
+        .service-card:hover .service-image img {
+            filter: brightness(0.8);
+            transform: scale(1.05);
+        }
+
+        .service-details {
+            padding: 1.5rem; /* Increased padding */
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-details h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-accent);
+            text-shadow: 0 0 12px var(--accent-glow-light);
+        }
+
+        .service-details p {
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .service-features {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 1rem;
+        }
+
+        .service-features li {
+            position: relative;
+            padding-left: 1.8rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        .service-features li::before {
+            content: "\f00c"; /* Font Awesome checkmark icon */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 0.1rem;
+            font-size: 1.1rem;
+            color: var(--secondary-accent); /* Accent color for checkmark */
+        }
+
+        /* Carousel Section */
+        .carousel-section {
+            padding: 6rem 0;
+            background-color: var(--background);
+        }
+
+        .carousel-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 0 40px var(--accent-glow-light);
+            border: 1px solid rgba(var(--primary-accent), 0.3);
+            background: var(--container-bg);
+            padding: 2rem;
+            position: relative;
+        }
+
+        .carousel {
+            width: 100%;
+            height: 550px;
+            perspective: 1000px;
+            overflow: hidden;
+            border-radius: 12px;
+            background-color: rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .carousel-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            flex-shrink: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .carousel-slide img { /* This rule is not strictly needed if background-image is used */
+            height: 100%;
+            object-fit: cover;
+            width: 100%;
+            filter: brightness(0.7);
+            transition: filter 0.4s;
+        }
+
+        .carousel-slide:hover img {
+            filter: brightness(1);
+        }
+
+        .carousel-slide::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0, transparent 100%);
+            z-index: 1;
+        }
+
+        .carousel-next,
+        .carousel-prev {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--container-bg);
+            backdrop-filter: blur(5px);
+            border: 1px solid var(--primary-accent);
+            color: var(--primary-accent);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            box-shadow: 0 0 10px var(--accent-glow-light);
+            z-index: 100;
+            font-size: 1.5rem;
+        }
+
+        .carousel-next:hover,
+        .carousel-prev:hover {
+            background: var(--primary-accent);
+            color: var(--background);
+            box-shadow: 0 0 20px var(--primary-accent);
+        }
+
+        .carousel-prev {
+            left: 3.5rem;
+        }
+
+        .carousel-next {
+            right: 3.5rem;
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 3.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 100;
+            background: rgba(25, 30, 40, 0.8);
+            padding: 0.75rem 1.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(var(--primary-accent), 0.2);
+            box-shadow: 0 0 15px rgba(var(--primary-accent), 0.2);
+        }
+
+        .dot {
+            width: 14px;
+            height: 14px;
+            background: var(--text-main);
+            opacity: 0.5;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .dot.active {
+            background: var(--primary-accent);
+            opacity: 1;
+            box-shadow: 0 0 10px var(--primary-accent);
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--header-bg);
+            padding: 3rem 1rem;
+            position: relative;
+            border-top: 3px solid;
+            border-image: var(--border-gradient) 1;
+            box-shadow: 0 0 25px var(--shadow-medium);
+            color: var(--text-main);
+            text-align: center;
+            margin-top: 6rem; /* Space above footer */
+        }
+
+        .footer-content-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 2.5rem;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 280px; /* Adjusted min-width for better spacing */
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .footer-section h2 {
+            font-size: 1.5rem;
+            color: var(--text-heading);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            background: none; /* Override global h2 gradient for footer section titles */
+            -webkit-background-clip: unset;
+            background-clip: unset;
+            color: var(--text-heading); /* Ensure color is set directly */
+            text-shadow: none; /* Remove text shadow */
+        }
+
+        .footer-section h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px; /* Enhanced width */
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            border-radius: 2px;
+            box-shadow: 0 0 8px var(--primary-accent); /* Added shadow */
+        }
+
+        /* Social Links in Footer */
+        .follow-social-links {
+            display: flex;
+            justify-content: flex-start;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .follow-social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(var(--primary-accent), 0.1);
+            color: var(--secondary-accent);
+            font-size: 2rem;
+            transition: 0.3s ease-in-out;
+            box-shadow: 0 0 10px var(--accent-glow-light);
+            border: 1px solid rgba(var(--primary-accent), 0.3);
+            text-decoration: none;
+        }
+
+        .follow-social-links a:hover {
+            background-color: var(--primary-accent);
+            color: var(--background);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 0 20px var(--primary-accent);
+        }
+
+        /* Brand Info and Copyright in Footer */
+        .footer-info {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            min-width: 280px; /* Adjusted min-width */
+            padding: 1rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: var(--text-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .footer-logo svg {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            color: var(--secondary-accent);
+            filter: drop-shadow(0 0 5px var(--accent-glow-light));
+        }
+
+        .copyright-text {
+            font-size: 0.9rem;
+            color: rgba(var(--text-main), 0.6);
+            margin: 0;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .header-container {
+                padding: 0 1.5rem;
+            }
+            nav ul {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                width: 280px;
+                height: calc(100vh - 80px);
+                background-color: var(--header-bg);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 30px;
+                transition: right 0.3s;
+                z-index: 1000;
+                border-left: 1px solid rgba(var(--primary-accent), 0.1);
+                box-shadow: -5px 0 20px var(--shadow-medium);
+            }
+            nav ul.active {
+                right: 0;
+            }
+            .mobile-menu-btn {
+                display: block;
+                z-index: 1001;
+            }
+
+            /* Services Hero section adjustments */
+            .services-hero h1 {
+                font-size: 3.2rem;
+            }
+            .services-hero p {
+                font-size: 1.1rem;
+            }
+            .services-hero .background-section {
+                min-height: 40vh;
+                padding: 1.5rem;
+            }
+
+            .services-section h2 {
+                font-size: 2.8rem;
+            }
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Adjusted min-width */
+                gap: 2rem;
+            }
+            .service-card {
+                padding: 1.5rem;
+            }
+            .service-details h3 {
+                font-size: 1.8rem;
+            }
+            .carousel-container {
+                padding: 1.5rem;
+            }
+            .carousel {
+                height: 450px;
+            }
+            .carousel-prev {
+                left: 2rem;
+            }
+            .carousel-next {
+                right: 2rem;
+            }
+            .carousel-dots {
+                bottom: 2rem;
+                padding: 0.6rem 1.2rem;
+            }
+
+            /* Footer specific responsive adjustments */
+            .footer-content-wrapper {
+                flex-direction: column;
+                align-items: center;
+            }
+            .footer-section {
+                width: 100%;
+                text-align: center;
+                padding: 1.5rem 0;
+            }
+            .footer-section h2::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .follow-social-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+            .header-container {
+                padding: 0 1.5rem;
+            }
+            .logo {
+                font-size: 1.8rem;
+            }
+            nav ul {
+                top: 70px;
+                height: calc(100vh - 70px);
+            }
+
+            /* Services Hero section adjustments */
+            .services-hero h1 {
+                font-size: 2.5rem;
+            }
+            .services-hero p {
+                font-size: 1rem;
+            }
+            .services-hero .background-section {
+                min-height: 35vh;
+                padding: 1rem;
+            }
+
+            .services-section h2 {
+                font-size: 2.2rem;
+            }
+            .services-grid {
+                grid-template-columns: 1fr; /* Stack cards */
+                gap: 1.5rem;
+            }
+            .service-card {
+                max-width: 500px; /* Constrain width for single column items */
+                margin: 0 auto; /* Center single column items */
+                padding: 1rem;
+            }
+            .service-details h3 {
+                font-size: 1.5rem;
+            }
+            .carousel {
+                height: 350px;
+            }
+            .carousel-prev {
+                left: 1rem;
+            }
+            .carousel-next {
+                right: 1rem;
+            }
+            .carousel-dots {
+                bottom: 1.5rem;
+                padding: 0.5rem 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            body {
+                padding-top: 60px;
+            }
+            .header-container {
+                padding: 0 1rem;
+            }
+            .logo {
+                font-size: 1.5rem; /* Reduced logo font size for very small devices */
+            }
+            .logo img {
+                height: 50px; /* Reduced logo image height */
+            }
+            nav ul {
+                top: 60px;
+                width: 100%;
+                height: calc(100vh - 60px);
+            }
+
+            /* Services Hero section adjustments */
+            .services-hero h1 {
+                font-size: 2rem;
+            }
+            .services-hero p {
+                font-size: 0.9rem;
+            }
+            .services-hero .background-section {
+                min-height: 30vh;
+                padding: 0.8rem;
+            }
+
+            .services-section h2 {
+                font-size: 1.8rem;
+            }
+            .service-details h3 {
+                font-size: 1.3rem;
+            }
+            .service-details p {
+                font-size: 0.9rem;
+            }
+            .service-features li {
+                font-size: 0.85rem;
+                padding-left: 1.5rem;
+            }
+            .service-features li::before {
+                font-size: 1rem;
+                top: 0.05rem;
+            }
+            .carousel {
+                height: 280px;
+            }
+            .carousel-next,
+            .carousel-prev {
+                width: 35px;
+                height: 35px;
+                font-size: 1.2rem;
+            }
+            .carousel-prev {
+                left: 0.5rem;
+            }
+            .carousel-next {
+                right: 0.5rem;
+            }
+            .carousel-dots {
+                bottom: 1rem;
+                gap: 8px;
+            }
+            .dot {
+                width: 10px;
+                height: 10px;
+            }
+
+            /* Footer specific adjustments for very small devices */
+            .footer-section h2 {
+                font-size: 1.3rem;
+            }
+            .follow-social-links a {
+                width: 45px;
+                height: 45px;
+                font-size: 1.8rem;
+            }
+            .footer-logo {
+                font-size: 1.2rem;
+            }
+            .footer-logo svg {
+                width: 30px;
+                height: 30px;
+                margin-right: 8px;
+            }
+            .copyright-text {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
 <header>
-  <div class="container header-container">
-    <a href="index.html" class="logo" aria-label="Virtuquest Home">
-      <img src="../images/vrLogo.png" alt="Virtuquest Logo" />
-    </a>
-    <nav class="navbar" id="mainNavbar">
-      <ul id="navMenu">
-        <li><a href="../index.html" class="nav-link active">Home</a></li>
-        <li><a href="./about.html" class="nav-link">About Us</a></li>
-        <li><a href="./services.html" class="nav-link">Services</a></li>
-        <li><a href="./portfolio.html" class="nav-link">Portfolio</a></li>
-        <li><a href="./contact.html" class="nav-link">Contact Us</a></li>
-      </ul>
-    </nav>
-    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
-      <i class="fas fa-bars"></i>
-    </button>
-  </div>
+    <div class="container header-container">
+        <a href="index.html" class="logo" aria-label="Virtuquest Home">
+            <img src="../images/vrLogo.png" alt="Virtuquest Logo" />
+        </a>
+        <nav class="navbar" id="mainNavbar">
+            <ul id="navMenu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="./about.html" class="nav-link">About Us</a></li>
+                <li><a href="./services.html" class="nav-link active">Services</a></li>
+                <li><a href="./portfolio.html" class="nav-link">Portfolio</a></li>
+                <li><a href="./contact.html" class="nav-link">Contact Us</a></li>
+                <li><a href="./images.html" class="nav-link">Images</a></li>
+            </ul>
+        </nav>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
 </header>
 
 <main>
-<section class=services-hero>
-<div class=container>
-<h1>Our Services</h1>
-<p>Explore the comprehensive range of cutting-edge technology solutions and immersive experiences we offer to transform your business and engage your audience.</p>
-</div>
-</section>
-<section class=services-section>
-<div class=container>
-<h2>What We Offer</h2>
-<div class=services-grid>
-<div class=service-card>
-<div class=service-content>
-<div class=service-image>
-<img src=../images/virtualreality.jpg alt="Virtual Reality headset in a futuristic setting">
-</div>
-<div class=service-details>
-<h3>Virtual Reality</h3>
-<p>Immersive solutions for training, tours, and engagement.</p>
-<ul class=service-features>
-<li>Custom VR Applications</li>
-<li>360° Tours</li>
-<li>Simulations for Training & Education</li>
-<li>VR Product Demos</li>
-</ul>
-</div>
-</div>
-</div>
-<div class=service-card>
-<div class=service-content>
-<div class=service-image>
-<img src=../images/aichatbots.jpg alt="Artificial Intelligence network">
-</div>
-<div class=service-details>
-<h3>Artificial Intelligence</h3>
-<p>Smart AI tools to optimize experiences and automate workflows.</p>
-<ul class=service-features>
-<li>Custom Chatbots & NLP</li>
-<li>Automation for Business Processes</li>
-<li>AI Analytics & Forecasting</li>
-<li>Personalized AI Assistants</li>
-</ul>
-</div>
-</div>
-</div>
-<div class=service-card>
-<div class=service-content>
-<div class=service-image>
-<img src=../images/eventorg.jpg alt="Organized tech event with glowing lights">
-</div>
-<div class=service-details>
-<h3>Event Organization</h3>
-<p>Blending tech and logistics for unforgettable event experiences.</p>
-<ul class=service-features>
-<li>Virtual & Hybrid Event Planning</li>
-<li>Live Streaming & VR Booth Integration</li>
-<li>Full-Scale Event Logistics</li>
-<li>Tech-Enhanced Audience Engagement</li>
-</ul>
-</div>
-</div>
-</div>
-<div class=service-card>
-<div class=service-content>
-<div class=service-image>
-<img src=../images/charity.jpeg alt="Hands holding a glowing globe, symbolizing community">
-</div>
-<div class=service-details>
-<h3>Charity & Community Work</h3>
-<p>Tech for social good through inclusive learning and outreach.</p>
-<ul class=service-features>
-<li>Free Tech Bootcamps</li>
-<li>"Tech4Teens" Program</li>
-<li>VR for Public Awareness Campaigns</li>
-<li>NGO & CSR Partnerships</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section class=carousel-section>
-<div class=carousel-container>
-<div class=carousel>
-<div class=carousel-track>
-<div class=carousel-slide style="background-image:url('../images/kidvr.jpg')"></div>
-<div class=carousel-slide style="background-image:url('../images/event\ organization.jpg')"></div>
-<div class=carousel-slide style="background-image:url('../images/aichatbots.jpg')"></div>
-<div class=carousel-slide style="background-image:url('../images/eventorg.jpg')"></div>
-</div>
-<button class=carousel-prev aria-label="Previous slide">
-<svg viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg>
-</button>
-<button class=carousel-next aria-label="Next slide">
-<svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
-</button>
-<div class=carousel-dots>
-<button class="dot active" aria-label="Go to slide 1"></button>
-<button class=dot aria-label="Go to slide 2"></button>
-<button class=dot aria-label="Go to slide 3"></button>
-<button class=dot aria-label="Go to slide 4"></button>
-</div>
-</div>
-</div>
-</section>
+    <section class="services-hero">
+        <div class="background-section">
+            <h1>Our Services</h1>
+            <p>Explore the comprehensive range of cutting-edge technology solutions and immersive experiences we offer to transform your business and engage your audience.</p>
+        </div>
+    </section>
+
+    <section class="services-section">
+        <div class="container">
+            <h2>What We Offer</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-image">
+                            <img src="../images/virtualreality.jpg" alt="Virtual Reality headset in a futuristic setting">
+                        </div>
+                        <div class="service-details">
+                            <h3>Virtual Reality</h3>
+                            <p>Immersive solutions for training, tours, and engagement.</p>
+                            <ul class="service-features">
+                                <li>Custom VR Applications</li>
+                                <li>360° Tours</li>
+                                <li>Simulations for Training & Education</li>
+                                <li>VR Product Demos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-image">
+                            <img src="../images/aichatbots.jpg" alt="Artificial Intelligence network">
+                        </div>
+                        <div class="service-details">
+                            <h3>Artificial Intelligence</h3>
+                            <p>Smart AI tools to optimize experiences and automate workflows.</p>
+                            <ul class="service-features">
+                                <li>Custom Chatbots & NLP</li>
+                                <li>Automation for Business Processes</li>
+                                <li>AI Analytics & Forecasting</li>
+                                <li>Personalized AI Assistants</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-image">
+                            <img src="../images/eventorg.jpg" alt="Organized tech event with glowing lights">
+                        </div>
+                        <div class="service-details">
+                            <h3>Event Organization</h3>
+                            <p>Blending tech and logistics for unforgettable event experiences.</p>
+                            <ul class="service-features">
+                                <li>Virtual & Hybrid Event Planning</li>
+                                <li>Live Streaming & VR Booth Integration</li>
+                                <li>Full-Scale Event Logistics</li>
+                                <li>Tech-Enhanced Audience Engagement</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-image">
+                            <img src="../images/charity.jpeg" alt="Hands holding a glowing globe, symbolizing community">
+                        </div>
+                        <div class="service-details">
+                            <h3>Charity & Community Work</h3>
+                            <p>Tech for social good through inclusive learning and outreach.</p>
+                            <ul class="service-features">
+                                <li>Free Tech Bootcamps</li>
+                                <li>"Tech4Teens" Program</li>
+                                <li>VR for Public Awareness Campaigns</li>
+                                <li>NGO & CSR Partnerships</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="carousel-section">
+        <div class="carousel-container">
+            <div class="carousel">
+                <div class="carousel-track">
+                    <div class="carousel-slide" style="background-image:url('../images/kidvr.jpg')"></div>
+                    <div class="carousel-slide" style="background-image:url('../images/event organization.jpg')"></div>
+                    <div class="carousel-slide" style="background-image:url('../images/aichatbots.jpg')"></div>
+                    <div class="carousel-slide" style="background-image:url('../images/eventorg.jpg')"></div>
+                </div>
+                <button class="carousel-prev" aria-label="Previous slide">
+                    <svg viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg>
+                </button>
+                <button class="carousel-next" aria-label="Next slide">
+                    <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+                </button>
+                <div class="carousel-dots">
+                    <button class="dot active" aria-label="Go to slide 1"></button>
+                    <button class="dot" aria-label="Go to slide 2"></button>
+                    <button class="dot" aria-label="Go to slide 3"></button>
+                    <button class="dot" aria-label="Go to slide 4"></button>
+                </div>
+            </div>
+        </div>
+    </section>
 </main>
 
-
-
-</section>
-
-
-
-<section class="section follow-section">
-<h1>Connect with the Virtuquest World</h1>
-<p>Follow us for the latest updates on immersive VR experiences, gaming, hardware reviews, and cutting-edge technology.</p>
-<div class=follow-social-links>
-<a href=https://www.facebook.com/yourpage target=_blank rel=noopener aria-label=Facebook><i class="fab fa-facebook-f"></i></a>
-<a href=https://twitter.com/yourprofile target=_blank rel=noopener aria-label=Twitter><i class="fab fa-twitter"></i></a>
-<a href=https://www.instagram.com/yourprofile target=_blank rel=noopener aria-label=Instagram><i class="fab fa-instagram"></i></a>
-<a href=https://www.linkedin.com/company/yourcompany target=_blank rel=noopener aria-label=LinkedIn><i class="fab fa-linkedin-in"></i></a>
-<a href=https://www.pinterest.com/yourprofile target=_blank rel=noopener aria-label=Pinterest><i class="fab fa-pinterest"></i></a>
-</div>
-<div class=white-rectangle></div>
-</section>
-<section class=section-footer>
-<p>Step into new dimensions with Virtuquest your gateway to free VR content, expert guides, and a vibrant community.</p>
-</section>
 <footer>
-<p>Virtuquest built with 💡 using modern web tools and open-source creativity .</p>
+    <div class="footer-content-wrapper">
+        <div class="footer-section footer-social">
+            <h2>Follow VirtualQuest VR</h2>
+            <div class="follow-social-links">
+                <a href="https://www.tiktok.com/@virtualquestvr" target="_blank" rel="noopener" aria-label="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://whatsapp.com/channel/0029Vb3jrHUFSAt21mcLdR0O" target="_blank" rel="noopener" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-section footer-info">
+            <div class="footer-logo">
+                <!-- VirtualQuest VR Logo (SVG Placeholder) -->
+                <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-vr">
+                    <path d="M2 12s3-9 10-9 10 9 10 9-3 9-10 9-10-9-10-9Z"/>
+                    <path d="M7.5 10.5v1a1.5 1.5 0 0 0 3 0v-1"/>
+                    <path d="M13.5 10.5v1a1.5 1.5 0 0 1-3 0v-1"/>
+                    <path d="M16.5 10.5v1a1.5 1.5 0 0 0-3 0v-1"/>
+                    <path d="M12 17.5v-6"/>
+                </svg>
+                <span>VirtualQuest VR</span>
+            </div>
+            <p class="copyright-text">© <span id="currentYear"></span> VirtualQuest VR. All rights reserved.</p>
+        </div>
+    </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
-<script src="../scripts/index.js" defer></script>
-<script src="../scripts/servicesCarausel.js" defer></script>
+<script>
+    // Set the current year dynamically
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle functionality
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navMenu = document.getElementById('navMenu');
+
+    if (mobileMenuBtn && navMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.querySelector('i').classList.toggle('fa-bars');
+            mobileMenuBtn.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // Close menu when a link is clicked
+        navMenu.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+            });
+        });
+    }
+
+    // Carousel functionality
+    const carouselTrack = document.querySelector('.carousel-track');
+    const carouselSlides = document.querySelectorAll('.carousel-slide');
+    const carouselDots = document.querySelectorAll('.carousel-dots .dot');
+    const carouselPrevBtn = document.querySelector('.carousel-prev');
+    const carouselNextBtn = document.querySelector('.carousel-next');
+    let currentCarouselSlide = 0;
+
+    function updateCarouselSlide() {
+        carouselTrack.style.transform = `translateX(-${currentCarouselSlide * 100}%)`;
+        carouselDots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentCarouselSlide);
+        });
+    }
+
+    function goToCarouselSlide(index) {
+        currentCarouselSlide = index;
+        updateCarouselSlide();
+    }
+
+    function nextCarouselSlide() {
+        currentCarouselSlide = (currentCarouselSlide + 1) % carouselSlides.length;
+        updateCarouselSlide();
+    }
+
+    function prevCarouselSlide() {
+        currentCarouselSlide = (currentCarouselSlide - 1 + carouselSlides.length) % carouselSlides.length;
+        updateCarouselSlide();
+    }
+
+    if (carouselSlides.length > 0) {
+        carouselPrevBtn.addEventListener('click', prevCarouselSlide);
+        carouselNextBtn.addEventListener('click', nextCarouselSlide);
+
+        carouselDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => goToCarouselSlide(index));
+        });
+
+        // Initial update
+        updateCarouselSlide();
+
+        // Optional: Auto-advance carousel
+        // setInterval(nextCarouselSlide, 5000);
+    }
+</script>
 
 </body>
 </html>

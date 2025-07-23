@@ -1,0 +1,11 @@
+Options +FollowSymLinks -MultiViews
+RewriteEngine On
+
+# If the requested URL is not a directory...
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# ...and if the requested URL plus .html is a file
+RewriteCond %{REQUEST_FILENAME}\.html -f
+
+# Rewrite to add .html internally
+RewriteRule ^([^\.]+)$ $1.html [L]
